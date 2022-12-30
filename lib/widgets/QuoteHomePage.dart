@@ -44,7 +44,7 @@ class HomePageQuote extends StatelessWidget {
             "\" ${AppStrings.bibleQuote} \"",
             style: GoogleFonts.pacifico(
               fontSize: 14.0,
-              color: AppColor.grey,
+              color: AppColor.grey600,
               // fontWeight: FontWeight.w500,
               // letterSpacing: 0.5
             ),

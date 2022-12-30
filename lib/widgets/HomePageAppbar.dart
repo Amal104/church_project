@@ -43,7 +43,7 @@ class HomePageAppbar extends StatelessWidget {
           style: GoogleFonts.inter(
             fontSize: 14.0,
             fontWeight: FontWeight.w700,
-            color: AppColor.grey800,
+            color: AppColor.grey,
             letterSpacing: 1,
           ),
         ),
