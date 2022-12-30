@@ -1,0 +1,6 @@
+
+class AppStrings{
+static const String churchName = "Revive Heaven Church";
+static const String achansMessage = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem a voluptatem magni consequuntur perferendis vitae debitis commodi nobis vero praesentium? Consectetur recusandae eius maxime facilis hic suscipit nobis alias.Condimentum id venenatis a condimentum vitae. Nisl rhoncus mattis rhoncus urna neque viverra justo. Massa tempor nec feugiat nisl pretium. Lacus sed turpis tincidunt id aliquet risus. Mauris nunc congue nisi vitae suscipit tellus mauris. Mauris pellentesque pulvinar pellentesque habitant morbi tristique senectus. Bibendum neque egestas congue quisque egestas diam. Platea dictumst vestibulum rhoncus est pellentesque elit ullamcorper. Arcu dictum varius duis at consectetur lorem. Tortor pretium viverra suspendisse potenti nullam ac tortor. Faucibus interdum posuere lorem ipsum dolor sit amet. Vitae proin sagittis nisl rhoncus mattis. Tincidunt ornare massa eget egestas purus viverra accumsan.";
+static const String bibleQuote = "Even though I walk through the valley of the shadow of death, I fear no evil, for You are with me; Your rod and Your staff, they comfort me.";
+}
