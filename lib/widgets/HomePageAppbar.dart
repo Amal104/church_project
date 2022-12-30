@@ -31,7 +31,7 @@ class HomePageAppbar extends StatelessWidget {
                 AppColor.transparent,
               ])),
           child: CachedNetworkImage(
-            imageUrl: AppUrls.church2,
+            imageUrl: AppUrls.church3,
             fit: BoxFit.cover,
             errorWidget: (context, url, error) => const Icon(
                     Icons.error_outline,size: 50,
