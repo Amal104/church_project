@@ -18,7 +18,6 @@ class HomePageAppbar extends StatelessWidget {
       centerTitle: true,
       expandedHeight: 300.0,
       pinned: true,
-      floating: false,
       flexibleSpace: FlexibleSpaceBar(
         expandedTitleScale: 1.6,
         background: DecoratedBox(
@@ -26,9 +25,9 @@ class HomePageAppbar extends StatelessWidget {
           decoration: const BoxDecoration(
               gradient: LinearGradient(
                   begin: Alignment.bottomCenter,
-                  end: Alignment.center,
+                  end: Alignment.topCenter,
                   colors: <Color>[
-                AppColor.kprimary,
+                AppColor.solidWhite,
                 AppColor.transparent,
               ])),
           child: CachedNetworkImage(
@@ -44,7 +43,7 @@ class HomePageAppbar extends StatelessWidget {
           style: GoogleFonts.inter(
             fontSize: 14.0,
             fontWeight: FontWeight.w700,
-            color: AppColor.grey600,
+            color: AppColor.grey800,
             letterSpacing: 1,
           ),
         ),

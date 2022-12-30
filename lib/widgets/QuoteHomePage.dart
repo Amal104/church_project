@@ -27,11 +27,8 @@ class HomePageQuote extends StatelessWidget {
         ),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10.0),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.only(
-                bottomRight: Radius.circular(20),
-                bottomLeft: Radius.circular(20),
-                topRight: Radius.circular(20)),
+          decoration:  BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
             color: AppColor.lightGreyShade,
           ),
           // height: height / 12,
