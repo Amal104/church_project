@@ -29,7 +29,7 @@ class HomePageQuote extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10.0),
           decoration:  BoxDecoration(
             borderRadius: BorderRadius.circular(20),
-            color: AppColor.lightGreyShade,
+            color: AppColor.solidWhite,
           ),
           // height: height / 12,
           child:
@@ -42,10 +42,10 @@ class HomePageQuote extends StatelessWidget {
               //     ),
               Text(
             "\" ${AppStrings.bibleQuote} \"",
-            style: GoogleFonts.inter(
+            style: GoogleFonts.pacifico(
               fontSize: 14.0,
               color: AppColor.grey,
-              fontWeight: FontWeight.w500,
+              // fontWeight: FontWeight.w500,
               // letterSpacing: 0.5
             ),
             textAlign: TextAlign.center,
