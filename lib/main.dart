@@ -1,12 +1,9 @@
 import 'package:church/provider/HomePage_Provider.dart';
 import 'package:church/provider/LoginProvider.dart';
-import 'package:church/screens/LoginScreen.dart';
 import 'package:church/screens/SplashScreen.dart';
-import 'package:church/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'screens/HomePage.dart';
 
 void main() {
   runApp(const MyApp());

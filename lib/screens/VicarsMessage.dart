@@ -43,7 +43,9 @@ class VicarsMessage extends StatelessWidget {
               const SizedBox(
                 height: 25.0,
               ),
-              const Center(child: AchensMessage()),
+              const Center(
+                child: AchensMessage(),
+              ),
               const SizedBox(
                 height: 20,
               ),

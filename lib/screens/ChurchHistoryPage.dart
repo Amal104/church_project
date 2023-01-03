@@ -9,6 +9,8 @@ class ChurchHistory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -25,7 +27,7 @@ class ChurchHistory extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width / 25,
+                horizontal: width / 25,
               ),
               child: Text(
                 "History of\nChurch",
@@ -37,6 +39,18 @@ class ChurchHistory extends StatelessWidget {
                 ),
               ),
             ),
+            const SizedBox(height: 20.0,),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal:  width / 25 ),
+              child: Container(
+                height: height * 0.5,
+                width: width * 0.95,
+                decoration: BoxDecoration(
+                  color: AppColor.purpleShadeWithOpec,
+                  borderRadius: BorderRadius.circular(50)
+                ),
+              ),
+            )
           ],
         ),
       ),
