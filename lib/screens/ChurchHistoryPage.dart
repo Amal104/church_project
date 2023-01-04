@@ -39,16 +39,41 @@ class ChurchHistory extends StatelessWidget {
                 ),
               ),
             ),
-            const SizedBox(height: 20.0,),
+            const SizedBox(
+              height: 20.0,
+            ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal:  width / 25 ),
-              child: Container(
-                height: height * 0.5,
-                width: width * 0.95,
-                decoration: BoxDecoration(
-                  color: AppColor.purpleShadeWithOpec,
-                  borderRadius: BorderRadius.circular(50)
-                ),
+              padding: EdgeInsets.symmetric(horizontal: width / 30),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Container(
+                        height: height / 5,
+                        width: width / 2.28,
+                        decoration: BoxDecoration(
+                            color: AppColor.purpleShadeWithOpec,
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+                      Container(
+                        height: height / 5,
+                        width: width / 2.28,
+                        decoration: BoxDecoration(
+                            color: AppColor.purpleShadeWithOpec,
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: height * 0.01,),
+                  Container(
+                    height: height * 0.5,
+                    width: width * 0.95,
+                    decoration: BoxDecoration(
+                        color: AppColor.purpleShadeWithOpec,
+                        borderRadius: BorderRadius.circular(50)),
+                  ),
+                ],
               ),
             )
           ],
