@@ -65,7 +65,9 @@ class ChurchHistory extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: height * 0.01,),
+                  SizedBox(
+                    height: height * 0.01,
+                  ),
                   Container(
                     height: height * 0.5,
                     width: width * 0.95,
