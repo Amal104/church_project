@@ -12,20 +12,22 @@ class CommitteeMemberPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: const FaIcon(
-                FontAwesomeIcons.chevronLeft,
-                color: AppColor.grey400,
+    return Scaffold(
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: const FaIcon(
+                  FontAwesomeIcons.chevronLeft,
+                  color: AppColor.grey400,
+                ),
               ),
-            ),
-            Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width / 25,
                 ),
@@ -39,8 +41,10 @@ class CommitteeMemberPage extends StatelessWidget {
                   ),
                 ),
               ),
-          ],
+            ],
+          ),
         ),
-      ),);
+      ),
+    );
   }
 }

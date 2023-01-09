@@ -69,7 +69,7 @@ class ChurchHistory extends StatelessWidget {
                           )),
                         ),
                         Container(
-                          padding: EdgeInsets.symmetric(horizontal: width / 30),
+                          padding: EdgeInsets.symmetric(horizontal: width / 26),
                           height: height / 4,
                           width: width / 2.28,
                           decoration: BoxDecoration(
@@ -103,10 +103,11 @@ class ChurchHistory extends StatelessWidget {
                         AppStrings.achansMessage,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.inter(
-                            fontSize: 21,
-                            fontWeight: FontWeight.w600,
-                            color: AppColor.darkpurpleShadev2,
-                            height: 1.5),
+                          fontSize: 21,
+                          fontWeight: FontWeight.w600,
+                          color: AppColor.grey800,
+                          height: 1.5,
+                        ),
                       ),
                     ),
                   ],
