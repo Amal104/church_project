@@ -59,14 +59,15 @@ class ChurchHistory extends StatelessWidget {
                               color: AppColor.lightGreyShade,
                               borderRadius: BorderRadius.circular(50)),
                           child: Center(
-                              child: Text(
-                            "Founded\n\nc. AD 593;\n1430 years ago",
-                            style: GoogleFonts.inter(
-                              fontSize: 21,
-                              fontWeight: FontWeight.w600,
-                              color: AppColor.darkpurpleShadev2,
+                            child: Text(
+                              "Founded\n\nc. AD 593;\n1430 years ago",
+                              style: GoogleFonts.inter(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w600,
+                                color: AppColor.darkpurpleShadev2,
+                              ),
                             ),
-                          )),
+                          ),
                         ),
                         Container(
                           padding: EdgeInsets.symmetric(horizontal: width / 26),
@@ -79,7 +80,7 @@ class ChurchHistory extends StatelessWidget {
                               child: Text(
                             "Denomination\n\nSyro-Malabar Catholic Church",
                             style: GoogleFonts.inter(
-                              fontSize: 21,
+                              fontSize: 20,
                               fontWeight: FontWeight.w600,
                               color: AppColor.darkPinkShade,
                             ),
@@ -103,7 +104,7 @@ class ChurchHistory extends StatelessWidget {
                         AppStrings.achansMessage,
                         textAlign: TextAlign.center,
                         style: GoogleFonts.inter(
-                          fontSize: 21,
+                          fontSize: 18,
                           fontWeight: FontWeight.w600,
                           color: AppColor.grey800,
                           height: 1.5,
