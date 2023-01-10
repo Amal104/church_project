@@ -62,7 +62,7 @@ class ChurchHistory extends StatelessWidget {
                             child: Text(
                               "Founded\n\nc. AD 593;\n1430 years ago",
                               style: GoogleFonts.inter(
-                                fontSize: 20,
+                                fontSize: 19,
                                 fontWeight: FontWeight.w600,
                                 color: AppColor.darkpurpleShadev2,
                               ),
@@ -80,7 +80,7 @@ class ChurchHistory extends StatelessWidget {
                               child: Text(
                             "Denomination\n\nSyro-Malabar Catholic Church",
                             style: GoogleFonts.inter(
-                              fontSize: 20,
+                              fontSize: 19,
                               fontWeight: FontWeight.w600,
                               color: AppColor.darkPinkShade,
                             ),

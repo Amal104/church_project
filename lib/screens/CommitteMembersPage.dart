@@ -41,6 +41,14 @@ class CommitteeMemberPage extends StatelessWidget {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 30.0,
+              ),
+              Column(
+                children: [
+
+                ],
+              )
             ],
           ),
         ),
