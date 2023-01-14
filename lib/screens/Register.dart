@@ -2,6 +2,7 @@ import 'package:church/components/AltertDialogue.dart';
 import 'package:church/screens/LoginScreen.dart';
 import 'package:church/values/values.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -105,6 +106,12 @@ class _RegisterState extends State<Register> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: width * 0.10),
                               child: TextFormField(
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.allow(
+                                    RegExp(r"[0-9]"),
+                                  )
+                                ],
+                                validator: (value) => provider.isValidPhone(value),
                                 controller: provider.usernameConroller,
                                 keyboardType: TextInputType.text,
                                 decoration: InputDecoration(
@@ -206,7 +213,8 @@ class _RegisterState extends State<Register> {
                                   alignment: Alignment.centerLeft,
                                   child: GestureDetector(
                                     onTap: () {
-                                      CustomAlertDialog.passwordReqDialogue(context);
+                                      CustomAlertDialog.passwordReqDialogue(
+                                          context);
                                     },
                                     child: Text("*Password Requirement",
                                         style: GoogleFonts.blinker(

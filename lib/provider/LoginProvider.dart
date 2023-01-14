@@ -73,5 +73,17 @@ class LoginProvider extends ChangeNotifier{
         return null;
       }
     }
+  } 
+
+isValidPhone(value){
+    final phoneRegExp = RegExp(r"^[0-9]{10}$");
+    if(value.isEmpty){
+      return 'Please enter phone number';
+    }else{
+      if(!phoneRegExp.hasMatch(value)){
+        return 'Enter valid phone number';
+      }
+    }
+    
   }
 }
