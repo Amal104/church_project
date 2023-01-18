@@ -1,4 +1,5 @@
 import 'package:church/screens/Drawer.dart';
+import 'package:church/values/values.dart';
 import 'package:flutter/material.dart';
 import '../widgets/EnquiryTab.dart';
 import '../widgets/EventsTab.dart';
@@ -14,6 +15,7 @@ class HomePage extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: AppColor.solidWhite,
       body: CustomScrollView(
         slivers: [
           const HomePageAppbar(),

@@ -43,7 +43,7 @@ class VicarMessage extends StatelessWidget {
               children: [
                 Text(
                   "Rashid Achan",
-                  style: GoogleFonts.blinker(
+                  style: GoogleFonts.inter(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                     color: AppColor.grey800,
@@ -52,7 +52,7 @@ class VicarMessage extends StatelessWidget {
                 ),
                 Text(
                   "Vicar",
-                  style: GoogleFonts.blinker(
+                  style: GoogleFonts.inter(
                     fontSize: 15.0,
                     fontWeight: FontWeight.bold,
                     color: AppColor.grey600,

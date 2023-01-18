@@ -45,7 +45,7 @@ class AsiVicarMessage extends StatelessWidget {
               children: [
                 Text(
                   "Joyal Achan",
-                  style: GoogleFonts.blinker(
+                  style: GoogleFonts.inter(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
                     color: AppColor.grey800,
@@ -54,7 +54,7 @@ class AsiVicarMessage extends StatelessWidget {
                 ),
                 Text(
                   "Assi Vicar",
-                  style: GoogleFonts.blinker(
+                  style: GoogleFonts.inter(
                     fontSize: 15.0,
                     fontWeight: FontWeight.bold,
                     color: AppColor.grey600,

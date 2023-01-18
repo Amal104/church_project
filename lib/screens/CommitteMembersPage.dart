@@ -12,6 +12,8 @@ class CommitteeMemberPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -44,11 +46,7 @@ class CommitteeMemberPage extends StatelessWidget {
               const SizedBox(
                 height: 30.0,
               ),
-              Column(
-                children: [
-
-                ],
-              )
+              
             ],
           ),
         ),
