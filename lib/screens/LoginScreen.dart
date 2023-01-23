@@ -54,7 +54,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: height / 1.5,
                 width: width / 1.2,
                 decoration: BoxDecoration(
-                    color: AppColor.grey100,
+                    color: AppColor.solidWhite,
                     borderRadius: BorderRadius.circular(40),
                     boxShadow: const [
                       Shadows.containerShadow,

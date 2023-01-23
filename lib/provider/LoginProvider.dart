@@ -2,8 +2,6 @@ import 'package:church/screens/HomePage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../screens/LoginScreen.dart';
-
 class LoginProvider extends ChangeNotifier{
   bool isvisible = false;
   bool isvisible2 = false;
@@ -16,6 +14,7 @@ class LoginProvider extends ChangeNotifier{
   bool haspasswordOneSpecialcharacter = false;
   bool haspasswordOnenumber = false;
   final formKey = GlobalKey<FormState>(); 
+
   onPasswordChanged(String password) {
 
       final numericRegx = RegExp(r'[0-9]');
@@ -44,6 +43,7 @@ class LoginProvider extends ChangeNotifier{
       }
       notifyListeners();
   }
+
   emailValidate(value){
      if(value.isEmpty){
       return "Please enter email";
@@ -55,6 +55,7 @@ class LoginProvider extends ChangeNotifier{
       return null;
     }
   }
+
   onRegister(){
     if(formKey.currentState!.validate()){
       Get.off(()=>const HomePage());
@@ -86,4 +87,5 @@ isValidPhone(value){
     }
     
   }
+  
 }

@@ -2,18 +2,34 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
+import '../provider/VicarMessageProvider.dart';
 import '../values/Strings.dart';
 import '../values/urls.dart';
 import '../values/values.dart';
 
-class AsiVicarMessage extends StatelessWidget {
+class AsiVicarMessage extends StatefulWidget {
   const AsiVicarMessage({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<AsiVicarMessage> createState() => _AsiVicarMessageState();
+}
+
+class _AsiVicarMessageState extends State<AsiVicarMessage> {
+
+  @override
+  void initState() {
+    super.initState();
+    final asivicar = Provider.of<VicarMessageProvider>(context, listen: false);
+    asivicar.getAsiVicarMessage();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final asivicar = Provider.of<VicarMessageProvider>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Column(
@@ -44,7 +60,7 @@ class AsiVicarMessage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Joyal Achan",
+                  asivicar.asivicar?.name ?? "",
                   style: GoogleFonts.inter(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -68,12 +84,11 @@ class AsiVicarMessage extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const Text(
-          AppStrings.achansMessage,
-          style: TextStyle(
+         Text(
+          asivicar.asivicar?.message ?? "",
+          style: const TextStyle(
             fontSize: 17.0,
           ),
-          maxLines: 3,
         ),
       ],
     );

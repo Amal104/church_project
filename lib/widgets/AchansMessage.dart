@@ -1,5 +1,7 @@
+import 'package:church/provider/VicarMessageProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../values/Strings.dart';
 import '../values/values.dart';
 import 'AsiVicarMessage.dart';

@@ -1,5 +1,6 @@
 import 'package:church/provider/HomePage_Provider.dart';
 import 'package:church/provider/LoginProvider.dart';
+import 'package:church/provider/VicarMessageProvider.dart';
 import 'package:church/screens/SplashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (context) => HomePageProvider(),),
         ChangeNotifierProvider(create: (context) => LoginProvider(),),
+        ChangeNotifierProvider(create: (context) => VicarMessageProvider(),),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

@@ -1,17 +1,31 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import '../provider/VicarMessageProvider.dart';
 import '../values/Strings.dart';
 import '../values/urls.dart';
 import '../values/values.dart';
 
-class VicarMessage extends StatelessWidget {
+class VicarMessage extends StatefulWidget {
   const VicarMessage({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<VicarMessage> createState() => _VicarMessageState();
+}
+
+class _VicarMessageState extends State<VicarMessage> {
+  @override
+  void initState() {
+    super.initState();
+     final postModel = Provider.of<VicarMessageProvider>(context, listen: false);
+    postModel.getVicarMessage();
+  }
+  @override
   Widget build(BuildContext context) {
+    final postModel = Provider.of<VicarMessageProvider>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Column(
@@ -42,7 +56,7 @@ class VicarMessage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Rashid Achan",
+                  postModel.vicar?.name ?? "",
                   style: GoogleFonts.inter(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -66,9 +80,9 @@ class VicarMessage extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const Text(
-          AppStrings.achansMessage,
-          style: TextStyle(
+        Text(
+          postModel.vicar?.message ?? "",
+          style: const TextStyle(
             fontSize: 17.0,
           ),
         ),
