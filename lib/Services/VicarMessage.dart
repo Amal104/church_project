@@ -10,7 +10,7 @@ class VicarMessageService {
     VicarMessageModel? result;
     try {
       final response = await http.get(
-        Uri.parse("http://192.168.29.11:5000/user-achens-message/get-vicar-message"),
+        Uri.parse("${baseUrl}mobile/achens-message/get-vicar-message"),
       );
       if (response.statusCode == 200) {
         final item = json.decode(response.body);
@@ -28,7 +28,7 @@ class VicarMessageService {
     VicarMessageModel? result;
     try {
       final response = await http.get(
-        Uri.parse("http://192.168.29.11:5000/user-achens-message/get-asst-vicar-message"),
+        Uri.parse("${baseUrl}mobile/achens-message/get-asst-vicar-message"),
       );
       if (response.statusCode == 200) {
         final item = json.decode(response.body);

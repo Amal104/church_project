@@ -10,17 +10,21 @@ class VicarMessageProvider extends ChangeNotifier {
 
   getVicarMessage() async {
     loading = true;
-    vicar = (await VicarMessageService().vicarMessage());
-    loading = false;
+    notifyListeners();
 
+    vicar = (await VicarMessageService().vicarMessage());
+    
+    loading = false;
     notifyListeners();
   }
 
   getAsiVicarMessage() async {
     loading = true;
-    asivicar = (await VicarMessageService().asiVicarMessage());
-    loading = false;
+    notifyListeners();
 
+    asivicar = (await VicarMessageService().asiVicarMessage());
+
+    loading = false;
     notifyListeners();
   }
 

@@ -1,3 +1,5 @@
+import 'package:church/provider/AboutChurchProvider.dart';
+import 'package:church/provider/CommitteeMemberProvider.dart';
 import 'package:church/provider/HomePage_Provider.dart';
 import 'package:church/provider/LoginProvider.dart';
 import 'package:church/provider/VicarMessageProvider.dart';
@@ -21,6 +23,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => HomePageProvider(),),
         ChangeNotifierProvider(create: (context) => LoginProvider(),),
         ChangeNotifierProvider(create: (context) => VicarMessageProvider(),),
+        ChangeNotifierProvider(create: (context) => CommitteeMemberProvider(),),
+        ChangeNotifierProvider(create: (context) => AboutChurchProvider(),),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

@@ -40,8 +40,8 @@ class _AsiVicarMessageState extends State<AsiVicarMessage> {
             CachedNetworkImage(
               imageUrl: AppUrls.asiVicar,
               imageBuilder: (context, imageProvider) => Container(
-                width: width * 0.15,
-                height: height * 0.10,
+                width: width * 0.19,
+                height: height * 0.1,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   image:
