@@ -2,6 +2,7 @@ import 'package:church/provider/AboutChurchProvider.dart';
 import 'package:church/provider/CommitteeMemberProvider.dart';
 import 'package:church/provider/HomePage_Provider.dart';
 import 'package:church/provider/LoginProvider.dart';
+import 'package:church/provider/ObicturyProvider.dart';
 import 'package:church/provider/VicarMessageProvider.dart';
 import 'package:church/screens/SplashScreen.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => VicarMessageProvider(),),
         ChangeNotifierProvider(create: (context) => CommitteeMemberProvider(),),
         ChangeNotifierProvider(create: (context) => AboutChurchProvider(),),
+        // ChangeNotifierProvider(create: (context) => ObicturyProvider(),),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

@@ -11,7 +11,6 @@ class AboutChurchProvider extends ChangeNotifier {
 
   getAboutChurch() async {
     loading = true;
-    notifyListeners();
 
     aboutChurch = (await AboutChurchService().aboutChurch());
 

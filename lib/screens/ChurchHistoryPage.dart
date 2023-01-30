@@ -21,6 +21,7 @@ class _ChurchHistoryState extends State<ChurchHistory> {
     final postModel = Provider.of<AboutChurchProvider>(context, listen: false);
     postModel.getAboutChurch();
   }
+
   @override
   Widget build(BuildContext context) {
     final postModel = Provider.of<AboutChurchProvider>(context);
@@ -76,22 +77,30 @@ class _ChurchHistoryState extends State<ChurchHistory> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                  "Parish Name",
-                                  style: GoogleFonts.inter(
-                                    fontSize: 19,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColor.darkpurpleShadev2,
-                                  ),
-                              ),
-                              SizedBox(height: height * 0.03,),
-                              Text(
-                                postModel.aboutChurch?.parishName ?? "",
+                                "Parish Name",
                                 style: GoogleFonts.inter(
-                                  fontSize: 18,
+                                  fontSize: 19,
                                   fontWeight: FontWeight.w600,
                                   color: AppColor.darkpurpleShadev2,
                                 ),
                               ),
+                              SizedBox(
+                                height: height * 0.03,
+                              ),
+                              postModel.loading
+                                  ? const Center(
+                                      child: CircularProgressIndicator(
+                                        color: AppColor.darkpurpleShadev2,
+                                      ),
+                                    )
+                                  : Text(
+                                      postModel.aboutChurch?.parishName ?? "",
+                                      style: GoogleFonts.inter(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                        color: AppColor.darkpurpleShadev2,
+                                      ),
+                                    ),
                             ],
                           ),
                         ),
@@ -107,14 +116,16 @@ class _ChurchHistoryState extends State<ChurchHistory> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                  "Address",
-                                  style: GoogleFonts.inter(
-                                    fontSize: 19,
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColor.darkPinkShade,
-                                  ),
+                                "Address",
+                                style: GoogleFonts.inter(
+                                  fontSize: 19,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColor.darkPinkShade,
+                                ),
                               ),
-                              SizedBox(height: height * 0.03,),
+                              SizedBox(
+                                height: height * 0.03,
+                              ),
                               Text(
                                 postModel.aboutChurch?.address ?? "",
                                 style: GoogleFonts.inter(

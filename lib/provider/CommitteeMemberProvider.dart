@@ -11,7 +11,6 @@ class CommitteeMemberProvider extends ChangeNotifier {
 
   Future<void> getAllTodos() async {
     isLoading = true;
-    notifyListeners();
 
     final response = await _service.getAll();
 
