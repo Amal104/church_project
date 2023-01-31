@@ -64,7 +64,7 @@ class _EventsPageState extends State<EventsPage> {
                       shrinkWrap: true,
                       itemCount: getEvent.event?.length,
                       itemBuilder: (context, index) {
-                        var annoucement = getEvent.event![index];
+                        var event = getEvent.event![index];
                         return Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: size.height * 0.02,
@@ -79,11 +79,11 @@ class _EventsPageState extends State<EventsPage> {
                               ),
                               child: Column(
                                 children: [
-                                  Text(annoucement.eventTitle),
+                                  Text(event.eventTitle),
                                   SizedBox(
                                     height: size.height * 0.02,
                                   ),
-                                  Text(annoucement.date),
+                                  Text(event.date),
                                   SizedBox(
                                     height: size.height * 0.02,
                                   ),
