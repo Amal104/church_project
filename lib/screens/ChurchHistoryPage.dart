@@ -1,5 +1,6 @@
 import 'package:church/values/Strings.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,13 +19,16 @@ class _ChurchHistoryState extends State<ChurchHistory> {
   @override
   void initState() {
     super.initState();
-    final postModel = Provider.of<AboutChurchProvider>(context, listen: false);
-    postModel.getAboutChurch();
+    final aboutChurch = Provider.of<AboutChurchProvider>(context, listen: false);
+    aboutChurch.getAboutChurch();
+    final history = Provider.of<AboutChurchProvider>(context, listen: false);
+    history.getChurchHistory();
   }
 
   @override
   Widget build(BuildContext context) {
     final postModel = Provider.of<AboutChurchProvider>(context);
+    final history = Provider.of<AboutChurchProvider>(context);
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -47,7 +51,7 @@ class _ChurchHistoryState extends State<ChurchHistory> {
                   horizontal: width / 25,
                 ),
                 child: Text(
-                  "History of\nChurch",
+                  "About Church",
                   style: GoogleFonts.inter(
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold,
@@ -151,15 +155,8 @@ class _ChurchHistoryState extends State<ChurchHistory> {
                       decoration: BoxDecoration(
                           color: AppColor.lightGreyShade,
                           borderRadius: BorderRadius.circular(50)),
-                      child: Text(
-                        AppStrings.achansMessage,
-                        textAlign: TextAlign.center,
-                        style: GoogleFonts.inter(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                          color: AppColor.grey800,
-                          height: 1.5,
-                        ),
+                      child: Html(
+                        data: postModel.churchHistory?.description ?? "",
                       ),
                     ),
                   ],

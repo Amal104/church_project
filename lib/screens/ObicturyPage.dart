@@ -24,7 +24,7 @@ class _ObicturyPageState extends State<ObicturyPage> {
   }
 
   data() async {
-    products = (await ObicturyService().getHttp())!;
+    products = (await ObicturyService().getObictury())!;
     if (products != null) {
       setState(() {
         isLoading = true;

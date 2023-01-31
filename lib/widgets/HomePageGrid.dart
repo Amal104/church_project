@@ -78,7 +78,7 @@ class HomePageGrid extends StatelessWidget {
                 bottom: 15.0,
                 left: 15.0,
                 child: Text(
-                  "History of\nChurch",
+                  "About\nChurch",
                   style: GoogleFonts.inter(
                     fontSize: 16.0,
                     fontWeight: FontWeight.bold,

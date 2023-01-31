@@ -1,12 +1,11 @@
-
 import 'dart:convert';
 
-List<Announcement> announcementFromJson(String str) => List<Announcement>.from(json.decode(str).map((x) => Announcement.fromJson(x)));
+List<AnnouncementModel> announcementModelFromJson(String str) => List<AnnouncementModel>.from(json.decode(str).map((x) => AnnouncementModel.fromJson(x)));
 
-String announcementToJson(List<Announcement> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String announcementModelToJson(List<AnnouncementModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Announcement {
-    Announcement({
+class AnnouncementModel {
+    AnnouncementModel({
         required this.title,
         required this.body,
         required this.announcementId,
@@ -16,7 +15,7 @@ class Announcement {
     String body;
     int announcementId;
 
-    factory Announcement.fromJson(Map<String, dynamic> json) => Announcement(
+    factory AnnouncementModel.fromJson(Map<String, dynamic> json) => AnnouncementModel(
         title: json["title"],
         body: json["body"],
         announcementId: json["announcementId"],

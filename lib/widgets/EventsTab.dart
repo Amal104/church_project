@@ -64,7 +64,7 @@ class EventsTab extends StatelessWidget {
               right: 0,
               child: Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: width * 0.029,
+                  horizontal: width * 0.025,
                   vertical: height  * 0.018,
                 ),
                 child: GestureDetector(

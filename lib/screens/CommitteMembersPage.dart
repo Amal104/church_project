@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:church/screens/blah.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -7,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../provider/CommitteeMemberProvider.dart';
+import '../provider/MemberProvider.dart';
 import '../values/values.dart';
 
 class CommitteeMemberPage extends StatefulWidget {
@@ -20,37 +22,33 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<CommitteeMemberProvider>(context, listen: false)
-          .getAllTodos();
-    });
+    final getmember = Provider.of<MemberProvider>(context, listen: false);
+    getmember.getMember();
   }
 
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.of(context).size.height;
-    var width = MediaQuery.of(context).size.width;
+    final getmember = Provider.of<MemberProvider>(context);
+    var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SafeArea(
-        child: CustomScrollView(
-          slivers: <Widget>[
-            SliverPadding(
-              padding: EdgeInsets.only(
-                left: width / 25,
-                bottom: height * 0.01,
-                top: height * 0.01,
-              ),
-              sliver: const SliverToBoxAdapter(
-                child: FaIcon(
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              IconButton(
+                onPressed: () {
+                  Get.back();
+                },
+                icon: const FaIcon(
                   FontAwesomeIcons.chevronLeft,
                   color: AppColor.grey400,
                 ),
               ),
-            ),
-            SliverPadding(
-              padding:
-                  EdgeInsets.only(left: width / 25, bottom: height * 0.025),
-              sliver: SliverToBoxAdapter(
+              Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: MediaQuery.of(context).size.width / 25,
+                ),
                 child: Text(
                   "Committee\nMembers",
                   style: GoogleFonts.inter(
@@ -61,58 +59,65 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                   ),
                 ),
               ),
-            ),
-            Consumer<CommitteeMemberProvider>(builder: (context, value, child) {
-              if (value.isLoading) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              final todos = value.todos;
-              return SliverGrid(
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    childAspectRatio: 0.7,
-                    mainAxisSpacing: 1.0,
-                    crossAxisSpacing: 1.0),
-                delegate: SliverChildBuilderDelegate(
-                  (context, index) {
-                    final todo = todos[index];
+              SizedBox(
+                height: size.height * 0.02,
+              ),
+              if (getmember.member?.length != null)
+                ListView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: getmember.member?.length,
+                  itemBuilder: (context, index) {
+                    var member = getmember.member![index];
                     return Padding(
-                      padding: const EdgeInsets.all(5.0),
-                      child: Stack(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                              color: AppColor.lightGreyShade,
-                            ),
-                          ),
-                          ClipRRect(
-                            borderRadius: const BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                topRight: Radius.circular(20)),
-                            child: CachedNetworkImage(
-                              imageUrl:
-                                  "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=388&q=80",
-                              height: 150,
-                              width: width,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          Text(todo.name),
-                        ],
+                      padding: EdgeInsets.symmetric(
+                          horizontal: size.height * 0.015,
+                          vertical: size.width * 0.015),
+                      child: Card(
+                        color: AppColor.lightGreyShade,
+                        child: ListTile(
+                          onTap: () {
+                            Get.to(() => MemberDetails(
+                                  memberid: member.memberId,
+                                  email: member.email,
+                                  edavakaReg: member.edavakaRegisterNo,
+                                  gender: member.gender,
+                                  membershipStatus: member.membershipStatus,
+                                  housename: member.houseName,
+                                  address1: member.address1,
+                                  address2: member.address2,
+                                  postoffice: member.postoffice,
+                                  pincode: member.pincode,
+                                  prayerGroup: member.prayerGroup.prayerGroupName,
+                                  designation: member.designation,
+                                  organization: member.organization.organisationName,
+                                  mobile: member.mobilePhone,
+                                  phoneOffice: member.phoneOffice,
+                                  birthday: member.birthday,
+                                  marriageDate: member.marriageDate,
+                                  homeParishHouseName:
+                                      member.homeParishHouseName,
+                                  homeParish: member.homeParish,
+                                  nativePlace: member.nativePlace,
+                                  generalRemarks: member.generalRemarks,
+                                  memberName: member.memberName,
+                                ));
+                          },
+                          // tileColor: AppColor.lightGreyShade,
+                          // leading: Text(member.memberName),
+                          title: Text(member.memberName),
+                          subtitle: Text(member.homeParish),
+                          trailing: const FaIcon(FontAwesomeIcons.chevronRight),
+                        ),
                       ),
                     );
                   },
-                  childCount: todos.length,
                 ),
-              );
-            }),
-            const SliverPadding(
-              padding: EdgeInsets.only(bottom: 80.0),
-            )
-          ],
+              SizedBox(
+                height: size.height * 0.06,
+              ),
+            ],
+          ),
         ),
       ),
     );

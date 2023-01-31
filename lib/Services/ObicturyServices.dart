@@ -23,7 +23,7 @@ class ObicturyService {
 //     return [];
 //   }
 
-  Future<List<ObicturyModel>?> getHttp() async {
+  Future<List<ObicturyModel>?> getObictury() async {
     try {
       var response = await Dio().get('http://192.168.29.11:5000/mobile/obituary/list');
       var json = response.data;
