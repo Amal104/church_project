@@ -97,7 +97,7 @@ class _EventsPageState extends State<EventsPage> {
                         "assets/404notfound.jpg",
                         height: 200,
                       ),
-                    )
+                    ),
             ],
           ),
         ),

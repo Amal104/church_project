@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:church/screens/blah.dart';
+import 'package:church/Constants.dart';
+import 'package:church/screens/MemberDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -22,34 +23,34 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
   @override
   void initState() {
     super.initState();
-    final getmember = Provider.of<MemberProvider>(context, listen: false);
-    getmember.getMember();
+    final getcommitteemember =
+        Provider.of<CommitteeMemberProvider>(context, listen: false);
+    getcommitteemember.getCommitteeMember();
   }
 
   @override
   Widget build(BuildContext context) {
-    final getmember = Provider.of<MemberProvider>(context);
+    final getcommitteemember = Provider.of<CommitteeMemberProvider>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconButton(
-                onPressed: () {
-                  Get.back();
-                },
-                icon: const FaIcon(
-                  FontAwesomeIcons.chevronLeft,
-                  color: AppColor.grey400,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: size.width * 0.027),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
+                  child: GestureDetector(
+                    onTap: () => Get.back(),
+                    child: const FaIcon(
+                      FontAwesomeIcons.chevronLeft,
+                      color: AppColor.grey400,
+                    ),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 25,
-                ),
-                child: Text(
+                Text(
                   "Committee\nMembers",
                   style: GoogleFonts.inter(
                     fontSize: 25.0,
@@ -58,65 +59,93 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                     letterSpacing: 1.0,
                   ),
                 ),
-              ),
-              SizedBox(
-                height: size.height * 0.02,
-              ),
-              if (getmember.member?.length != null)
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: getmember.member?.length,
-                  itemBuilder: (context, index) {
-                    var member = getmember.member![index];
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: size.height * 0.015,
-                          vertical: size.width * 0.015),
-                      child: Card(
-                        color: AppColor.lightGreyShade,
-                        child: ListTile(
-                          onTap: () {
-                            Get.to(() => MemberDetails(
-                                  memberid: member.memberId,
-                                  email: member.email,
-                                  edavakaReg: member.edavakaRegisterNo,
-                                  gender: member.gender,
-                                  membershipStatus: member.membershipStatus,
-                                  housename: member.houseName,
-                                  address1: member.address1,
-                                  address2: member.address2,
-                                  postoffice: member.postoffice,
-                                  pincode: member.pincode,
-                                  prayerGroup: member.prayerGroup.prayerGroupName,
-                                  designation: member.designation,
-                                  organization: member.organization.organisationName,
-                                  mobile: member.mobilePhone,
-                                  phoneOffice: member.phoneOffice,
-                                  birthday: member.birthday,
-                                  marriageDate: member.marriageDate,
-                                  homeParishHouseName:
-                                      member.homeParishHouseName,
-                                  homeParish: member.homeParish,
-                                  nativePlace: member.nativePlace,
-                                  generalRemarks: member.generalRemarks,
-                                  memberName: member.memberName,
-                                ));
-                          },
-                          // tileColor: AppColor.lightGreyShade,
-                          // leading: Text(member.memberName),
-                          title: Text(member.memberName),
-                          subtitle: Text(member.homeParish),
-                          trailing: const FaIcon(FontAwesomeIcons.chevronRight),
-                        ),
-                      ),
-                    );
-                  },
+                SizedBox(
+                  height: size.height * 0.02,
                 ),
-              SizedBox(
-                height: size.height * 0.06,
-              ),
-            ],
+                if (getcommitteemember.member?.length != null)
+                  GridView.builder(
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.7,
+                    ),
+                    physics: const NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: getcommitteemember.member?.length,
+                    itemBuilder: (context, index) {
+                      var committeemember = getcommitteemember.member![index];
+                      return Card(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(15)),
+                          color: AppColor.lightGreyShade,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: size.width * 0.05,
+                            ),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  width: 100.0,
+                                  height: 100.0,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(images[index]),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(height: size.height * 0.02),
+                                Text(
+                                  committeemember.name,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.w700,
+                                  ),
+                                ),
+                                SizedBox(height: size.height * 0.02),
+                                Text(
+                                  committeemember.position.positionName,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: size.height * 0.005),
+                                Text(
+                                  committeemember.organisation.organisationName,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: size.height * 0.005),
+                                Text(
+                                  committeemember.email,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                                SizedBox(height: size.height * 0.005),
+                                Text(
+                                  committeemember.phoneNo,
+                                  style: GoogleFonts.inter(
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ));
+                    },
+                  ),
+                SizedBox(
+                  height: size.height * 0.06,
+                ),
+              ],
+            ),
           ),
         ),
       ),

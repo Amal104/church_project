@@ -21,7 +21,7 @@ class MemberListModel {
         required this.pincode,
         required this.prayerGroup,
         required this.designation,
-        required this.organization,
+        required this.organisation,
         required this.landline,
         required this.mobilePhone,
         required this.phoneOffice,
@@ -53,7 +53,7 @@ class MemberListModel {
     int pincode;
     PrayerGroup prayerGroup;
     String designation;
-    Organization organization;
+    Organisation organisation;
     String landline;
     String mobilePhone;
     String phoneOffice;
@@ -85,7 +85,7 @@ class MemberListModel {
         pincode: json["pincode"],
         prayerGroup: PrayerGroup.fromJson(json["prayer_group"]),
         designation: json["designation"],
-        organization: Organization.fromJson(json["organization"]),
+        organisation: Organisation.fromJson(json["organisation"]),
         landline: json["landline"],
         mobilePhone: json["mobile_phone"],
         phoneOffice: json["phone_office"],
@@ -118,7 +118,7 @@ class MemberListModel {
         "pincode": pincode,
         "prayer_group": prayerGroup.toJson(),
         "designation": designation,
-        "organization": organization.toJson(),
+        "organisation": organisation.toJson(),
         "landline": landline,
         "mobile_phone": mobilePhone,
         "phone_office": phoneOffice,
@@ -136,8 +136,8 @@ class MemberListModel {
     };
 }
 
-class Organization {
-    Organization({
+class Organisation {
+    Organisation({
         required this.id,
         required this.organisationName,
         required this.v,
@@ -149,7 +149,7 @@ class Organization {
     int v;
     int organisationId;
 
-    factory Organization.fromJson(Map<String, dynamic> json) => Organization(
+    factory Organisation.fromJson(Map<String, dynamic> json) => Organisation(
         id: json["_id"],
         organisationName: json["organisationName"],
         v: json["__v"],

@@ -11,16 +11,10 @@ class MemberProvider extends ChangeNotifier {
   getMember() async {
     isLoading = true;
 
-     member = (await MemberListService().getMember())!;
+     member = (await MemberListService().getMember());
 
      isLoading = false;
      notifyListeners();
   }
-
-  // showMember(BuildContext index){
-
-  //   member![index].email;
-
-  // }
 
 }

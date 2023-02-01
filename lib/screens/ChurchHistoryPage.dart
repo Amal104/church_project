@@ -19,7 +19,8 @@ class _ChurchHistoryState extends State<ChurchHistory> {
   @override
   void initState() {
     super.initState();
-    final aboutChurch = Provider.of<AboutChurchProvider>(context, listen: false);
+    final aboutChurch =
+        Provider.of<AboutChurchProvider>(context, listen: false);
     aboutChurch.getAboutChurch();
     final history = Provider.of<AboutChurchProvider>(context, listen: false);
     history.getChurchHistory();
@@ -67,82 +68,88 @@ class _ChurchHistoryState extends State<ChurchHistory> {
                 padding: EdgeInsets.symmetric(horizontal: width / 30),
                 child: Column(
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: width / 15),
-                          height: height / 4,
-                          width: width / 2.28,
-                          decoration: BoxDecoration(
-                              color: AppColor.lightGreyShade,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                "Parish Name",
-                                style: GoogleFonts.inter(
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.darkpurpleShadev2,
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    //   children: [
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: width / 20,vertical: height / 30),
+                      // height: height / 5,
+                      // width: width / 1,
+                      decoration: BoxDecoration(
+                          color: AppColor.lightGreyShade,
+                          borderRadius: BorderRadius.circular(50)),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          postModel.loading
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColor.darkpurpleShadev2,
+                                  ),
+                                )
+                              : Text(
+                                  postModel.aboutChurch?.parishName ?? "",
+                                  style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColor.darkpurpleShadev2,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: height * 0.03,
-                              ),
-                              postModel.loading
-                                  ? const Center(
-                                      child: CircularProgressIndicator(
-                                        color: AppColor.darkpurpleShadev2,
-                                      ),
-                                    )
-                                  : Text(
-                                      postModel.aboutChurch?.parishName ?? "",
-                                      style: GoogleFonts.inter(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w600,
-                                        color: AppColor.darkpurpleShadev2,
-                                      ),
-                                    ),
-                            ],
+                          SizedBox(
+                            height: height * 0.03,
                           ),
-                        ),
-                        Container(
-                          padding: EdgeInsets.symmetric(horizontal: width / 20),
-                          height: height / 4,
-                          width: width / 2.28,
-                          decoration: BoxDecoration(
-                              color: AppColor.lightGreyShade,
-                              borderRadius: BorderRadius.circular(50)),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Address",
-                                style: GoogleFonts.inter(
-                                  fontSize: 19,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.darkPinkShade,
+                          postModel.loading
+                              ? const Center(
+                                  child: CircularProgressIndicator(
+                                    color: AppColor.darkpurpleShadev2,
+                                  ),
+                                )
+                              : Text(
+                                  postModel.aboutChurch?.address ?? "",
+                                  style: GoogleFonts.inter(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColor.darkpurpleShadev2,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(
-                                height: height * 0.03,
-                              ),
-                              Text(
-                                postModel.aboutChurch?.address ?? "",
-                                style: GoogleFonts.inter(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.darkPinkShade,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
+                    // Container(
+                    //   padding: EdgeInsets.symmetric(horizontal: width / 20),
+                    //   height: height / 4,
+                    //   width: width / 2.28,
+                    //   decoration: BoxDecoration(
+                    //       color: AppColor.lightGreyShade,
+                    //       borderRadius: BorderRadius.circular(50)),
+                    //   child: Column(
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     crossAxisAlignment: CrossAxisAlignment.start,
+                    //     children: [
+                    //       Text(
+                    //         "Address",
+                    //         style: GoogleFonts.inter(
+                    //           fontSize: 19,
+                    //           fontWeight: FontWeight.w600,
+                    //           color: AppColor.darkPinkShade,
+                    //         ),
+                    //       ),
+                    //       SizedBox(
+                    //         height: height * 0.03,
+                    //       ),
+                    //       Text(
+                    //         postModel.aboutChurch?.address ?? "",
+                    //         style: GoogleFonts.inter(
+                    //           fontSize: 18,
+                    //           fontWeight: FontWeight.w600,
+                    //           color: AppColor.darkPinkShade,
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    //   ],
+                    // ),
                     SizedBox(
                       height: height * 0.01,
                     ),

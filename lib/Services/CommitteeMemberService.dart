@@ -1,26 +1,21 @@
 import 'dart:convert';
+import 'package:church/Constants.dart';
+import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
-
 import '../Model/CommitteeMembers.dart';
 
-class TodoService {
-  Future<List<CommitteeMembers>> getAll() async {
-    const url = 'http://192.168.29.11:5000/mobile/committe-members/list';
-    final uri = Uri.parse(url);
-    final response = await http.get(uri);
-    if (response.statusCode == 200) {
-      final json = jsonDecode(response.body) as List;
-      final todos = json.map((e) {
-        return CommitteeMembers(
-            id: e['id'],
-            name: e['name'],
-            email: e['email'],
-            phoneNo: e['phoneNo'],
-            organisation: e['organisation'],
-            position: e['position']);
-      }).toList();
-      return todos;
+class CommitteeMemberService {
+  Future<List<CommitteeMembers>?> getCommitteeMember() async {
+    try {
+      var response =
+          await Dio().get('${baseUrl}mobile/committe-members/list');
+      var json = response.data;
+      List<CommitteeMembers>? data = List<CommitteeMembers>.from(
+          json.map((x) => CommitteeMembers.fromJson(x)));
+      print(data);
+      return data;
+    } catch (e) {
+      print(e);
     }
-    return [];
   }
 }

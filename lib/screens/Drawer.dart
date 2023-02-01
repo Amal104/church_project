@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:church/components/AltertDialogue.dart';
+import 'package:church/screens/MemberPage.dart';
 import 'package:church/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -91,25 +92,27 @@ class Drawerr extends StatelessWidget {
                     Get.back();
                   },
                 ),
-                // ListTile(
-                //   leading: const Icon(Icons.message_outlined),
-                //   title: const Text('Achens Message'),
-                //   onTap: () {
-                //     Get.to(() => const AchansMessagePage(),
-                //         transition: Transition.rightToLeft);
-                //   },
-                // ),
-                 ListTile(
-                  leading: const Icon(Icons.notifications_outlined),
-                  title: Text('Notifications',style: GoogleFonts.inter(),),
+                ListTile(
+                  onTap: () => Get.to(
+                    () => const MemberPage(),
+                    transition: Transition.rightToLeft,
+                  ),
+                  leading: const Icon(Icons.person_outline),
+                  title: Text(
+                    'Members',
+                    style: GoogleFonts.inter(),
+                  ),
                 ),
                 const Divider(
                   thickness: 1,
-                  color: Colors.black26,
+                  color: Colors.grey,
                 ),
                 ListTile(
                   leading: const Icon(Icons.logout_outlined),
-                  title: Text('Logout',style: GoogleFonts.inter(),),
+                  title: Text(
+                    'Logout',
+                    style: GoogleFonts.inter(),
+                  ),
                   onTap: () {
                     CustomAlertDialog.logOutyescancelDialog(
                         context, "Logout", "Do you want to Logout?");

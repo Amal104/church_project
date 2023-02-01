@@ -24,36 +24,37 @@ class HomePageQuote extends StatelessWidget {
           bottom: height * 0.01,
         ),
         child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 10.0),
-          decoration:  BoxDecoration(
+          padding: const EdgeInsets.symmetric(
+            horizontal: 10,
+            vertical: 10.0,
+          ),
+          decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: AppColor.solidWhite,
+            boxShadow: const [
+              BoxShadow(
+                color: AppColor.lightGreyShadev2,
+                spreadRadius: 4,
+                blurRadius: 10,
+              ),
+              BoxShadow(
+                color: AppColor.lightGreyShadev2,
+                spreadRadius: -4,
+                blurRadius: 5,
+              ),
+            ],
           ),
-          // height: height / 12,
-          child:
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: const [
-              //     FaIcon(
-              //       FontAwesomeIcons.quoteLeft,
-              //       color: AppColor.grey600,
-              //     ),
-              Text(
-            "\" ${AppStrings.bibleQuote} \"",
-            style: GoogleFonts.pacifico(
-              fontSize: 14.0,
+          child: Text(
+            "Flash News",
+            style: GoogleFonts.inter(
+              fontSize: 18.0,
               color: AppColor.grey600,
-              // fontWeight: FontWeight.w500,
+              fontWeight: FontWeight.bold,
               // letterSpacing: 0.5
             ),
             textAlign: TextAlign.center,
             maxLines: 3,
           ),
-          //   FaIcon(
-          //     FontAwesomeIcons.quoteRight,
-          //     color: AppColor.grey600,
-          //   ),
-          // ],
         ),
       ),
     );

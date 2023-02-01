@@ -5,7 +5,7 @@ import '../widgets/EnquiryTab.dart';
 import '../widgets/EventsTab.dart';
 import '../widgets/HomePageAppbar.dart';
 import '../widgets/HomePageGrid.dart';
-import '../widgets/QuoteHomePage.dart';
+import '../widgets/FlashNews.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});

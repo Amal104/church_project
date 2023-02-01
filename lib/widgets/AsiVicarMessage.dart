@@ -64,7 +64,7 @@ class _AsiVicarMessageState extends State<AsiVicarMessage> {
                   style: GoogleFonts.inter(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
-                    color: AppColor.grey800,
+                    color: AppColor.darkPinkShade,
                     letterSpacing: 2.0,
                   ),
                 ),

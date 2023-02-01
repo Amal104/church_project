@@ -20,11 +20,11 @@ class AchensMessage extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           width: MediaQuery.of(context).size.width / 1.1,
           decoration: const BoxDecoration(
-            color: AppColor.lightGreyShade,
+            color: AppColor.purpleShadeWithOpec,
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(50),
-              bottomRight: Radius.circular(50),
-              topRight: Radius.circular(50),
+              bottomLeft: Radius.circular(40),
+              bottomRight: Radius.circular(40),
+              topRight: Radius.circular(40),
             ),
           ),
           child: const VicarMessage(),
@@ -36,11 +36,11 @@ class AchensMessage extends StatelessWidget {
           padding: const EdgeInsets.all(20),
           width: MediaQuery.of(context).size.width / 1.1,
           decoration: const BoxDecoration(
-            color: AppColor.purpleShadeWithOpec,
+            color: AppColor.lightPinkShade,
             borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(50),
-              bottomRight: Radius.circular(50),
-              topLeft: Radius.circular(50),
+              bottomLeft: Radius.circular(40),
+              bottomRight: Radius.circular(40),
+              topLeft: Radius.circular(40),
             ),
           ),
           child: const AsiVicarMessage(),

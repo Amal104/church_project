@@ -60,7 +60,7 @@ class _VicarMessageState extends State<VicarMessage> {
                   style: GoogleFonts.inter(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
-                    color: AppColor.grey800,
+                    color: AppColor.darkpurpleShadev2,
                     letterSpacing: 2.0,
                   ),
                 ),

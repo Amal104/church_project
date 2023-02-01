@@ -4,18 +4,17 @@ import '../Model/CommitteeMembers.dart';
 import '../Services/CommitteeMemberService.dart';
 
 class CommitteeMemberProvider extends ChangeNotifier {
-  final _service = TodoService();
-  bool isLoading = false;
-  List<CommitteeMembers> _todos = [];
-  List<CommitteeMembers> get todos => _todos;
 
-  Future<void> getAllTodos() async {
+  List<CommitteeMembers>? member = [];
+  var isLoading = false;
+
+  getCommitteeMember() async {
     isLoading = true;
 
-    final response = await _service.getAll();
+     member = (await CommitteeMemberService().getCommitteeMember());
 
-    _todos = response;
-    isLoading = false;
-    notifyListeners();
+     isLoading = false;
+     notifyListeners();
   }
+
 }
