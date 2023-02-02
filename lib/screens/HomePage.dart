@@ -19,8 +19,10 @@ class HomePage extends StatelessWidget {
       body: CustomScrollView(
         slivers: [
           const HomePageAppbar(),
-          HomePageQuote(width: width, height: height),
+          SliverPadding(padding: EdgeInsets.only(top: height * 0.02)),
           HomePageGrid(width: width, height: height),
+          SliverPadding(padding: EdgeInsets.only(top: height * 0.02)),
+          FlashNews(width: width, height: height),
           EventsTab(width: width, height: height),
           EnquiryTab(height: height, width: width),
         ],

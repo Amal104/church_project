@@ -12,6 +12,7 @@ class ObicturyProvider extends ChangeNotifier {
 
   getData() async {
     loading = true;
+    
     obictury = (await ObicturyService().getObictury())!;
     loading = false;
 

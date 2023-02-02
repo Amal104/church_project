@@ -4,13 +4,13 @@ import '../Model/AnnoucementModel.dart';
 import '../Services/AnnoucementService.dart';
 
 class AnnouncementProvider extends ChangeNotifier {
-  List<AnnouncementModel>? member = [];
+  List<AnnouncementModel>? annoucement = [];
   var isLoading = false;
 
-  getMember() async {
+  getAnnoucement() async {
     isLoading = true;
 
-    member = (await AnnoucementService().getAnnoucement())!;
+    annoucement = (await AnnoucementService().getAnnoucement())!;
 
     isLoading = false;
     notifyListeners();

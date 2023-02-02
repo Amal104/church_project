@@ -1,3 +1,4 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -19,7 +20,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     super.initState();
     final getAnnoucement =
         Provider.of<AnnouncementProvider>(context, listen: false);
-    getAnnoucement.getMember();
+    getAnnoucement.getAnnoucement();
   }
 
   @override
@@ -59,46 +60,90 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
               SizedBox(
                 height: size.height * 0.02,
               ),
-              getAnnoucement.member?.length != 0
-                  ? ListView.builder(
+              getAnnoucement.isLoading
+                  ? Image.asset(
+                      "assets/404notfound.jpg",
+                      height: 550,
+                    )
+                  : ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: getAnnoucement.member?.length,
+                      itemCount: getAnnoucement.annoucement?.length,
                       itemBuilder: (context, index) {
-                        var annoucement = getAnnoucement.member![index];
+                        var annoucement = getAnnoucement.annoucement![index];
                         return Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: size.height * 0.02,
-                              vertical: size.width * 0.03),
-                          child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: size.height * 0.02,
-                                  vertical: size.width * 0.03),
-                              decoration: BoxDecoration(
-                                color: AppColor.lightGreyShade,
-                                borderRadius: BorderRadius.circular(20),
+                          padding: const EdgeInsets.all(8.0),
+                          child: Stack(
+                            children: <Widget>[
+                              Center(
+                                child: Container(
+                                  height: 200,
+                                  decoration: BoxDecoration(
+                                    color: AppColor.lightPinkShadeOpec,
+                                    borderRadius: BorderRadius.circular(15),
+                                    image: const DecorationImage(
+                                      alignment: Alignment.bottomRight,
+                                      fit: BoxFit.fitHeight,
+                                      image: AssetImage("assets/megaphone.png"),
+                                    ),
+                                  ),
+                                ),
                               ),
-                              child: Column(
-                                children: [
-                                  Text(annoucement.title),
-                                  SizedBox(
-                                    height: size.height * 0.02,
+                              Center(
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(15),
+                                  child: BackdropFilter(
+                                    filter: ImageFilter.blur(
+                                        sigmaX: 10.0, sigmaY: 10.0),
+                                    child: Container(
+                                      height: 200.0,
+                                      width: 500.0,
+                                      decoration: const BoxDecoration(
+                                        color: Colors.transparent,
+                                      ),
+                                      child: Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal: size.width * 0.03,
+                                            vertical: size.height * 0.05),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              getAnnoucement
+                                                  .annoucement![index].title,
+                                              style: GoogleFonts.inter(
+                                                fontSize: 20.0,
+                                                fontWeight: FontWeight.w700,
+                                                color: AppColor.darkPinkShade,
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: size.height * 0.01),
+                                              child: IconButton(
+                                                  onPressed: () {},
+                                                  icon: const FaIcon(
+                                                    FontAwesomeIcons
+                                                        .chevronRight,
+                                                  )),
+                                            )
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                                   ),
-                                  Text(annoucement.body),
-                                  SizedBox(
-                                    height: size.height * 0.02,
-                                  ),
-                                ],
-                              )),
+                                ),
+                              ),
+                            ],
+                          ),
                         );
                       },
-                    )
-                  : Center(
-                    child: Image.asset(
-                    "assets/404notfound.jpg",
-                    height: 200,
                     ),
-                  )
+              Image.asset(
+                "assets/404notfound.jpg",
+                height: 550,
+              ),
             ],
           ),
         ),

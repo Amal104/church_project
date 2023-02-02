@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:church/Constants.dart';
 import 'package:dio/dio.dart';
 import 'package:http/http.dart' as http;
@@ -15,7 +16,7 @@ class CommitteeMemberService {
       print(data);
       return data;
     } catch (e) {
-      print(e);
+      log(e.toString());
     }
   }
 }

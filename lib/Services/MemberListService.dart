@@ -17,5 +17,6 @@ class MemberListService {
     } catch (e) {
       print(e);
     }
+    return null;
   }
 }

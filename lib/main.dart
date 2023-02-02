@@ -10,7 +10,6 @@ import 'package:church/screens/SplashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-
 import 'provider/EventProvider.dart';
 
 void main() {

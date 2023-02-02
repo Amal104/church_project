@@ -54,7 +54,7 @@ class Drawerr extends StatelessWidget {
                   height: 15.0,
                 ),
                 const Text(
-                  'Devoloper Akash',
+                  'Akash',
                   style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.w600,

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:church/Constants.dart';
 import 'package:church/screens/MemberDetails.dart';
 import 'package:flutter/material.dart';
@@ -59,68 +60,79 @@ class _MemberPageState extends State<MemberPage> {
               SizedBox(
                 height: size.height * 0.02,
               ),
-              if (getmember.member?.length != null)
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: getmember.member?.length,
-                  itemBuilder: (context, index) {
-                    var member = getmember.member![index];
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: size.height * 0.015,
-                          vertical: size.width * 0.015),
-                      child: Card(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(15)
-                          ),
-                        color: AppColor.lightGreyShade,
-                        child: ListTile(
-                          onTap: () {
-                            Get.to(
-                              () => MemberDetails(
-                                memberid: member.memberId,
-                                email: member.email,
-                                edavakaReg: member.edavakaRegisterNo,
-                                gender: member.gender,
-                                membershipStatus: member.membershipStatus,
-                                housename: member.houseName,
-                                address1: member.address1,
-                                address2: member.address2,
-                                postoffice: member.postoffice,
-                                pincode: member.pincode,
-                                prayerGroup: member.prayerGroup.prayerGroupName,
-                                designation: member.designation,
-                                organization:
-                                    member.organisation.organisationName,
-                                mobile: member.mobilePhone,
-                                phoneOffice: member.phoneOffice,
-                                birthday: member.birthday,
-                                marriageDate: member.marriageDate,
-                                homeParishHouseName: member.homeParishHouseName,
-                                homeParish: member.homeParish,
-                                nativePlace: member.nativePlace,
-                                generalRemarks: member.generalRemarks,
-                                memberName: member.memberName,
+              // getmember.isLoading
+              //     ? Image.asset(
+              //         "assets/404notfound.jpg",
+              //         height: 550,
+              //       )
+              //     :
+              getmember.member?.length != null
+                  ? ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      itemCount: getmember.member?.length,
+                      itemBuilder: (context, index) {
+                        var member = getmember.member![index];
+                        return Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: size.height * 0.015,
+                              vertical: size.width * 0.015),
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(15)),
+                            color: AppColor.lightGreyShade,
+                            child: ListTile(
+                              onTap: () {
+                                Get.to(
+                                  () => MemberDetails(
+                                    memberid: member.memberId,
+                                    email: member.email,
+                                    edavakaReg: member.edavakaRegisterNo,
+                                    gender: member.gender,
+                                    membershipStatus: member.membershipStatus,
+                                    housename: member.houseName,
+                                    address1: member.address1,
+                                    address2: member.address2,
+                                    postoffice: member.postoffice,
+                                    pincode: member.pincode,
+                                    prayerGroup:
+                                        member.prayerGroup.prayerGroupName,
+                                    designation: member.designation,
+                                    organization:
+                                        member.organisation.organisationName,
+                                    mobile: member.mobilePhone,
+                                    phoneOffice: member.phoneOffice,
+                                    birthday: member.birthday,
+                                    marriageDate: member.marriageDate,
+                                    homeParishHouseName:
+                                        member.homeParishHouseName,
+                                    homeParish: member.homeParish,
+                                    nativePlace: member.nativePlace,
+                                    generalRemarks: member.generalRemarks,
+                                    memberName: member.memberName,
+                                  ),
+                                  transition: Transition.rightToLeft,
+                                );
+                              },
+                              // tileColor: AppColor.lightGreyShade,
+                              leading: CircleAvatar(
+                                radius: 26,
+                                backgroundImage:
+                                    CachedNetworkImageProvider(images[index]),
                               ),
-                              transition: Transition.rightToLeft,
-                            );
-                          },
-                          // tileColor: AppColor.lightGreyShade,
-                          leading: CircleAvatar(
-                            radius: 26,
-                            backgroundImage: NetworkImage(
-                              images[index],
+                              title: Text(member.memberName),
+                              subtitle: Text(member.homeParish),
+                              trailing:
+                                  const FaIcon(FontAwesomeIcons.chevronRight),
                             ),
                           ),
-                          title: Text(member.memberName),
-                          subtitle: Text(member.homeParish),
-                          trailing: const FaIcon(FontAwesomeIcons.chevronRight),
-                        ),
-                      ),
-                    );
-                  },
-                ),
+                        );
+                      },
+                    )
+                  : Image.asset(
+                      "assets/404notfound.jpg",
+                      height: 550,
+                    ),
               SizedBox(
                 height: size.height * 0.06,
               ),

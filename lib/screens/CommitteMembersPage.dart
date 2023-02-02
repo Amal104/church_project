@@ -92,7 +92,8 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
-                                      image: NetworkImage(images[index]),
+                                      image: CachedNetworkImageProvider(
+                                          images[index]),
                                     ),
                                   ),
                                 ),
