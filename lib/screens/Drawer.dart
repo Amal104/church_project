@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:church/components/AltertDialogue.dart';
 import 'package:church/screens/MemberPage.dart';
+import 'package:church/screens/blah.dart';
 import 'package:church/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class Drawerr extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Drawer(
-      backgroundColor: AppColor.grey100,
+      // backgroundColor: AppColor.grey100,
       child: Column(
         children: [
           Container(

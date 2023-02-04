@@ -10,9 +10,11 @@ import 'package:church/screens/SplashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'Utils/Auth.dart';
 import 'provider/EventProvider.dart';
+import 'provider/ObicturyProvider.dart';
 
-void main() {
+void main() async {
   runApp(const MyApp());
 }
 
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => EventProvider(),),
         ChangeNotifierProvider(create: (context) => FlashNewsProvider(),),
         ChangeNotifierProvider(create: (context) => CommitteeMemberProvider(),),
-        // ChangeNotifierProvider(create: (context) => ObicturyProvider(),),
+        ChangeNotifierProvider(create: (context) => ObicturyProvider(),),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

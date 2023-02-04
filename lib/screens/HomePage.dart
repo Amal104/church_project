@@ -15,14 +15,14 @@ class HomePage extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: AppColor.solidWhite,
+      // backgroundColor: AppColor.solidWhite,
       body: CustomScrollView(
         slivers: [
           const HomePageAppbar(),
+          FlashNews(width: width, height: height),
           SliverPadding(padding: EdgeInsets.only(top: height * 0.02)),
           HomePageGrid(width: width, height: height),
           SliverPadding(padding: EdgeInsets.only(top: height * 0.02)),
-          FlashNews(width: width, height: height),
           EventsTab(width: width, height: height),
           EnquiryTab(height: height, width: width),
         ],

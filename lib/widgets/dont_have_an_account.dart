@@ -24,8 +24,8 @@ class DontHaveAnAccount extends StatelessWidget {
             ),),
         TextButton(
           onPressed: () {
-            Get.off(() => const Register(),
-                transition: Transition.cupertino);
+            // Get.off(() => const Register(),
+            //     transition: Transition.cupertino);
           },
           child: Text(
             'Register',

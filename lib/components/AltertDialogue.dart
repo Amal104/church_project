@@ -5,6 +5,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import '../provider/LoginProvider.dart';
 
 class CustomAlertDialog {
   static passwordReqDialogue(BuildContext context) {
@@ -178,14 +181,19 @@ class CustomAlertDialog {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            content: Text(content,
+            content: Text(
+              content,
               style: GoogleFonts.inter(
                 fontSize: 15.0,
-              ),),
+              ),
+            ),
             actions: [
               TextButton(
-                onPressed: () {
-                  Get.offAll(() => const LoginScreen());
+                onPressed: () async {
+                  SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                  prefs.remove("logintoken");
+                  Get.off(() => const LoginScreen());
                 },
                 child: const Text(
                   'Yes',

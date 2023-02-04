@@ -1,7 +1,9 @@
+import 'package:church/provider/ObicturyProvider.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../Model/ObicturyModel.dart';
 import '../Services/ObicturyServices.dart';
 import '../values/values.dart';
@@ -15,25 +17,18 @@ class ObicturyPage extends StatefulWidget {
 }
 
 class _ObicturyPageState extends State<ObicturyPage> {
-  List<ObicturyModel>? products = [];
-  var isLoading = false;
+
   @override
   void initState() {
     super.initState();
-    data();
+    final obituary = Provider.of<ObicturyProvider>(context,listen: false);
+    obituary.getObituary();
   }
 
-  data() async {
-    products = (await ObicturyService().getObictury())!;
-    if (products != null) {
-      setState(() {
-        isLoading = true;
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
+    final getobituary = Provider.of<ObicturyProvider>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SingleChildScrollView(
@@ -67,12 +62,13 @@ class _ObicturyPageState extends State<ObicturyPage> {
               SizedBox(
                 height: size.height * 0.02,
               ),
-              if (products?.length != null)
+              if (getobituary.obictury?.length != null)
                 ListView.builder(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: products?.length,
+                  itemCount: getobituary.obictury?.length,
                   itemBuilder: (context, index) {
+                    final obituary = getobituary.obictury![index];
                     return Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: size.height * 0.02,
@@ -87,15 +83,15 @@ class _ObicturyPageState extends State<ObicturyPage> {
                           ),
                           child: Column(
                             children: [
-                              Text(products![index].member),
+                              Text(obituary.member),
                               SizedBox(
                                 height: size.height * 0.02,
                               ),
-                              Text(products![index].date),
+                              Text(obituary.date),
                               SizedBox(
                                 height: size.height * 0.02,
                               ),
-                              Text(products![index].description),
+                              Text(obituary.description),
                               SizedBox(
                                 height: size.height * 0.02,
                               ),

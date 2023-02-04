@@ -43,7 +43,7 @@ class HomePageGrid extends StatelessWidget {
                 GestureDetector(
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
+                      borderRadius: BorderRadius.circular(20),
                       color: AppColor.lightPinkShade,
                     ),
                     height: height / 1.5,
@@ -113,7 +113,7 @@ class HomePageGrid extends StatelessWidget {
                   height: height / 1.5,
                   width: width / 1.5,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(20),
                     color: AppColor.lightGreyShade,
                   ),
                 ),
@@ -177,7 +177,7 @@ class HomePageGrid extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(20),
                     color: AppColor.purpleShadeWithOpec,
                   ),
                   height: height / 1.5,
@@ -247,7 +247,7 @@ class HomePageGrid extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(20),
                     color: AppColor.mintGreenShadewithOpec,
                   ),
                   height: height / 1.5,
@@ -317,7 +317,7 @@ class HomePageGrid extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(20),
                     color: AppColor.lightGreyShade,
                   ),
                   height: height / 1.5,
@@ -390,7 +390,7 @@ class HomePageGrid extends StatelessWidget {
               children: [
                 Container(
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(20),
                     color: AppColor.lightPinkShade,
                   ),
                   height: height / 1.5,

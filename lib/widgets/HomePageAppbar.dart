@@ -1,17 +1,32 @@
+import 'package:church/provider/AboutChurchProvider.dart';
 import 'package:church/values/urls.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:provider/provider.dart';
 import '../values/Strings.dart';
 import '../values/values.dart';
 
-class HomePageAppbar extends StatelessWidget {
+class HomePageAppbar extends StatefulWidget {
   const HomePageAppbar({
     Key? key,
   }) : super(key: key);
 
   @override
+  State<HomePageAppbar> createState() => _HomePageAppbarState();
+}
+
+class _HomePageAppbarState extends State<HomePageAppbar> {
+  @override
+  void initState() {
+    super.initState();
+    final church = Provider.of<AboutChurchProvider>(context, listen: false);
+    church.getAboutChurch();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final getchurch = Provider.of<AboutChurchProvider>(context);
     return SliverAppBar(
       backgroundColor: AppColor.solidWhite,
       elevation: 0.0,
@@ -31,11 +46,12 @@ class HomePageAppbar extends StatelessWidget {
                 AppColor.transparent,
               ])),
           child: CachedNetworkImage(
-            imageUrl: AppUrls.church3,
+            imageUrl: getchurch.aboutChurch?.parishPhoto ?? "",
             fit: BoxFit.cover,
             errorWidget: (context, url, error) => const Icon(
-                    Icons.error_outline,size: 50,
-                  ),
+              Icons.error_outline,
+              size: 50,
+            ),
           ),
         ),
         title: Text(

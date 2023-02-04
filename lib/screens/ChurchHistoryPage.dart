@@ -172,7 +172,7 @@ class _ChurchHistoryState extends State<ChurchHistory> {
                       ),
                     )
                   : Image.asset(
-                      "assets/404notfound.jpg",
+                      "assets/404error.jpg",
                       height: 550,
                     ),
               const SizedBox(

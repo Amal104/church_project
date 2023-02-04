@@ -33,6 +33,7 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
     final getcommitteemember = Provider.of<CommitteeMemberProvider>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: AppColor.grey100,
       body: SingleChildScrollView(
         child: SafeArea(
           child: Padding(
@@ -62,7 +63,7 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                 SizedBox(
                   height: size.height * 0.02,
                 ),
-                if (getcommitteemember.member?.length != null)
+                getcommitteemember.member?.length != null ?
                   GridView.builder(
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
@@ -93,7 +94,7 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: CachedNetworkImageProvider(
-                                          images[index]),
+                                          committeemember.committeMemberPhoto),
                                     ),
                                   ),
                                 ),
@@ -141,7 +142,10 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                             ),
                           ));
                     },
-                  ),
+                  ) : Image.asset(
+                      "assets/404error.jpg",
+                      height: 550,
+                    ),
                 SizedBox(
                   height: size.height * 0.06,
                 ),

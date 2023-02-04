@@ -17,68 +17,70 @@ class EventsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return SliverToBoxAdapter(
-      child: Stack(
-        children: [
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: width * 0.025,
-              vertical: height  * 0.018,
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(30),
-                color: AppColor.lightGreyShade,
-              ),
-              height: height / 5,
-              width: width / 1,
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: width * 0.45, top: height * 0.07),
-            child: Text(
-              "Upcoming\nEvents",
-              style: GoogleFonts.blinker(
-                fontSize: 23.0,
-                fontWeight: FontWeight.bold,
-                color: AppColor.grey600,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              top: height * 0.040,
-              left: width * 0.1,
-            ),
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: Image.asset(
-                "assets/events.png",
-                height: 100,
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            child: Padding(
+      child: GestureDetector(
+        onTap: () => Get.to(
+          () => const EventsPage(),
+          transition: Transition.rightToLeft,
+        ),
+        child: Stack(
+          children: [
+            Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: width * 0.025,
-                vertical: height  * 0.018,
+                vertical: height * 0.018,
               ),
-              child: GestureDetector(
-                onTap: () => Get.to(
-                  () => const EventsPage(),
-                  transition: Transition.rightToLeft,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: AppColor.lightGreyShade,
+                ),
+                height: height / 7,
+                width: width / 1,
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(
+                        left: size.width * 0.08,
+                        right: size.width * 0.015,
+                      ),
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: Image.asset(
+                          "assets/events.png",
+                          height: 70,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      "Upcoming\nEvents",
+                      style: GoogleFonts.inter(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: AppColor.grey600,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: width * 0.025,
+                  vertical: height * 0.018,
                 ),
                 child: Container(
-                  height: height / 5,
+                  height: height / 7,
                   width: width / 11,
                   decoration: const BoxDecoration(
                     color: AppColor.grey,
                     borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(30),
-                      bottomRight: Radius.circular(30),
+                      topRight: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
                     ),
                   ),
                   child: const Icon(
@@ -89,8 +91,8 @@ class EventsTab extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

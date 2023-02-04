@@ -10,7 +10,7 @@ class ObicturyProvider extends ChangeNotifier {
   List<ObicturyModel>?  obictury;
   bool loading = false;
 
-  getData() async {
+  getObituary() async {
     loading = true;
     
     obictury = (await ObicturyService().getObictury())!;

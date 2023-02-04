@@ -46,7 +46,7 @@ class _EventsPageState extends State<EventsPage> {
                   horizontal: MediaQuery.of(context).size.width / 25,
                 ),
                 child: Text(
-                  "Annoucement",
+                  "Events",
                   style: GoogleFonts.inter(
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold,

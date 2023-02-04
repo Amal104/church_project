@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:church/screens/HomePage.dart';
 import 'package:church/screens/LoginScreen.dart';
 import 'package:church/values/Strings.dart';
 import 'package:church/values/values.dart';
@@ -6,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -14,17 +16,34 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
+// final storage = FlutterSecureStorage();
+
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Timer(
-        const Duration(seconds: 4),
-        (() => Get.off(
-              () => const LoginScreen(),
-              transition: Transition.upToDown,
-            )));
+    tokencheck();
     super.initState();
   }
+
+  tokencheck() async {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      final token = prefs.getString("logintoken");
+      if (token != null) {
+        Timer(const Duration(seconds: 4), (() {
+          Get.off(
+            () => const HomePage(),
+            transition: Transition.upToDown,
+          );
+        }));
+      }else{
+        Timer(const Duration(seconds: 4), (() {
+          Get.off(
+            () => const LoginScreen(),
+            transition: Transition.upToDown,
+          );
+        }));
+      }
+    }
 
   @override
   Widget build(BuildContext context) {

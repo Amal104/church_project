@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final committeeMembers = committeeMembersFromJson(jsonString);
+
 import 'dart:convert';
 
 List<CommitteeMembers> committeeMembersFromJson(String str) => List<CommitteeMembers>.from(json.decode(str).map((x) => CommitteeMembers.fromJson(x)));
@@ -12,6 +16,7 @@ class CommitteeMembers {
         required this.phoneNo,
         required this.organisation,
         required this.position,
+        required this.committeMemberPhoto,
         required this.committeMemberId,
     });
 
@@ -21,6 +26,7 @@ class CommitteeMembers {
     String phoneNo;
     Organisation organisation;
     Position position;
+    String committeMemberPhoto;
     int committeMemberId;
 
     factory CommitteeMembers.fromJson(Map<String, dynamic> json) => CommitteeMembers(
@@ -30,6 +36,7 @@ class CommitteeMembers {
         phoneNo: json["phoneNo"],
         organisation: Organisation.fromJson(json["organisation"]),
         position: Position.fromJson(json["position"]),
+        committeMemberPhoto: json["committeMemberPhoto"],
         committeMemberId: json["committeMemberId"],
     );
 
@@ -40,6 +47,7 @@ class CommitteeMembers {
         "phoneNo": phoneNo,
         "organisation": organisation.toJson(),
         "position": position.toJson(),
+        "committeMemberPhoto": committeMemberPhoto,
         "committeMemberId": committeMemberId,
     };
 }
