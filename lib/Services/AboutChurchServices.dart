@@ -11,7 +11,7 @@ class AboutChurchService {
   Future<AboutChurch?> aboutChurch() async {
     AboutChurch? result;
     try {
-      Map<String, String> headers = {"mobile": "application/json"};
+      Map<String, String> headers = {"key": "application/json"};
       final response = await http.get(
         Uri.parse(
           "${baseUrl}mobile/about-church/get-about-church",
@@ -33,7 +33,7 @@ class AboutChurchService {
   Future<ChurchHistoryModel?> churchHistory() async {
     ChurchHistoryModel? history;
     try {
-      Map<String, String> headers = {"mobile": "application/json"};
+      Map<String, String> headers = {"key": "application/json"};
       final response = await http.get(
         Uri.parse(
           "${baseUrl}mobile/history/get-history",
@@ -51,5 +51,4 @@ class AboutChurchService {
     }
     return history;
   }
-
 }

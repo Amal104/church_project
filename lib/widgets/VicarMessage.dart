@@ -56,7 +56,7 @@ class _VicarMessageState extends State<VicarMessage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  postModel.vicar?.name ?? "",
+                  postModel.vicar?.vicar.name ?? "",
                   style: GoogleFonts.inter(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class _VicarMessageState extends State<VicarMessage> {
           height: 20,
         ),
         Text(
-          postModel.vicar?.message ?? "",
+          postModel.vicar?.vicar.message ?? "",
           style: const TextStyle(
             fontSize: 17.0,
           ),

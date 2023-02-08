@@ -1,7 +1,10 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import '../provider/EventProvider.dart';
 import '../values/values.dart';
@@ -58,7 +61,7 @@ class _EventsPageState extends State<EventsPage> {
               SizedBox(
                 height: size.height * 0.02,
               ),
-              getEvent.event?.length != 0
+              getEvent.event!.isNotEmpty
                   ? ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -66,29 +69,70 @@ class _EventsPageState extends State<EventsPage> {
                       itemBuilder: (context, index) {
                         var event = getEvent.event![index];
                         return Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: size.height * 0.02,
-                              vertical: size.width * 0.03),
-                          child: Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: size.height * 0.02,
-                                  vertical: size.width * 0.03),
-                              decoration: BoxDecoration(
-                                color: AppColor.lightGreyShade,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Column(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Center(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20),
+                              child: Stack(
                                 children: [
-                                  Text(event.eventTitle),
-                                  SizedBox(
-                                    height: size.height * 0.02,
+                                  BackdropFilter(
+                                    filter: ImageFilter.blur(
+                                      sigmaX: 7,
+                                      sigmaY: 7,
+                                    ),
+                                    child: const SizedBox(
+                                      height: 220,
+                                      width: 360,
+                                    ),
                                   ),
-                                  Text(event.date),
-                                  SizedBox(
-                                    height: size.height * 0.02,
+                                  Container(
+                                    height: 230,
+                                    width: size.width * 0.93,
+                                    decoration: BoxDecoration(
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color:
+                                                AppColor.grey.withOpacity(0.60),
+                                          )
+                                        ],
+                                        border: Border.all(
+                                            color:
+                                                Colors.white.withOpacity(0.2),
+                                            width: 1.0),
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            AppColor.grey.withOpacity(0.60),
+                                            AppColor.grey600.withOpacity(0.15)
+                                          ],
+                                          stops: const [0.0, 1.0],
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(20.0),
+                                      child: Column(
+                                        children: [
+                                          const SizedBox(
+                                            height: 10,
+                                          ),
+                                          SizedBox(
+                                            width: size.width * 0.7,
+                                            child: Text(
+                                              event.eventTitle,
+                                              style: const TextStyle(
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 22),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ],
-                              )),
+                              ),
+                            ),
+                          ),
                         );
                       },
                     )

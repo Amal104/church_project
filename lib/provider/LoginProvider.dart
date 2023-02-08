@@ -91,8 +91,12 @@ class LoginProvider extends ChangeNotifier {
     // final storage = FlutterSecureStorage();
     
     if (mobileConroller.text.isNotEmpty && passwordConroller.text.isNotEmpty) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+        final token = prefs.getString("logintoken");
+      Map<String, String> headers = {'Authorization': 'Bearer $token',};
       var response = await http.post(
           Uri.parse("http://192.168.29.11:5000/mobile/user/login"),
+          headers: headers ,
           body: ({
             "phone": mobileConroller.text,
             "password": passwordConroller.text

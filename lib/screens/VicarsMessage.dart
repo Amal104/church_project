@@ -19,15 +19,15 @@ class _VicarsMessageState extends State<VicarsMessage> {
   @override
   void initState() {
     super.initState();
-    final asivicar = Provider.of<VicarMessageProvider>(context, listen: false);
-    asivicar.getAsiVicarMessage();
+    // final asivicar = Provider.of<VicarMessageProvider>(context, listen: false);
+    // asivicar.getAsiVicarMessage();
     final postModel = Provider.of<VicarMessageProvider>(context, listen: false);
     postModel.getVicarMessage();
   }
 
   @override
   Widget build(BuildContext context) {
-    final asivicar = Provider.of<VicarMessageProvider>(context);
+    // final asivicar = Provider.of<VicarMessageProvider>(context);
     final postModel = Provider.of<VicarMessageProvider>(context);
     return Scaffold(
       backgroundColor: AppColor.lightGreyShade,
@@ -58,7 +58,7 @@ class _VicarsMessageState extends State<VicarsMessage> {
                   ),
                 ),
               ),
-              if (asivicar.asivicar != null || postModel.vicar != null)
+              if (postModel.vicar?.asstVicar != null || postModel.vicar?.vicar != null)
                 Column(
                   children: const [
                     SizedBox(
@@ -75,7 +75,7 @@ class _VicarsMessageState extends State<VicarsMessage> {
                     ),
                   ],
                 ),
-              if (asivicar.asivicar == null || postModel.vicar == null)
+              if (postModel.vicar?.asstVicar == null || postModel.vicar?.vicar == null)
                 Image.asset(
                   "assets/404error.jpg",
                   height: 550,

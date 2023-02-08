@@ -24,7 +24,7 @@ class _AsiVicarMessageState extends State<AsiVicarMessage> {
   void initState() {
     super.initState();
     final asivicar = Provider.of<VicarMessageProvider>(context, listen: false);
-    asivicar.getAsiVicarMessage();
+    asivicar.getVicarMessage();
   }
 
   @override
@@ -60,7 +60,7 @@ class _AsiVicarMessageState extends State<AsiVicarMessage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  asivicar.asivicar?.name ?? "",
+                  asivicar.vicar?.asstVicar.name ?? "",
                   style: GoogleFonts.inter(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -85,7 +85,7 @@ class _AsiVicarMessageState extends State<AsiVicarMessage> {
           height: 10,
         ),
          Text(
-          asivicar.asivicar?.message ?? "",
+          asivicar.vicar?.asstVicar.message ?? "",
           style: const TextStyle(
             fontSize: 17.0,
           ),

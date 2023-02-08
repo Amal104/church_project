@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 class VicarMessageProvider extends ChangeNotifier {
 
    VicarMessageModel? vicar;
-   VicarMessageModel? asivicar;
+  //  VicarMessageModel? asivicar;
   bool loading = false;
 
   getVicarMessage() async {
@@ -17,13 +17,13 @@ class VicarMessageProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  getAsiVicarMessage() async {
-    loading = true;
+  // getAsiVicarMessage() async {
+  //   loading = true;
 
-    asivicar = (await VicarMessageService().asiVicarMessage());
+  //   asivicar = (await VicarMessageService().asiVicarMessage());
 
-    loading = false;
-    notifyListeners();
-  }
+  //   loading = false;
+  //   notifyListeners();
+  // }
 
 }

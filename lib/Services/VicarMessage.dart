@@ -10,7 +10,7 @@ class VicarMessageService {
     VicarMessageModel? result;
     try {
       final response = await http.get(
-        Uri.parse("${baseUrl}mobile/achens-message/get-vicar-message"),
+        Uri.parse("${baseUrl}mobile/achens-message/get-messages"),
       );
       if (response.statusCode == 200) {
         final item = json.decode(response.body);
@@ -24,21 +24,21 @@ class VicarMessageService {
     return result;
   }
 
-  Future<VicarMessageModel?> asiVicarMessage() async {
-    VicarMessageModel? result;
-    try {
-      final response = await http.get(
-        Uri.parse("${baseUrl}mobile/achens-message/get-asst-vicar-message"),
-      );
-      if (response.statusCode == 200) {
-        final item = json.decode(response.body);
-        result = VicarMessageModel.fromJson(item);
-      } else {
-        print("error");
-      }
-    } catch (e) {
-      log(e.toString());
-    }
-    return result;
-  }
+  // Future<VicarMessageModel?> asiVicarMessage() async {
+  //   VicarMessageModel? result;
+  //   try {
+  //     final response = await http.get(
+  //       Uri.parse("${baseUrl}mobile/achens-message/get-messages"),
+  //     );
+  //     if (response.statusCode == 200) {
+  //       final item = json.decode(response.body);
+  //       result = VicarMessageModel.fromJson(item);
+  //     } else {
+  //       print("error");
+  //     }
+  //   } catch (e) {
+  //     log(e.toString());
+  //   }
+  //   return result;
+  // }
 }

@@ -17,14 +17,12 @@ class ObicturyPage extends StatefulWidget {
 }
 
 class _ObicturyPageState extends State<ObicturyPage> {
-
   @override
   void initState() {
     super.initState();
-    final obituary = Provider.of<ObicturyProvider>(context,listen: false);
+    final obituary = Provider.of<ObicturyProvider>(context, listen: false);
     obituary.getObituary();
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -69,6 +67,8 @@ class _ObicturyPageState extends State<ObicturyPage> {
                   itemCount: getobituary.obictury?.length,
                   itemBuilder: (context, index) {
                     final obituary = getobituary.obictury![index];
+                    var formattedDate =
+                        DateFormat("dd-MM-yyyy").format(obituary.date);
                     return Padding(
                       padding: EdgeInsets.symmetric(
                           horizontal: size.height * 0.02,
@@ -87,7 +87,7 @@ class _ObicturyPageState extends State<ObicturyPage> {
                               SizedBox(
                                 height: size.height * 0.02,
                               ),
-                              Text(obituary.date),
+                              Text(formattedDate),
                               SizedBox(
                                 height: size.height * 0.02,
                               ),

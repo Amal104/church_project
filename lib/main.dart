@@ -10,11 +10,11 @@ import 'package:church/screens/SplashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import 'Utils/Auth.dart';
 import 'provider/EventProvider.dart';
 import 'provider/ObicturyProvider.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
