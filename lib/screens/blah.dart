@@ -1,108 +1,62 @@
-// import 'dart:async';
-// import 'dart:convert';
-// import 'package:church/provider/MemberProvider.dart';
-// import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
-// import 'package:http/http.dart' as http;
-// import 'package:provider/provider.dart';
 
-// import '../Model/MemberListModel.dart';
+// void main() => runApp(MyApp());
 
-// class Jobs extends StatefulWidget {
-//   Jobs() : super();
-
-//   @override
-//   JobsState createState() => JobsState();
-// }
-
-
-// class JobsState extends State<Jobs> {
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     final getmember = Provider.of<MemberProvider>(context, listen: false);
-//     getmember.searchMember();
-//   }
-
-//   //Main Widget
+// class MyApp extends StatelessWidget {
 //   @override
 //   Widget build(BuildContext context) {
-//     final getmember = Provider.of<MemberProvider>(context);
+//     return MaterialApp(
+//       title: 'Instagram Clone',
+//       theme: ThemeData(
+//         primarySwatch: Colors.blue,
+//       ),
+//       home: HomePagee(),
+//     );
+//   }
+// }
+
+// class HomePagee extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
 //     return Scaffold(
 //       appBar: AppBar(
-//         title: Text(
-//           'All Users',
-//           style: TextStyle(fontSize: 25),
-//         ),
+//         title: Text('Instagram Clone'),
 //       ),
-//       body: Column(
-//         children: <Widget>[
-//           //Search Bar to List of typed Subject
-//           Container(
-//             padding: EdgeInsets.all(15),
-//             child: TextField(
-//               textInputAction: TextInputAction.search,
-//               decoration: InputDecoration(
-//                 enabledBorder: OutlineInputBorder(
-//                   borderRadius: BorderRadius.circular(25.0),
-//                   borderSide: BorderSide(
-//                     color: Colors.grey,
-//                   ),
-//                 ),
-//                 focusedBorder: OutlineInputBorder(
-//                   borderRadius: BorderRadius.circular(20.0),
-//                   borderSide: BorderSide(
-//                     color: Colors.blue,
-//                   ),
-//                 ),
-//                 suffixIcon: InkWell(
-//                   child: Icon(Icons.search),
-//                 ),
-//                 contentPadding: EdgeInsets.all(15.0),
-//                 hintText: 'Search ',
-//               ),
-//               onChanged: (string) => getmember.search(string),
-//             ),
-//           ),
-//           Expanded(
-//             child: ListView.builder(
-//               shrinkWrap: true,
-//               physics: ClampingScrollPhysics(),
-//               padding: EdgeInsets.all(5),
-//               itemCount: getmember.memberLists?.length,
-//               itemBuilder: (BuildContext context, int index) {
-//                 return Card(
-//                   shape: RoundedRectangleBorder(
-//                     borderRadius: BorderRadius.circular(20),
-//                     side: BorderSide(
-//                       color: Colors.grey.shade300,
-//                     ),
-//                   ),
-//                   child: Padding(
-//                     padding: EdgeInsets.all(5.0),
+//       body: Container(
+//         child: Column(
+//           children: [
+//             Expanded(
+//               child: ListView.builder(
+//                 itemCount: 10,
+//                 itemBuilder: (context, index) {
+//                   return Card(
 //                     child: Column(
-//                       mainAxisAlignment: MainAxisAlignment.start,
-//                       crossAxisAlignment: CrossAxisAlignment.start,
-//                       children: <Widget>[
-//                         ListTile(
-//                           title: Text(
-//                             getmember.memberLists![index].memberName,
-//                             style: TextStyle(fontSize: 16),
-//                           ),
-//                           subtitle: Text(
-//                             getmember.memberLists![index].designation,
-//                             style: TextStyle(fontSize: 16),
-//                           ),
-//                         )
+//                       children: [
+//                         Image.network(
+//                           'https://picsum.photos/200',
+//                           fit: BoxFit.cover,
+//                         ),
+//                         SizedBox(height: 10),
+//                         Text('Image $index'),
+//                         SizedBox(height: 10),
+//                         Row(
+//                           mainAxisAlignment: MainAxisAlignment.spaceAround,
+//                           children: [
+//                             Icon(Icons.favorite),
+//                             Icon(Icons.comment),
+//                             Icon(Icons.send),
+//                           ],
+//                         ),
+//                         SizedBox(height: 10),
+//                         Text('Description'),
 //                       ],
 //                     ),
-//                   ),
-//                 );
-//               },
+//                   );
+//                 },
+//               ),
 //             ),
-//           ),
-//         ],
+//           ],
+//         ),
 //       ),
 //     );
 //   }

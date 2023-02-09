@@ -1,4 +1,5 @@
 import 'package:church/screens/EventsPage.dart';
+import 'package:church/screens/blah.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,7 +22,7 @@ class EventsTab extends StatelessWidget {
     return SliverToBoxAdapter(
       child: GestureDetector(
         onTap: () => Get.to(
-          () => const EventsPage(),
+          () =>  const EventsPage(),
           transition: Transition.rightToLeft,
         ),
         child: Stack(

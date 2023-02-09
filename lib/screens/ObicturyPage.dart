@@ -29,12 +29,11 @@ class _ObicturyPageState extends State<ObicturyPage> {
     final getobituary = Provider.of<ObicturyProvider>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              IconButton(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: AppColor.solidWhite,
+        // leadingWidth: size.width * 0.1,
+        leading: IconButton(
                 onPressed: () {
                   Get.back();
                 },
@@ -43,6 +42,12 @@ class _ObicturyPageState extends State<ObicturyPage> {
                   color: AppColor.grey400,
                 ),
               ),
+      ),
+      body: SingleChildScrollView(
+        child: SafeArea(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width / 25,

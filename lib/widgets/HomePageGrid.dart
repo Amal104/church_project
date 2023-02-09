@@ -248,7 +248,7 @@ class HomePageGrid extends StatelessWidget {
                 Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: AppColor.mintGreenShadewithOpec,
+                    color: AppColor.purpleShadeWithOpec,
                   ),
                   height: height / 1.5,
                   width: width / 1.5,
@@ -261,7 +261,7 @@ class HomePageGrid extends StatelessWidget {
                     style: GoogleFonts.inter(
                       fontSize: 16.0,
                       fontWeight: FontWeight.bold,
-                      color: AppColor.darkmintGreenShade,
+                      color: AppColor.darkpurpleShade,
                     ),
                   ),
                 ),
