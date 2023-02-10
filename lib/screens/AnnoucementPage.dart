@@ -29,21 +29,26 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     final getAnnoucement = Provider.of<AnnouncementProvider>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: AppColor.solidWhite,
+        leadingWidth: size.width * 0.12,
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const FaIcon(
+            FontAwesomeIcons.chevronLeft,
+            color: AppColor.grey400,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                onPressed: () {
-                  Get.back();
-                },
-                icon: const FaIcon(
-                  FontAwesomeIcons.chevronLeft,
-                  color: AppColor.grey400,
-                ),
-              ),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width / 25,
@@ -72,107 +77,196 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                       itemCount: getAnnoucement.annoucement?.length,
                       itemBuilder: (context, index) {
                         var annoucement = getAnnoucement.annoucement![index];
-                        return
-                            // child: Padding(
-                            //   padding: const EdgeInsets.all(8.0),
-                            //   child: Stack(
-                            //     children: <Widget>[
-                            //       Center(
-                            //         child: Container(
-                            //           height: 200,
-                            //           decoration: BoxDecoration(
-                            //             color: AppColor.lightPinkShadeOpec,
-                            //             borderRadius: BorderRadius.circular(15),
-                            //             image: const DecorationImage(
-                            //               alignment: Alignment.bottomRight,
-                            //               fit: BoxFit.fitHeight,
-                            //               image:
-                            //                   AssetImage("assets/megaphone.png"),
-                            //             ),
-                            //           ),
-                            //         ),
-                            //       ),
-                            //       Center(
-                            //         child: ClipRRect(
-                            //           borderRadius: BorderRadius.circular(15),
-                            //           child: BackdropFilter(
-                            //             filter: ImageFilter.blur(
-                            //                 sigmaX: 10.0, sigmaY: 10.0),
-                            //             child: Container(
-                            //               height: 200.0,
-                            //               width: 500.0,
-                            //               decoration: const BoxDecoration(
-                            //                 color: Colors.transparent,
-                            //               ),
-                            //               child: Padding(
-                            //                 padding: EdgeInsets.only(
-                            //                     left: size.width * 0.05,
-                            //                     top: size.height * 0.035),
-                            //                 child: Text(
-                            //                   getAnnoucement
-                            //                       .annoucement![index].title,
-                            //                   maxLines: 2,
-                            //                   style: GoogleFonts.inter(
-                            //                     fontSize: 20.0,
-                            //                     fontWeight: FontWeight.w700,
-                            //                     color: AppColor.darkPinkShade,
-                            //                   ),
-                            //                 ),
-                            //               ),
-                            //             ),
-                            //           ),
-                            //         ),
-                            //       ),
-                            //       Positioned(
-                            //         bottom: 10,
-                            //         left: 5,
-                            //         child: IconButton(
-                            //             onPressed: () {},
-                            //             icon: const FaIcon(
-                            //               FontAwesomeIcons.chevronRight,
-                            //             )),
-                            //       )
-                            //     ],
-                            //   ),
-                            Padding(
+                        return Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: size.width * 0.035,
                               vertical: size.height * 0.01),
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            color: AppColor.lightGreyShade,
-                            child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: size.width * 0.03),
-                              child: Column(
-                                children: [
-                                  SizedBox(
-                                    height: size.height * 0.02,
-                                  ),
-                                  Text(
-                                    annoucement.title,
-                                    textAlign: TextAlign.center,
-                                    style: GoogleFonts.inter(
-                                      fontSize: 18.0,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppColor.grey800,
-                                      letterSpacing: 0.5,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              // color: AppColor.lightGreyShade,
+                              boxShadow: const [
+                                // BoxShadow(
+                                //   // color: AppColor.grey.withOpacity(0),
+                                // )
+                              ],
+                              border: Border.all(
+                                  color: Colors.white.withOpacity(0.2),
+                                  width: 1.0),
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 224, 224, 224),
+                                  Color.fromARGB(255, 228, 186, 200),
+                                ],
+                                // stops: const [0.0, 1.0],
+                              ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child:
+                                // Padding(
+                                //   padding: EdgeInsets.symmetric(
+                                //     horizontal: size.width * 0.01,
+                                //     vertical: size.height * 0.01,
+                                //   ),
+                                //   child: ListTile(
+                                //     leading: Opacity(
+                                //       opacity: 0.50,
+                                //       child: Image.asset(
+                                //         "assets/megaphonee.png",
+                                //         height: 50,
+                                //         width: 50,
+                                //       ),
+                                //     ),
+                                //     title: Text(
+                                //       annoucement.title,
+                                //       style: GoogleFonts.inter(
+                                //         fontSize: 15.0,
+                                //         fontWeight: FontWeight.w600,
+                                //       ),
+                                //     ),
+                                //     subtitle: Text(
+                                //       annoucement.body,
+                                //       style: GoogleFonts.inter(
+                                //         fontSize: 15.0,
+                                //       ),
+                                //       maxLines: 1,
+                                //     ),
+                                //     trailing: const FaIcon(
+                                //       FontAwesomeIcons.chevronRight,
+                                //     ),
+                                //   ),
+                                // ),
+
+                                GestureDetector(
+                              onTap: () => Get.to(
+                                () => AnnoucementDetails(
+                                  title: annoucement.title,
+                                  body: annoucement.body,
+                                  item: annoucement,
+                                ),
+                                // transition: Transition.cupertino,
+                              ),
+                              child: Stack(
+                                children: <Widget>[
+                                  Container(
+                                    height: size.height * 0.14,
+                                    width: size.width * 0.93,
+                                    decoration: BoxDecoration(
+                                      boxShadow: const [
+                                        // BoxShadow(
+                                        //   // color: AppColor.grey.withOpacity(0),
+                                        // )
+                                      ],
+                                      border: Border.all(
+                                          color: Colors.white.withOpacity(0.2),
+                                          width: 1.0),
+                                      gradient: const LinearGradient(
+                                        colors: [
+                                          Color.fromARGB(255, 224, 224, 224),
+                                          Color.fromARGB(255, 228, 186, 200),
+                                        ],
+                                        // stops: const [0.0, 1.0],
+                                      ),
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: AppColor.lightPinkShadeOpec,
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: size.height * 0.03,
-                                  ),
-                                  Text(
-                                    annoucement.body,
-                                    textAlign: TextAlign.justify,
-                                    style: GoogleFonts.inter(
-                                      fontSize: 15.0,
-                                      color: AppColor.grey800,
+                                  Positioned(
+                                    bottom: size.height * -0.015,
+                                    left: size.width * -0.055,
+                                    child: ClipRRect(
+                                      borderRadius: const BorderRadius.only(
+                                        bottomLeft: Radius.circular(80),
+                                      ),
+                                      child: Opacity(
+                                        opacity: 0.40,
+                                        child: Image.asset(
+                                          "assets/megaphonee.png",
+                                          height: 100,
+                                        ),
+                                      ),
                                     ),
                                   ),
-                                  SizedBox(
-                                    height: size.height * 0.02,
+                                  Center(
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                          sigmaX: 3.0,
+                                          sigmaY: 3.0,
+                                        ),
+                                        child: Container(
+                                          height: size.height * 0.14,
+                                          width: size.width * 0.93,
+                                          decoration: const BoxDecoration(
+                                            color: Colors.transparent,
+                                          ),
+                                          child: Row(
+                                            // mainAxisAlignment:
+                                            //     MainAxisAlignment.spaceEvenly,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.center,
+                                            children: [
+                                              SizedBox(
+                                                width: size.width * 0.23,
+                                              ),
+                                              Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: SizedBox(
+                                                      width: size.width * 0.55,
+                                                      child: Hero(
+                                                        tag: annoucement,
+                                                        child: Text(
+                                                          annoucement.title,
+                                                          maxLines: 2,
+                                                          style:
+                                                              GoogleFonts.inter(
+                                                            fontSize: 18.0,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            color: AppColor
+                                                                .grey800,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    alignment:
+                                                        Alignment.centerLeft,
+                                                    child: SizedBox(
+                                                      width: size.width * 0.40,
+                                                      child: Text(
+                                                        annoucement.body,
+                                                        maxLines: 1,
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                          fontSize: 15.0,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                          color:
+                                                              AppColor.grey600,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              const FaIcon(
+                                                FontAwesomeIcons.chevronRight,
+                                                color: AppColor.grey600,
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ],
                               ),

@@ -143,14 +143,14 @@ class _MemberPageState extends State<MemberPage> {
                                     generalRemarks: member.generalRemarks,
                                     memberName: member.memberName,
                                     photo: member.memberPhoto,
-                                    item: getmember.member![index],
+                                    item: member,
                                   ),
                                   // transition: Transition.rightToLeft,
                                 );
                               },
                               // tileColor: AppColor.lightGreyShade,
                               leading: Hero(
-                                tag: getmember.memberLists![index],
+                                tag: member,
                                 child: CircleAvatar(
                                   radius: 26,
                                   backgroundImage:

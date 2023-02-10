@@ -22,6 +22,7 @@ class HomePageGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return SliverGrid.count(
       mainAxisSpacing: 5,
       crossAxisCount: 3,
@@ -84,8 +85,8 @@ class HomePageGrid extends StatelessWidget {
                 //   ),
                 // ),
                 Positioned(
-                  bottom: 15.0,
-                  left: 15.0,
+                  bottom: size.height * 0.018,
+                  left: size.width * 0.04,
                   child: Text(
                     "About\nChurch",
                     style: GoogleFonts.inter(
@@ -150,8 +151,8 @@ class HomePageGrid extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  bottom: 15.0,
-                  left: 15.0,
+                  bottom: size.height * 0.018,
+                  left: size.width * 0.04,
                   child: Text(
                     "Vicar's\nMessage",
                     style: GoogleFonts.inter(
@@ -184,8 +185,8 @@ class HomePageGrid extends StatelessWidget {
                   width: width / 1.5,
                 ),
                 Positioned(
-                  bottom: 15.0,
-                  left: 15.0,
+                  bottom: size.height * 0.018,
+                  left: size.width * 0.04,
                   child: Text(
                     "Readings\nLectionary",
                     style: GoogleFonts.inter(
@@ -254,8 +255,8 @@ class HomePageGrid extends StatelessWidget {
                   width: width / 1.5,
                 ),
                 Positioned(
-                  bottom: 15.0,
-                  left: 15.0,
+                  bottom: size.height * 0.018,
+                  left: size.width * 0.04,
                   child: Text(
                     "Committee\nMembers",
                     style: GoogleFonts.inter(
@@ -266,11 +267,11 @@ class HomePageGrid extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(bottom: height * 0),
+                  padding: EdgeInsets.only(top: height * 0.01),
                   child: Align(
                     alignment: Alignment.topCenter,
                     child: Image.asset(
-                      "assets/committee.png",
+                      "assets/committeemember.png",
                       height: 60,
                     ),
                   ),
@@ -324,8 +325,8 @@ class HomePageGrid extends StatelessWidget {
                   width: width / 1.5,
                 ),
                 Positioned(
-                  bottom: 26.0,
-                  left: 15.0,
+                  bottom: size.height * 0.035,
+                  left: size.width * 0.053,
                   child: Text(
                     "Obictury",
                     style: GoogleFonts.inter(
@@ -426,8 +427,8 @@ class HomePageGrid extends StatelessWidget {
                 //   ),
                 // ),
                 Positioned(
-                  bottom: 15.0,
-                  left: 15.0,
+                  bottom: size.height * 0.018,
+                  left: size.width * 0.04,
                   child: Text(
                     "Announce\nments",
                     style: GoogleFonts.inter(

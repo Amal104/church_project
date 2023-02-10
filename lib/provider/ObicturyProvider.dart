@@ -7,7 +7,7 @@ import '../Model/ObicturyModel.dart';
 class ObicturyProvider extends ChangeNotifier {
  
 
-  List<ObicturyModel>?  obictury;
+  List<ObituaryModel>?  obictury;
   bool loading = false;
 
   getObituary() async {

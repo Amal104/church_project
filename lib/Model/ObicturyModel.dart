@@ -4,12 +4,12 @@
 
 import 'dart:convert';
 
-List<ObicturyModel> obicturyModelFromJson(String str) => List<ObicturyModel>.from(json.decode(str).map((x) => ObicturyModel.fromJson(x)));
+List<ObituaryModel> obicturyModelFromJson(String str) => List<ObituaryModel>.from(json.decode(str).map((x) => ObituaryModel.fromJson(x)));
 
-String obicturyModelToJson(List<ObicturyModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String obicturyModelToJson(List<ObituaryModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class ObicturyModel {
-    ObicturyModel({
+class ObituaryModel {
+    ObituaryModel({
         required this.id,
         required this.date,
         required this.member,
@@ -25,7 +25,7 @@ class ObicturyModel {
     String memeberPhoto;
     int obituaryId;
 
-    factory ObicturyModel.fromJson(Map<String, dynamic> json) => ObicturyModel(
+    factory ObituaryModel.fromJson(Map<String, dynamic> json) => ObituaryModel(
         id: json["_id"],
         date: DateTime.parse(json["date"]),
         member: json["member"],

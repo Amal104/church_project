@@ -1,5 +1,5 @@
 import 'dart:ui';
-
+import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -85,12 +85,13 @@ class _EventsPageState extends State<EventsPage> {
                           child: Center(
                             child: Container(
                               padding: EdgeInsets.symmetric(
-                                  vertical: size.height * 0.028,),
+                                vertical: size.height * 0.028,
+                              ),
                               decoration: BoxDecoration(
                                 boxShadow: const [
-                                  BoxShadow(
-                                    // color: AppColor.grey.withOpacity(0.60),
-                                  )
+                                  // BoxShadow(
+                                  //   // color: AppColor.grey.withOpacity(0.60),
+                                  // )
                                 ],
                                 border: Border.all(
                                     color: Colors.white.withOpacity(0.2),
@@ -98,8 +99,7 @@ class _EventsPageState extends State<EventsPage> {
                                 gradient: const LinearGradient(
                                   colors: [
                                     Color.fromARGB(255, 224, 224, 224),
-                                    Color.fromARGB(255, 228, 186, 200),
-                                    // Color.fromARGB(174, 225, 230, 233),
+                                    AppColor.purpleShade,
                                   ],
                                   // stops: const [0.0, 1.0],
                                 ),
@@ -116,7 +116,7 @@ class _EventsPageState extends State<EventsPage> {
                               //       width: 1.0),
                               //   gradient: const LinearGradient(
                               //     colors: [
-                              //       Color.fromARGB(187, 0, 6, 71),
+                              //       Color.fromARGB(186, 62, 73, 196),
                               //       AppColor.purpleShade,
                               //     ],
                               //     stops: [0.0, 1.0],
@@ -135,7 +135,7 @@ class _EventsPageState extends State<EventsPage> {
                                       Text(
                                         formattedDate,
                                         style: GoogleFonts.inter(
-                                          color: AppColor.solidBlack,
+                                          color: AppColor.grey600,
                                           fontSize: 20,
                                         ),
                                       ),
@@ -150,7 +150,7 @@ class _EventsPageState extends State<EventsPage> {
                                       Text(
                                         formattedYear,
                                         style: GoogleFonts.inter(
-                                          color: AppColor.solidBlack,
+                                          color: AppColor.grey600,
                                           fontSize: 20,
                                         ),
                                       ),
@@ -181,7 +181,7 @@ class _EventsPageState extends State<EventsPage> {
                                       Text(
                                         "${event.venue}\nat ${event.time}",
                                         style: GoogleFonts.inter(
-                                          color: AppColor.grey,
+                                          color: AppColor.grey600,
                                           fontSize: 18,
                                         ),
                                       ),
@@ -194,11 +194,10 @@ class _EventsPageState extends State<EventsPage> {
                         );
                       },
                     )
-                  : Center(
-                      child: Image.asset(
-                        "assets/404notfound.jpg",
-                        height: 200,
-                      ),
+                  : SizedBox(
+                      height: size.height,
+                      width: size.width,
+                      child: Center(child: const CircularProgressIndicator()),
                     ),
             ],
           ),
