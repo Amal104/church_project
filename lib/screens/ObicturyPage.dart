@@ -1,4 +1,6 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:church/provider/ObicturyProvider.dart';
+import 'package:church/values/AppBar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -8,6 +10,8 @@ import '../Model/ObicturyModel.dart';
 import '../Services/ObicturyServices.dart';
 import '../values/values.dart';
 import 'package:intl/intl.dart';
+
+import '../widgets/ObituaryList.dart';
 
 class ObicturyPage extends StatefulWidget {
   const ObicturyPage({super.key});
@@ -29,20 +33,7 @@ class _ObicturyPageState extends State<ObicturyPage> {
     final getobituary = Provider.of<ObicturyProvider>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColor.solidWhite,
-        // leadingWidth: size.width * 0.1,
-        leading: IconButton(
-                onPressed: () {
-                  Get.back();
-                },
-                icon: const FaIcon(
-                  FontAwesomeIcons.chevronLeft,
-                  color: AppColor.grey400,
-                ),
-              ),
-      ),
+      appBar: CustomAppBar.customAppBarIcon(),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
@@ -66,44 +57,9 @@ class _ObicturyPageState extends State<ObicturyPage> {
                 height: size.height * 0.02,
               ),
               if (getobituary.obictury?.length != null)
-                ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: getobituary.obictury?.length,
-                  itemBuilder: (context, index) {
-                    final obituary = getobituary.obictury![index];
-                    var formattedDate =
-                        DateFormat("dd-MM-yyyy").format(obituary.date);
-                    return Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: size.height * 0.02,
-                          vertical: size.width * 0.03),
-                      child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: size.height * 0.02,
-                              vertical: size.width * 0.03),
-                          decoration: BoxDecoration(
-                            color: AppColor.lightGreyShade,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: Column(
-                            children: [
-                              Text(obituary.member),
-                              SizedBox(
-                                height: size.height * 0.02,
-                              ),
-                              Text(formattedDate),
-                              SizedBox(
-                                height: size.height * 0.02,
-                              ),
-                              Text(obituary.description),
-                              SizedBox(
-                                height: size.height * 0.02,
-                              ),
-                            ],
-                          )),
-                    );
-                  },
+                ObituaryList(
+                  getobituary: getobituary,
+                  size: size,
                 ),
               SizedBox(
                 height: size.height * 0.06,

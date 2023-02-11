@@ -161,8 +161,8 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                                           width: 1.0),
                                       gradient: const LinearGradient(
                                         colors: [
-                                          Color.fromARGB(255, 224, 224, 224),
-                                          Color.fromARGB(255, 228, 186, 200),
+                                          Color.fromARGB(255, 235, 235, 235),
+                                          Color.fromARGB(255, 236, 188, 204),
                                         ],
                                         // stops: const [0.0, 1.0],
                                       ),

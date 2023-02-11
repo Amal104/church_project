@@ -98,7 +98,7 @@ class _EventsPageState extends State<EventsPage> {
                                     width: 1.0),
                                 gradient: const LinearGradient(
                                   colors: [
-                                    Color.fromARGB(255, 224, 224, 224),
+                                    Color.fromARGB(255, 231, 231, 231),
                                     AppColor.purpleShade,
                                   ],
                                   // stops: const [0.0, 1.0],

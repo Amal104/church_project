@@ -76,7 +76,7 @@ class MemberDetailsTile extends StatelessWidget {
               width: size.width * 0.2,
             ),
             Text(
-              memberName.toCapitalized(),
+              memberName.toTitleCase(),
               style: GoogleFonts.inter(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,

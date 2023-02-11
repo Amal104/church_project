@@ -157,7 +157,7 @@ class _MemberPageState extends State<MemberPage> {
                                       CachedNetworkImageProvider(member.memberPhoto),
                                 ),
                               ),
-                              title: Text(member.memberName.toCapitalized()),
+                              title: Text(member.memberName.toTitleCase()),
                               subtitle: Text(member.homeParish),
                               trailing:
                                   const FaIcon(FontAwesomeIcons.chevronRight),

@@ -171,10 +171,15 @@ class _ChurchHistoryState extends State<ChurchHistory> {
                         ],
                       ),
                     )
-                  : Image.asset(
-                      "assets/404error.jpg",
-                      height: 550,
+                  : SizedBox(
+                    height: height,
+                    child: Padding(
+                      padding:  EdgeInsets.only(bottom: height * 0.3),
+                      child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
                     ),
+                  ),
               const SizedBox(
                 height: 100.0,
               ),

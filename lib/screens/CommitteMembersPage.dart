@@ -142,10 +142,15 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                             ),
                           ));
                     },
-                  ) : Image.asset(
-                      "assets/404error.jpg",
-                      height: 550,
+                  ) : SizedBox(
+                    height: size.height,
+                    child: Padding(
+                      padding:  EdgeInsets.only(bottom: size.height * 0.3),
+                      child: const Center(
+                          child: CircularProgressIndicator(),
+                        ),
                     ),
+                  ),
                 SizedBox(
                   height: size.height * 0.06,
                 ),
