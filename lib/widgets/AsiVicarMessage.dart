@@ -38,7 +38,7 @@ class _AsiVicarMessageState extends State<AsiVicarMessage> {
         Row(
           children: [
             CachedNetworkImage(
-              imageUrl: AppUrls.asiVicar,
+              imageUrl: asivicar.vicar?.asstVicar.photo ?? "",
               imageBuilder: (context, imageProvider) => Container(
                 width: width * 0.19,
                 height: height * 0.1,

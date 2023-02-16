@@ -104,8 +104,12 @@ class LoginProvider extends ChangeNotifier {
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         final token = data["token"];
+        final memberid = data["memberId"];
+
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString("logintoken", token);
+        prefs.setInt("memberid", memberid);
+
         Get.off(() => const HomePage());
       }
     } else {

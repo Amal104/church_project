@@ -3,6 +3,7 @@ import 'package:church/provider/AnnoucementProvider.dart';
 import 'package:church/provider/CommitteeMemberProvider.dart';
 import 'package:church/provider/FlashNewsProvider.dart';
 import 'package:church/provider/HomePage_Provider.dart';
+import 'package:church/provider/LectionaryProvider.dart';
 import 'package:church/provider/LoginProvider.dart';
 import 'package:church/provider/MemberProvider.dart';
 import 'package:church/provider/VicarMessageProvider.dart';
@@ -12,6 +13,8 @@ import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'provider/EventProvider.dart';
 import 'provider/ObicturyProvider.dart';
+import 'provider/PrayerMeeting_Provider.dart';
+import 'provider/Profile_Provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,6 +39,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => FlashNewsProvider(),),
         ChangeNotifierProvider(create: (context) => CommitteeMemberProvider(),),
         ChangeNotifierProvider(create: (context) => ObicturyProvider(),),
+        ChangeNotifierProvider(create: (context) => LectionaryProvider(),),
+        ChangeNotifierProvider(create: (context) => PrayerMeetingProvider(),),
+        ChangeNotifierProvider(create: (context) => ProfileProvider(),),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

@@ -34,7 +34,7 @@ class _VicarMessageState extends State<VicarMessage> {
         Row(
           children: [
             CachedNetworkImage(
-              imageUrl: AppUrls.vicar,
+              imageUrl: postModel.vicar?.vicar.photo ?? "",
               imageBuilder: (context, imageProvider) => Container(
                 width: width * 0.19,
                 height: height * 0.1,

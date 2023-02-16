@@ -32,18 +32,22 @@ class Vicar {
     Vicar({
         required this.name,
         required this.message,
+        required this.photo,
     });
 
     String name;
     String message;
+    String photo;
 
     factory Vicar.fromJson(Map<String, dynamic> json) => Vicar(
         name: json["name"],
         message: json["message"],
+        photo: json["photo"],
     );
 
     Map<String, dynamic> toJson() => {
         "name": name,
         "message": message,
+        "photo": photo,
     };
 }
