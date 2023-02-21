@@ -26,6 +26,7 @@ class _HomePageAppbarState extends State<HomePageAppbar> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     final getchurch = Provider.of<AboutChurchProvider>(context);
     return SliverAppBar(
       backgroundColor: AppColor.solidWhite,
@@ -33,6 +34,31 @@ class _HomePageAppbarState extends State<HomePageAppbar> {
       centerTitle: true,
       expandedHeight: 300.0,
       pinned: true,
+      leading: Builder(
+        builder: (BuildContext context) {
+          return Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: size.width * 0.025,
+              vertical: size.height * 0.013,
+            ),
+            child: Container(
+              decoration: BoxDecoration(
+                  color: const Color.fromARGB(109, 255, 255, 255),
+                  borderRadius: BorderRadius.circular(10)),
+              child: IconButton(
+                icon: const Icon(
+                  Icons.menu,
+                  size: 20,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              ),
+            ),
+          );
+        },
+      ),
       flexibleSpace: FlexibleSpaceBar(
         expandedTitleScale: 1.6,
         background: DecoratedBox(

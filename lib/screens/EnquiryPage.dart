@@ -1,3 +1,5 @@
+import 'package:church/values/AppBar.dart';
+import 'package:church/values/AppTitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -12,31 +14,17 @@ class EnquiryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: CustomAppBar.customAppBarIcon(),
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            IconButton(
-              onPressed: () {
-                Get.back();
-              },
-              icon: const FaIcon(
-                FontAwesomeIcons.chevronLeft,
-                color: AppColor.grey400,
-              ),
-            ),
             Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width / 25,
               ),
-              child: Text(
-                "Assistance &\nEnquiries",
-                style: GoogleFonts.inter(
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.bold,
-                  color: AppColor.grey600,
-                  letterSpacing: 1.0,
-                ),
+              child: const AppTitle(
+                title: "Assistance &\nEnquiries",
               ),
             ),
           ],

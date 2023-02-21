@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
-      // backgroundColor: AppColor.solidWhite,
+      backgroundColor: AppColor.solidWhite,
       body: CustomScrollView(
         slivers: [
           const HomePageAppbar(),

@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:church/provider/FlashNewsProvider.dart';
-import 'package:church/screens/FlashNewsPage.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:church/provider/ObicturyProvider.dart';
 import 'package:church/values/AppBar.dart';
+import 'package:church/values/AppTitle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -33,6 +34,7 @@ class _ObicturyPageState extends State<ObicturyPage> {
     final getobituary = Provider.of<ObicturyProvider>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: AppColor.solidWhite,
       appBar: CustomAppBar.customAppBarIcon(),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -41,17 +43,9 @@ class _ObicturyPageState extends State<ObicturyPage> {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 25,
+                  horizontal: MediaQuery.of(context).size.width / 20,
                 ),
-                child: Text(
-                  "Obituary",
-                  style: GoogleFonts.inter(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.grey600,
-                    letterSpacing: 1.0,
-                  ),
-                ),
+                child: const AppTitle(title: "Obituary")
               ),
               SizedBox(
                 height: size.height * 0.02,

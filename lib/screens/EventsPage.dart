@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:church/values/AppTitle.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -29,6 +30,7 @@ class _EventsPageState extends State<EventsPage> {
     final getEvent = Provider.of<EventProvider>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: AppColor.solidWhite,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColor.solidWhite,
@@ -50,19 +52,10 @@ class _EventsPageState extends State<EventsPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 25,
-                ),
-                child: Text(
-                  "Events",
-                  style: GoogleFonts.inter(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.grey600,
-                    letterSpacing: 1.0,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width / 20,
                   ),
-                ),
-              ),
+                  child: const AppTitle(title: "Events")),
               SizedBox(
                 height: size.height * 0.02,
               ),
@@ -80,119 +73,114 @@ class _EventsPageState extends State<EventsPage> {
                             DateFormat("yyyy").format(event.date);
                         return Padding(
                           padding: EdgeInsets.symmetric(
-                              vertical: size.height * 0.005,
-                              horizontal: size.width * 0.03),
+                              vertical: size.height * 0.007,
+                              horizontal: size.width * 0.040),
                           child: Center(
-                            child: Card(
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                vertical: size.height * 0.015,
                               ),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: size.height * 0.020,
-                                ),
-                                decoration: BoxDecoration(
-                                  boxShadow: const [
-                                    // BoxShadow(
-                                    //   // color: AppColor.grey.withOpacity(0.60),
-                                    // )
+                              decoration: BoxDecoration(
+                                boxShadow: const [
+                                  // BoxShadow(
+                                  //   // color: AppColor.grey.withOpacity(0.60),
+                                  // )
+                                ],
+                                border: Border.all(
+                                    color: Colors.white.withOpacity(0.2),
+                                    width: 1.0),
+                                gradient: const LinearGradient(
+                                  colors: [
+                                    Color.fromARGB(255, 231, 231, 231),
+                                    AppColor.purpleShade,
                                   ],
-                                  border: Border.all(
-                                      color: Colors.white.withOpacity(0.2),
-                                      width: 1.0),
-                                  gradient: const LinearGradient(
-                                    colors: [
-                                      Color.fromARGB(255, 231, 231, 231),
-                                      AppColor.purpleShade,
-                                    ],
-                                    // stops: const [0.0, 1.0],
-                                  ),
-                                  borderRadius: BorderRadius.circular(20),
+                                  // stops: const [0.0, 1.0],
                                 ),
-                            
-                                //   boxShadow: [
-                                //     BoxShadow(
-                                //       color: AppColor.grey.withOpacity(0.60),
-                                //     )
-                                //   ],
-                                //   border: Border.all(
-                                //       color: Colors.white.withOpacity(0.2),
-                                //       width: 1.0),
-                                //   gradient: const LinearGradient(
-                                //     colors: [
-                                //       Color.fromARGB(186, 62, 73, 196),
-                                //       AppColor.purpleShade,
-                                //     ],
-                                //     stops: [0.0, 1.0],
-                                //   ),
-                                //   borderRadius: BorderRadius.circular(20),
-                                // ),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          formattedDate,
-                                          style: GoogleFonts.inter(
-                                            color: AppColor.grey600,
-                                            fontSize: 20,
-                                          ),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+
+                              //   boxShadow: [
+                              //     BoxShadow(
+                              //       color: AppColor.grey.withOpacity(0.60),
+                              //     )
+                              //   ],
+                              //   border: Border.all(
+                              //       color: Colors.white.withOpacity(0.2),
+                              //       width: 1.0),
+                              //   gradient: const LinearGradient(
+                              //     colors: [
+                              //       Color.fromARGB(186, 62, 73, 196),
+                              //       AppColor.purpleShade,
+                              //     ],
+                              //     stops: [0.0, 1.0],
+                              //   ),
+                              //   borderRadius: BorderRadius.circular(20),
+                              // ),
+                              child: Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        formattedDate,
+                                        style: GoogleFonts.inter(
+                                          color: AppColor.grey600,
+                                          fontSize: 18,
                                         ),
-                                        Text(
-                                          formattedMonth,
+                                      ),
+                                      Text(
+                                        formattedMonth,
+                                        style: GoogleFonts.inter(
+                                          color: AppColor.solidBlack,
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                      Text(
+                                        formattedYear,
+                                        style: GoogleFonts.inter(
+                                          color: AppColor.grey600,
+                                          fontSize: 18,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    width: size.height * 0.03,
+                                  ),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        width: size.width * 0.65,
+                                        child: Text(
+                                          event.eventTitle,
+                                          textAlign: TextAlign.start,
                                           style: GoogleFonts.inter(
                                             color: AppColor.solidBlack,
                                             fontWeight: FontWeight.w600,
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                        Text(
-                                          formattedYear,
-                                          style: GoogleFonts.inter(
-                                            color: AppColor.grey600,
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(
-                                      width: size.height * 0.03,
-                                    ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(
-                                          width: size.width * 0.65,
-                                          child: Text(
-                                            event.eventTitle,
-                                            textAlign: TextAlign.start,
-                                            style: GoogleFonts.inter(
-                                              color: AppColor.solidBlack,
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 20,
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          height: size.height * 0.005,
-                                        ),
-                                        Text(
-                                          "${event.venue}\nat ${event.time}",
-                                          style: GoogleFonts.inter(
-                                            color: AppColor.grey600,
                                             fontSize: 18,
                                           ),
                                         ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                                      ),
+                                      SizedBox(
+                                        height: size.height * 0.005,
+                                      ),
+                                      Text(
+                                        "${event.venue}\nat ${event.time}",
+                                        style: GoogleFonts.inter(
+                                          color: AppColor.grey600,
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ),
                           ),
@@ -204,6 +192,9 @@ class _EventsPageState extends State<EventsPage> {
                       width: size.width,
                       child: const Center(child: CircularProgressIndicator()),
                     ),
+              SizedBox(
+                height: size.height * 0.09,
+              ),
             ],
           ),
         ),

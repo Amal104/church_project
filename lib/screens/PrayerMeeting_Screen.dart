@@ -1,4 +1,5 @@
 import 'package:church/provider/PrayerMeeting_Provider.dart';
+import 'package:church/values/AppTitle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
@@ -29,6 +30,7 @@ class _PrayerMeetingScreenState extends State<PrayerMeetingScreen> {
     final getPrayerMeeting = Provider.of<PrayerMeetingProvider>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: AppColor.solidWhite,
       appBar: CustomAppBar.customAppBarIcon(),
       body: SingleChildScrollView(
         child: SafeArea(
@@ -37,17 +39,9 @@ class _PrayerMeetingScreenState extends State<PrayerMeetingScreen> {
           children: [
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: MediaQuery.of(context).size.width / 25,
+                horizontal: MediaQuery.of(context).size.width / 20,
               ),
-              child: Text(
-                "Prayer Group",
-                style: GoogleFonts.inter(
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.bold,
-                  color: AppColor.grey600,
-                  letterSpacing: 1.0,
-                ),
-              ),
+              child: const AppTitle(title: "Prayer Meeting")
             ),
             SizedBox(
               height: size.height * 0.02,
@@ -64,94 +58,89 @@ class _PrayerMeetingScreenState extends State<PrayerMeetingScreen> {
                       var formattedYear = DateFormat("yyyy").format(prayer.date);
                       return Padding(
                         padding: EdgeInsets.symmetric(
-                            vertical: size.height * 0.005,
+                            vertical: size.height * 0.007,
                             horizontal: size.width * 0.03),
                         child: Center(
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)
+                          child: Container(
+                            padding: EdgeInsets.symmetric(
+                              vertical: size.height * 0.015,
                             ),
-                            child: Container(
-                              padding: EdgeInsets.symmetric(
-                                vertical: size.height * 0.015,
+                            decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Colors.white.withOpacity(0.2),
+                                  width: 1.0),
+                              gradient: const LinearGradient(
+                                colors: [
+                                  Color.fromARGB(255, 237, 237, 237),
+                                  Color.fromARGB(255, 236, 188, 204),
+                                ],
+                                // stops: const [0.0, 1.0],
                               ),
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                    color: Colors.white.withOpacity(0.2),
-                                    width: 1.0),
-                                gradient: const LinearGradient(
-                                  colors: [
-                                    Color.fromARGB(255, 237, 237, 237),
-                                    Color.fromARGB(255, 236, 188, 204),
-                                  ],
-                                  // stops: const [0.0, 1.0],
-                                ),
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        formattedDate,
-                                        style: GoogleFonts.inter(
-                                          color: AppColor.grey600,
-                                          fontSize: 20,
-                                        ),
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      formattedDate,
+                                      style: GoogleFonts.inter(
+                                        color: AppColor.grey600,
+                                        fontSize: 18,
                                       ),
-                                      Text(
-                                        formattedMonth,
+                                    ),
+                                    Text(
+                                      formattedMonth,
+                                      style: GoogleFonts.inter(
+                                        color: AppColor.solidBlack,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                    Text(
+                                      formattedYear,
+                                      style: GoogleFonts.inter(
+                                        color: AppColor.grey600,
+                                        fontSize: 18,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  width: size.height * 0.03,
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      width: size.width * 0.65,
+                                      child: Text(
+                                        prayer.group.prayerGroupName,
+                                        textAlign: TextAlign.start,
                                         style: GoogleFonts.inter(
                                           color: AppColor.solidBlack,
                                           fontWeight: FontWeight.w600,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                      Text(
-                                        formattedYear,
-                                        style: GoogleFonts.inter(
-                                          color: AppColor.grey600,
-                                          fontSize: 20,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: size.height * 0.03,
-                                  ),
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      SizedBox(
-                                        width: size.width * 0.65,
-                                        child: Text(
-                                          prayer.group.prayerGroupName,
-                                          textAlign: TextAlign.start,
-                                          style: GoogleFonts.inter(
-                                            color: AppColor.solidBlack,
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: 20,
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        height: size.height * 0.005,
-                                      ),
-                                      Text(
-                                        prayer.venue,
-                                        style: GoogleFonts.inter(
-                                          color: AppColor.grey600,
                                           fontSize: 18,
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                    SizedBox(
+                                      height: size.height * 0.005,
+                                    ),
+                                    Text(
+                                      prayer.venue,
+                                      style: GoogleFonts.inter(
+                                        color: AppColor.grey600,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                         ),

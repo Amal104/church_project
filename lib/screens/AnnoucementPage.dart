@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../provider/AnnoucementProvider.dart';
+import '../values/AppTitle.dart';
 import '../values/values.dart';
 
 class AnnouncementPage extends StatefulWidget {
@@ -29,10 +30,11 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     final getAnnoucement = Provider.of<AnnouncementProvider>(context);
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: AppColor.solidWhite,
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColor.solidWhite,
-        leadingWidth: size.width * 0.12,
+        leadingWidth: size.width * 0.13,
         leading: IconButton(
           onPressed: () {
             Get.back();
@@ -51,26 +53,15 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 25,
+                  horizontal: MediaQuery.of(context).size.width / 20,
                 ),
-                child: Text(
-                  "Annoucement",
-                  style: GoogleFonts.inter(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.grey600,
-                    letterSpacing: 1.0,
-                  ),
-                ),
+                child: const AppTitle(title: "Annoucements"),
               ),
               SizedBox(
                 height: size.height * 0.02,
               ),
               getAnnoucement.annoucement?.length == null
-                  ? Image.asset(
-                      "assets/404error.jpg",
-                      height: 550,
-                    )
+                  ? const Center(child: CircularProgressIndicator(),)
                   : ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
@@ -79,8 +70,8 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                         var annoucement = getAnnoucement.annoucement![index];
                         return Padding(
                           padding: EdgeInsets.symmetric(
-                              horizontal: size.width * 0.035,
-                              vertical: size.height * 0.01),
+                              horizontal: size.width * 0.040,
+                              vertical: size.height * 0.007),
                           child: Container(
                             decoration: BoxDecoration(
                               // color: AppColor.lightGreyShade,
@@ -158,7 +149,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                                       ],
                                       border: Border.all(
                                           color: Colors.white.withOpacity(0.2),
-                                          width: 1.0),
+                                          width: 1.0,),
                                       gradient: const LinearGradient(
                                         colors: [
                                           Color.fromARGB(255, 235, 235, 235),
@@ -220,19 +211,16 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                                                         Alignment.centerLeft,
                                                     child: SizedBox(
                                                       width: size.width * 0.55,
-                                                      child: Hero(
-                                                        tag: annoucement,
-                                                        child: Text(
-                                                          annoucement.title,
-                                                          maxLines: 2,
-                                                          style:
-                                                              GoogleFonts.inter(
-                                                            fontSize: 18.0,
-                                                            fontWeight:
-                                                                FontWeight.w700,
-                                                            color: AppColor
-                                                                .grey800,
-                                                          ),
+                                                      child: Text(
+                                                        annoucement.title,
+                                                        maxLines: 2,
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                          fontSize: 18.0,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          color: AppColor
+                                                              .grey800,
                                                         ),
                                                       ),
                                                     ),
@@ -275,6 +263,7 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
                         );
                       },
                     ),
+                    SizedBox(height: size.height*0.09,),
             ],
           ),
         ),
@@ -282,3 +271,4 @@ class _AnnouncementPageState extends State<AnnouncementPage> {
     );
   }
 }
+

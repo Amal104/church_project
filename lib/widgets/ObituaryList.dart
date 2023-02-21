@@ -58,12 +58,13 @@ class ObituaryList extends StatelessWidget {
               ),
               leading: Hero(
                 tag: obituary,
-                child: CircleAvatar(
+                child: obituary.memeberPhoto != "" ? CircleAvatar(
                   radius: size.height * 0.04,
-                  backgroundImage: CachedNetworkImageProvider(
+                  backgroundImage: 
+                  CachedNetworkImageProvider(
                     obituary.memeberPhoto,
                   ),
-                ),
+                ) : CircularProgressIndicator()
               ),
               title: Text(
                 obituary.member.toTitleCase(),

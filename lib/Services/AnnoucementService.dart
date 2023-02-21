@@ -1,3 +1,4 @@
+import 'package:church/Constants.dart';
 import 'package:dio/dio.dart';
 import '../Model/AnnoucementModel.dart';
 
@@ -5,7 +6,7 @@ class AnnoucementService {
   Future<List<AnnouncementModel>?> getAnnoucement() async {
     try {
       var response = await Dio().get(
-        'http://192.168.29.11:5000/mobile/announcement/get-announcement',
+        '${baseUrl}mobile/announcement/get-announcement',
         options: Options(
           headers: {"mobile": "application/json"},
         ),

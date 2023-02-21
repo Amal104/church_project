@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:church/Constants.dart';
 import 'package:church/Extensions/StringExtension.dart';
 import 'package:church/screens/MemberDetails.dart';
+import 'package:church/values/AppTitle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -65,15 +66,7 @@ class _MemberPageState extends State<MemberPage> {
               padding: EdgeInsets.symmetric(
                 horizontal: MediaQuery.of(context).size.width / 25,
               ),
-              child: Text(
-                "Members Details",
-                style: GoogleFonts.inter(
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.bold,
-                  color: AppColor.grey600,
-                  letterSpacing: 1.0,
-                ),
-              ),
+              child: const AppTitle(title: "Members")
             ),
             SizedBox(
               height: size.height * 0.02,
@@ -83,16 +76,18 @@ class _MemberPageState extends State<MemberPage> {
               child: TextField(
                 onChanged: (value) => getmember.search(value),
                 decoration: InputDecoration(
-                  filled: true,
-                  fillColor: AppColor.lightGreyShade,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15),
-                    borderSide: BorderSide.none,
-                  ),
-                  hintText: "Search Member",
-                  prefixIcon: const Icon(Icons.search,size: 30,),
-                  prefixIconColor: AppColor.grey600
-                ),
+                    filled: true,
+                    fillColor: AppColor.lightGreyShade,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(15),
+                      borderSide: BorderSide.none,
+                    ),
+                    hintText: "Search Member",
+                    prefixIcon: const Icon(
+                      Icons.search,
+                      size: 30,
+                    ),
+                    prefixIconColor: AppColor.grey600),
               ),
             ),
             SizedBox(
@@ -100,7 +95,7 @@ class _MemberPageState extends State<MemberPage> {
             ),
             getmember.memberLists?.length != null
                 ? Expanded(
-                  child: ListView.builder(
+                    child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: getmember.memberLists?.length,
                       itemBuilder: (context, index) {
@@ -153,8 +148,8 @@ class _MemberPageState extends State<MemberPage> {
                                 tag: member,
                                 child: CircleAvatar(
                                   radius: 26,
-                                  backgroundImage:
-                                      CachedNetworkImageProvider(member.memberPhoto),
+                                  backgroundImage: CachedNetworkImageProvider(
+                                      member.memberPhoto),
                                 ),
                               ),
                               title: Text(member.memberName.toTitleCase()),
@@ -166,10 +161,9 @@ class _MemberPageState extends State<MemberPage> {
                         );
                       },
                     ),
-                )
-                : Image.asset(
-                    "assets/404error.jpg",
-                    height: 550,
+                  )
+                : const Center(
+                    child: CircularProgressIndicator(),
                   ),
           ],
         ),

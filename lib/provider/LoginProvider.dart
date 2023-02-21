@@ -1,10 +1,14 @@
 import 'dart:convert';
+import 'package:church/Constants.dart';
 import 'package:church/screens/HomePage.dart';
 import 'package:church/screens/LoginScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../values/SnackBar.dart';
+import '../values/values.dart';
 
 class LoginProvider extends ChangeNotifier {
   final mobileConroller = TextEditingController();
@@ -89,14 +93,15 @@ class LoginProvider extends ChangeNotifier {
 
   Future<void> login(BuildContext context) async {
     // final storage = FlutterSecureStorage();
-    
+
     if (mobileConroller.text.isNotEmpty && passwordConroller.text.isNotEmpty) {
       SharedPreferences prefs = await SharedPreferences.getInstance();
-        final token = prefs.getString("logintoken");
-      Map<String, String> headers = {'Authorization': 'Bearer $token',};
-      var response = await http.post(
-          Uri.parse("http://192.168.29.11:5000/mobile/user/login"),
-          headers: headers ,
+      final token = prefs.getString("logintoken");
+      Map<String, String> headers = {
+        'Authorization': 'Bearer $token',
+      };
+      var response = await http.post(Uri.parse("${baseUrl}mobile/user/login"),
+          headers: headers,
           body: ({
             "phone": mobileConroller.text,
             "password": passwordConroller.text
@@ -109,15 +114,14 @@ class LoginProvider extends ChangeNotifier {
         SharedPreferences prefs = await SharedPreferences.getInstance();
         prefs.setString("logintoken", token);
         prefs.setInt("memberid", memberid);
-
+        Customsnackbar.showSnackBar(
+            context, "Yaay!", "Login Successful",AppColor.purpleShade);
         Get.off(() => const HomePage());
+      } else {
+        Customsnackbar.showSnackBar(context, "Oops!", "Enter valid data",AppColor.purpleShade);
       }
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Invalid Credentials"),
-        ),
-      );
+      Customsnackbar.showSnackBar(context, "Oops!", "Enter valid data",AppColor.purpleShade);
     }
   }
 

@@ -1,4 +1,5 @@
 
+import 'package:church/Constants.dart';
 import 'package:dio/dio.dart';
 
 import '../Model/EventModel.dart';
@@ -7,7 +8,7 @@ class EventService {
   Future<List<EventModel>?> getEvent() async {
     try {
       var response = await Dio().get(
-        'http://192.168.29.11:5000/mobile/event/get-event',
+        '${baseUrl}mobile/event/get-event',
         options: Options(
           headers: {"mobile": "application/json"},
         ),

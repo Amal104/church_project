@@ -1,3 +1,5 @@
+import 'package:church/values/AppBar.dart';
+import 'package:church/values/AppTitle.dart';
 import 'package:church/values/Strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -33,34 +35,19 @@ class _ChurchHistoryState extends State<ChurchHistory> {
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: CustomAppBar.customAppBarIcon(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                onPressed: () {
-                  Get.back();
-                },
-                icon: const FaIcon(
-                  FontAwesomeIcons.chevronLeft,
-                  color: AppColor.grey400,
-                ),
-              ),
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: width / 25,
-                ),
-                child: Text(
-                  "About Church",
-                  style: GoogleFonts.inter(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.grey600,
-                    letterSpacing: 1.0,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: width / 20,
                   ),
-                ),
-              ),
+                  child: const AppTitle(
+                    title: "Church\nHistory",
+                  )),
               const SizedBox(
                 height: 20.0,
               ),
@@ -79,7 +66,7 @@ class _ChurchHistoryState extends State<ChurchHistory> {
                             // width: width / 1,
                             decoration: BoxDecoration(
                                 color: AppColor.lightGreyShade,
-                                borderRadius: BorderRadius.circular(50)),
+                                borderRadius: BorderRadius.circular(20)),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -163,7 +150,7 @@ class _ChurchHistoryState extends State<ChurchHistory> {
                             width: width * 0.95,
                             decoration: BoxDecoration(
                                 color: AppColor.lightGreyShade,
-                                borderRadius: BorderRadius.circular(50)),
+                                borderRadius: BorderRadius.circular(20)),
                             child: Html(
                               data: postModel.churchHistory?.description ?? "",
                             ),
@@ -172,14 +159,14 @@ class _ChurchHistoryState extends State<ChurchHistory> {
                       ),
                     )
                   : SizedBox(
-                    height: height,
-                    child: Padding(
-                      padding:  EdgeInsets.only(bottom: height * 0.3),
-                      child: const Center(
+                      height: height,
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: height * 0.3),
+                        child: const Center(
                           child: CircularProgressIndicator(),
                         ),
+                      ),
                     ),
-                  ),
               const SizedBox(
                 height: 100.0,
               ),

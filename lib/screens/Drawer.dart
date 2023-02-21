@@ -4,6 +4,8 @@ import 'package:church/Model/MemberListModel.dart';
 import 'package:church/Model/Profile_Model.dart';
 import 'package:church/Services/Profile_Services.dart';
 import 'package:church/components/AltertDialogue.dart';
+import 'package:church/provider/ChangePassword.dart';
+import 'package:church/screens/ChangePassword_Screen.dart';
 import 'package:church/screens/MemberPage.dart';
 import 'package:church/screens/PrayerMeeting_Screen.dart';
 import 'package:church/screens/Profile_Screen.dart';
@@ -13,6 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../provider/Profile_Provider.dart';
@@ -62,79 +65,79 @@ class _DrawerrState extends State<Drawerr> {
                 FutureBuilder<ProfileModel?>(
                   future: profile,
                   builder: (context, snapshot) {
-                    if (snapshot.hasData) {
-                      return GestureDetector(
-                        onTap: () {
-                          Get.to(
-                            () => const ProfileScreen(),
-                            transition: Transition.upToDown,
-                          );
-                        },
-                        child: Column(
-                          children: [
-                            CachedNetworkImage(
-                              imageUrl: snapshot.data?.memberPhoto ?? "",
-                              imageBuilder: (context, imageProvider) =>
-                                  Container(
-                                width: width * 0.5,
-                                height: height * 0.15,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  image: DecorationImage(
-                                      image: imageProvider, fit: BoxFit.cover),
-                                ),
-                              ),
-                              placeholder: (context, url) =>
-                                  const CircularProgressIndicator(),
-                              errorWidget: (context, url, error) => const Icon(
-                                Icons.error_outline,
-                                size: 60,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 15.0,
-                            ),
-                            Text(
-                              snapshot.data?.memberName.toTitleCase() ?? "",
-                              style: const TextStyle(
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: Colors.white),
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(
-                              height: 5.0,
-                            ),
-                            Text(
-                              snapshot.data?.houseName.toTitleCase() ?? "",
-                              style: const TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.grey400),
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(
-                              snapshot.data?.homeParish ?? "",
-                              style: const TextStyle(
-                                  fontSize: 15.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.grey400),
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(
-                              height: height * 0.008,
-                            ),
-                            const FaIcon(
-                              FontAwesomeIcons.chevronDown,
-                              size: 20,
-                              color: AppColor.grey600,
-                            )
-                          ],
-                        ),
-                      );
-                    }
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return GestureDetector(
+                      onTap: () {
+                        var data = snapshot.data!;
+                        Get.to(
+                          () => ProfileScreen(
+                            profilePhoto: data.memberPhoto,
+                            address1: data.address1,
+                            address2: data.address2,
+                            birthday: data.birthday,
+                            bloodGroup: data.bloodGroup,
+                            email: data.email,
+                            homeParish: data.homeParish,
+                            houseName: data.houseName,
+                            landline: data.landline,
+                            memberName: data.memberName,
+                            mobilePhone: data.mobilePhone,
+                            pincode: data.pincode,
+                          ),
+                        );
+                      },
+                      child: Column(
+                        children: [
+                          snapshot.data?.memberPhoto != null
+                              ? Hero(
+                                  tag: "profilephoto",
+                                  child: CircleAvatar(
+                                    radius: height * 0.07,
+                                    backgroundImage: CachedNetworkImageProvider(
+                                      snapshot.data?.memberPhoto ?? "",
+                                    ),
+                                  ),
+                                )
+                              : CircleAvatar(
+                                  radius: height * 0.08,
+                                  backgroundImage: const AssetImage(
+                                      "assets/default_profile.png")),
+                          SizedBox(
+                            height: height * 0.01,
+                          ),
+                          Text(
+                            snapshot.data?.memberName.toTitleCase() ?? "",
+                            style: const TextStyle(
+                                fontSize: 18.0,
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
+                            textAlign: TextAlign.center,
+                          ),
+                          SizedBox(
+                            height: height * 0.003,
+                          ),
+                          Text(
+                            snapshot.data?.houseName.toTitleCase() ?? "",
+                            style: const TextStyle(
+                                fontSize: 13.0,
+                                fontWeight: FontWeight.w600,
+                                color: AppColor.grey400),
+                            textAlign: TextAlign.center,
+                          ),
+                          // Text(
+                          //   snapshot.data?.homeParish ?? "",
+                          //   style: const TextStyle(
+                          //       fontSize: 13.0,
+                          //       fontWeight: FontWeight.w600,
+                          //       color: AppColor.grey400),
+                          //   textAlign: TextAlign.center,
+                          // ),
+                          LottieBuilder.asset(
+                            "assets/lottie/scroll.json",
+                            fit: BoxFit.cover,
+                            height: height * 0.060,
+                          )
+                        ],
+                      ),
                     );
                   },
                 ),
@@ -194,6 +197,23 @@ class _DrawerrState extends State<Drawerr> {
                 const Divider(
                   thickness: 1,
                   color: Colors.grey,
+                ),
+                Consumer<ChangePasswordProvider>(
+                  builder: (context, provider, child) => ListTile(
+                    leading: const Icon(Icons.password_outlined),
+                    title: Text(
+                      'Change Password',
+                      style: GoogleFonts.inter(),
+                    ),
+                    onTap: () {
+                      provider.newPasswordController.clear();
+                      provider.oldPasswordController.clear();
+                      Get.to(
+                        () => const ChangePasswordScreen(),
+                        transition: Transition.rightToLeft,
+                      );
+                    },
+                  ),
                 ),
                 ListTile(
                   leading: const Icon(Icons.logout_outlined),

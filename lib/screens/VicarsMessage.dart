@@ -1,9 +1,11 @@
+import 'package:church/values/AppTitle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import '../provider/HomePage_Provider.dart';
 import '../provider/VicarMessageProvider.dart';
+import '../values/AppBar.dart';
 import '../values/values.dart';
 import '../widgets/AchansMessage.dart';
 import 'package:get/get.dart';
@@ -28,35 +30,21 @@ class _VicarsMessageState extends State<VicarsMessage> {
   @override
   Widget build(BuildContext context) {
     // final asivicar = Provider.of<VicarMessageProvider>(context);
+    var size = MediaQuery.of(context).size;
     final postModel = Provider.of<VicarMessageProvider>(context);
     return Scaffold(
-      backgroundColor: AppColor.lightGreyShade,
+      backgroundColor: AppColor.solidWhite,
+      appBar: CustomAppBar.customAppBarIcon(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              IconButton(
-                  onPressed: () {
-                    Get.back();
-                  },
-                  icon: const FaIcon(
-                    FontAwesomeIcons.chevronLeft,
-                    color: AppColor.grey400,
-                  )),
               Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 25,
+                  horizontal: MediaQuery.of(context).size.width / 20,
                 ),
-                child: Text(
-                  "Vicar's\nMessage...",
-                  style: GoogleFonts.inter(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.grey600,
-                    letterSpacing: 1.0,
-                  ),
-                ),
+                child: const AppTitle(title: "Church\nHistory")
               ),
               if (postModel.vicar?.asstVicar != null || postModel.vicar?.vicar != null)
                 Column(

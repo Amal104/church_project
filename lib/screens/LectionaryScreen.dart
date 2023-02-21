@@ -1,6 +1,7 @@
 import 'package:church/Model/LectionaryModel.dart';
 import 'package:church/components/TabBarIndicator.dart';
 import 'package:church/provider/LectionaryProvider.dart';
+import 'package:church/values/AppTitle.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -39,7 +40,7 @@ class LectionaryScreenState extends State<LectionaryScreen>
       appBar: AppBar(
         elevation: 0,
         backgroundColor: AppColor.solidWhite,
-        leadingWidth: size.width * 0.1,
+        leadingWidth: size.width * 0.12,
         leading: IconButton(
           onPressed: () {
             Get.back();
@@ -60,15 +61,7 @@ class LectionaryScreenState extends State<LectionaryScreen>
                 padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width / 25,
                 ),
-                child: Text(
-                  "Lectionary",
-                  style: GoogleFonts.inter(
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold,
-                    color: AppColor.grey600,
-                    letterSpacing: 1.0,
-                  ),
-                ),
+                child: const AppTitle(title: "Lectionary")
               ),
               Padding(
                 padding: EdgeInsets.symmetric(

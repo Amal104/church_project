@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:developer';
+import 'package:church/Constants.dart';
 import 'package:dio/dio.dart';
 import '../Model/ObicturyModel.dart';
 import 'package:http/http.dart' as http;
@@ -25,7 +26,7 @@ class ObicturyService {
 
   Future<List<ObituaryModel>?> getObictury() async {
     try {
-      var response = await Dio().get('http://192.168.29.11:5000/mobile/obituary/list');
+      var response = await Dio().get('${baseUrl}mobile/obituary/list');
       var json = response.data;
       List<ObituaryModel>? data =
           List<ObituaryModel>.from(json.map((x) => ObituaryModel.fromJson(x)));
