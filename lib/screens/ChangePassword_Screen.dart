@@ -67,22 +67,23 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                                   size: 20,
                                 ),
                                 suffixIcon: IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        _isvisible = !_isvisible;
-                                      });
-                                    },
-                                    icon: _isvisible
-                                        ? const Icon(
-                                            Icons.visibility,
-                                            color: AppColor.purpleShade,
-                                            size: 20,
-                                          )
-                                        : const Icon(
-                                            Icons.visibility_off,
-                                            size: 20,
-                                            color: AppColor.solidBlack,
-                                          )),
+                                  onPressed: () {
+                                    setState(() {
+                                      _isvisible = !_isvisible;
+                                    });
+                                  },
+                                  icon: _isvisible
+                                      ? const Icon(
+                                          Icons.visibility,
+                                          color: AppColor.purpleShade,
+                                          size: 20,
+                                        )
+                                      : const Icon(
+                                          Icons.visibility_off,
+                                          size: 20,
+                                          color: AppColor.solidBlack,
+                                        ),
+                                ),
                                 border: InputBorder.none,
                                 hintText: "Old Password",
                                 hintStyle: GoogleFonts.inter(fontSize: 14),

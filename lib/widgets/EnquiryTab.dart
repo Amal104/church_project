@@ -1,7 +1,8 @@
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import '../provider/Enquiry_Provider.dart';
 import '../screens/EnquiryPage.dart';
 import '../values/values.dart';
 
@@ -27,37 +28,43 @@ class EnquiryTab extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              GestureDetector(
-                onTap: () => Get.to(
-                  () => const EnquiryPage(),
-                  transition: Transition.rightToLeft,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "For Assistance & Enquiries\nFind us here!",
-                      style: GoogleFonts.inter(
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                          color: AppColor.darkpurpleShadev2),
-                    ),
-                    SizedBox(
-                      width: width * 0.05,
-                    ),
-                    Container(
-                      height: height * 0.05,
-                      width: width * 0.10,
-                      decoration: BoxDecoration(
-                          color: AppColor.darkpurpleShadev2,
-                          borderRadius: BorderRadius.circular(12)),
-                      child: const Icon(
-                        Icons.chevron_right,
-                        size: 40,
-                        color: AppColor.lightGreyShade,
+              Consumer<EnquiryProvider>(
+                builder: (context, provider, child) => GestureDetector(
+                  onTap: () {
+                    provider.msgController.clear();
+                    provider.senderController.clear();
+                    Get.to(
+                      () => const EnquiryPage(),
+                      transition: Transition.rightToLeft,
+                    );
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "For Assistance & Enquiries\nFind us here!",
+                        style: GoogleFonts.inter(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                            color: AppColor.darkpurpleShadev2),
                       ),
-                    ),
-                  ],
+                      SizedBox(
+                        width: width * 0.05,
+                      ),
+                      Container(
+                        height: height * 0.05,
+                        width: width * 0.10,
+                        decoration: BoxDecoration(
+                            color: AppColor.darkpurpleShadev2,
+                            borderRadius: BorderRadius.circular(12)),
+                        child: const Icon(
+                          Icons.chevron_right,
+                          size: 40,
+                          color: AppColor.lightGreyShade,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               )
             ],

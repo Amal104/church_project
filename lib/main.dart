@@ -12,6 +12,7 @@ import 'package:church/screens/SplashScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
+import 'provider/Enquiry_Provider.dart';
 import 'provider/EventProvider.dart';
 import 'provider/ObicturyProvider.dart';
 import 'provider/PrayerMeeting_Provider.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => PrayerMeetingProvider(),),
         ChangeNotifierProvider(create: (context) => ProfileProvider(),),
         ChangeNotifierProvider(create: (context) => ChangePasswordProvider(),),
+        ChangeNotifierProvider(create: (context) => EnquiryProvider(),),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

@@ -24,13 +24,16 @@ class ChangePasswordProvider extends ChangeNotifier {
           }));
       if (response.statusCode == 200) {
         Customsnackbar.showSnackBar(
-            context, "Password", "Changed Successfully",AppColor.purpleShade);
+            context, "Password", "Changed Successfully", AppColor.purpleShade);
         newPasswordController.clear();
         oldPasswordController.clear();
       } else {
         Customsnackbar.showSnackBar(
-            context, "Oops!", "Something went wrong",AppColor.purpleShade);
+            context, "Oops!", "Something went wrong", AppColor.purpleShade);
       }
-    } else {}
+    } else {
+      Customsnackbar.showSnackBar(
+          context, "Oops!", "Something went wrong", AppColor.purpleShade);
+    }
   }
 }
