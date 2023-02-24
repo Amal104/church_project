@@ -8,7 +8,6 @@ class Customsnackbar {
       SnackBar(
         content: Container(
             padding: const EdgeInsets.all(8),
-            height: 50.0,
             decoration: BoxDecoration(
                 color: color,
                 borderRadius: const BorderRadius.only(

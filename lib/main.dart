@@ -5,6 +5,7 @@ import 'package:church/provider/CommitteeMemberProvider.dart';
 import 'package:church/provider/FlashNewsProvider.dart';
 import 'package:church/provider/HomePage_Provider.dart';
 import 'package:church/provider/LectionaryProvider.dart';
+import 'package:church/provider/Location_Provider.dart';
 import 'package:church/provider/LoginProvider.dart';
 import 'package:church/provider/MemberProvider.dart';
 import 'package:church/provider/VicarMessageProvider.dart';
@@ -31,21 +32,54 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => HomePageProvider(),),
-        ChangeNotifierProvider(create: (context) => LoginProvider(),),
-        ChangeNotifierProvider(create: (context) => VicarMessageProvider(),),
-        ChangeNotifierProvider(create: (context) => MemberProvider(),),
-        ChangeNotifierProvider(create: (context) => AboutChurchProvider(),),
-        ChangeNotifierProvider(create: (context) => AnnouncementProvider(),),
-        ChangeNotifierProvider(create: (context) => EventProvider(),),
-        ChangeNotifierProvider(create: (context) => FlashNewsProvider(),),
-        ChangeNotifierProvider(create: (context) => CommitteeMemberProvider(),),
-        ChangeNotifierProvider(create: (context) => ObicturyProvider(),),
-        ChangeNotifierProvider(create: (context) => LectionaryProvider(),),
-        ChangeNotifierProvider(create: (context) => PrayerMeetingProvider(),),
-        ChangeNotifierProvider(create: (context) => ProfileProvider(),),
-        ChangeNotifierProvider(create: (context) => ChangePasswordProvider(),),
-        ChangeNotifierProvider(create: (context) => EnquiryProvider(),),
+        ChangeNotifierProvider(
+          create: (context) => HomePageProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => LoginProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => VicarMessageProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => MemberProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AboutChurchProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => AnnouncementProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => EventProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => FlashNewsProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => CommitteeMemberProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ObicturyProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => LectionaryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => PrayerMeetingProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ProfileProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => ChangePasswordProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => EnquiryProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => LocationProvider(),
+        ),
       ],
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,

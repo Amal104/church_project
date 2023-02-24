@@ -5,7 +5,9 @@ import 'package:church/Model/Profile_Model.dart';
 import 'package:church/Services/Profile_Services.dart';
 import 'package:church/components/AltertDialogue.dart';
 import 'package:church/provider/ChangePassword.dart';
+import 'package:church/provider/Location_Provider.dart';
 import 'package:church/screens/ChangePassword_Screen.dart';
+import 'package:church/screens/HouseLocation_Screen.dart';
 import 'package:church/screens/MemberPage.dart';
 import 'package:church/screens/PrayerMeeting_Screen.dart';
 import 'package:church/screens/Profile_Screen.dart';
@@ -13,6 +15,7 @@ import 'package:church/screens/WorshipTime_Screen.dart';
 import 'package:church/values/values.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
@@ -53,14 +56,14 @@ class _DrawerrState extends State<Drawerr> {
         children: [
           Container(
             color: AppColor.grey,
-            height: 300,
+            height: height * 0.36,
             width: double.infinity,
             padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const SizedBox(
-                  height: 20.0,
+                 SizedBox(
+                  height: height * 0.01,
                 ),
                 FutureBuilder<ProfileModel?>(
                   future: profile,
@@ -145,9 +148,9 @@ class _DrawerrState extends State<Drawerr> {
             ),
           ),
           Container(
-            padding: const EdgeInsets.all(24),
+            padding: EdgeInsets.only(left: width*0.05,right: width*0.05,top: height * 0.01),
             child: Wrap(
-              runSpacing: 15,
+              runSpacing: height * 0.008,
               children: [
                 ListTile(
                   leading: const Icon(Icons.home_outlined),
@@ -170,6 +173,23 @@ class _DrawerrState extends State<Drawerr> {
                   title: Text(
                     'Members',
                     style: GoogleFonts.inter(),
+                  ),
+                ),
+                Consumer<LocationProvider>(
+                  builder: (context, provider, child) => ListTile(
+                    onTap: () async {
+
+                      Position position = await provider.getCurrentLocation();
+                      provider.lat = position.latitude.toString();
+                      provider.long = position.longitude.toString();
+
+                      provider.storeLocation(context);
+                    },
+                    leading: const Icon(Icons.location_on_outlined),
+                    title: Text(
+                      'House Location',
+                      style: GoogleFonts.inter(),
+                    ),
                   ),
                 ),
                 ListTile(

@@ -54,7 +54,7 @@ class EnquiryPage extends StatelessWidget {
                             keyboardType: TextInputType.text,
                             decoration: InputDecoration(
                                 border: InputBorder.none,
-                                hintText: "Name",
+                                hintText: "Title",
                                 hintStyle: GoogleFonts.inter(fontSize: 14),
                                 contentPadding: EdgeInsets.symmetric(
                                   horizontal: size.width * 0.05,

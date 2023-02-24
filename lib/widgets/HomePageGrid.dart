@@ -58,7 +58,7 @@ class HomePageGrid extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: Image.asset(
                       "assets/church-ilustration.png",
-                      height: 60,
+                      height: size.height * 0.072,
                     ),
                   ),
                 ),
@@ -146,7 +146,7 @@ class HomePageGrid extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: Image.asset(
                       "assets/chat.png",
-                      height: 60,
+                      height: size.height * 0.072,
                     ),
                   ),
                 ),
@@ -202,7 +202,7 @@ class HomePageGrid extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: Image.asset(
                       "assets/Lectionary.png",
-                      height: 60,
+                      height: size.height * 0.072,
                     ),
                   ),
                 ),
@@ -272,7 +272,7 @@ class HomePageGrid extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: Image.asset(
                       "assets/committeemember.png",
-                      height: 60,
+                      height: size.height * 0.072,
                     ),
                   ),
                 ),
@@ -345,7 +345,7 @@ class HomePageGrid extends StatelessWidget {
                     alignment: Alignment.topCenter,
                     child: Image.asset(
                       "assets/coffin.png",
-                      height: 60,
+                      height: size.height * 0.072,
                     ),
                   ),
                 ),
@@ -401,7 +401,7 @@ class HomePageGrid extends StatelessWidget {
                   left: 25,
                   child: Image.asset(
                     "assets/megaphone.png",
-                    height: 65,
+                    height: size.height * 0.078,
                   ),
                 ),
                 // Positioned(

@@ -118,7 +118,8 @@ class LoginProvider extends ChangeNotifier {
             context, "Yaay!", "Login Successful",AppColor.purpleShade);
         Get.off(() => const HomePage());
       } else {
-        Customsnackbar.showSnackBar(context, "Oops!", "Enter valid data",AppColor.purpleShade);
+        var status = response.body;
+        Customsnackbar.showSnackBar(context, "Oops!", "$status",AppColor.purpleShade);
       }
     } else {
       Customsnackbar.showSnackBar(context, "Oops!", "Enter valid data",AppColor.purpleShade);

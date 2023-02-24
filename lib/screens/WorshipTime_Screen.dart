@@ -40,11 +40,10 @@ class _WorshipTimeScreenState extends State<WorshipTimeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 20,
-                ),
-                child: const AppTitle(title: "Worship Time")
-              ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width / 20,
+                  ),
+                  child: const AppTitle(title: "Worship Time")),
               SizedBox(
                 height: size.height * 0.02,
               ),
@@ -60,12 +59,11 @@ class _WorshipTimeScreenState extends State<WorshipTimeScreen> {
                         var worship = snapshot.data![index];
                         return Padding(
                           padding: EdgeInsets.symmetric(
-                              vertical: size.height * 0.007,
+                              vertical: size.height * 0.005,
                               horizontal: size.width * 0.040),
                           child: Card(
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)
-                            ),
+                                borderRadius: BorderRadius.circular(20)),
                             child: ListTile(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
@@ -87,10 +85,12 @@ class _WorshipTimeScreenState extends State<WorshipTimeScreen> {
                                 ),
                               ),
                               subtitle: Text(worship.day),
-                              trailing: Text(worship.time,
+                              trailing: Text(
+                                worship.time,
                                 style: GoogleFonts.inter(
                                   fontWeight: FontWeight.w500,
-                                ),),
+                                ),
+                              ),
                               contentPadding: EdgeInsets.symmetric(
                                   horizontal: size.width * 0.04),
                             ),

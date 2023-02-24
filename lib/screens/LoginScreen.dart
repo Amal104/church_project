@@ -8,7 +8,6 @@ import '../widgets/LoginIcons.dart';
 import '../widgets/UsernameField.dart';
 import '../widgets/dont_have_an_account.dart';
 import 'package:get/get.dart';
-
 import 'MainPage.dart';
 
 class LoginScreen extends StatefulWidget {

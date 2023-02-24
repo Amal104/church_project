@@ -93,7 +93,7 @@ class _MemberPageState extends State<MemberPage> {
             SizedBox(
               height: size.height * 0.02,
             ),
-            getmember.memberLists?.length != null
+            getmember.isLoading != true
                 ? Expanded(
                     child: ListView.builder(
                       shrinkWrap: true,
@@ -162,8 +162,10 @@ class _MemberPageState extends State<MemberPage> {
                       },
                     ),
                   )
-                : const Center(
-                    child: CircularProgressIndicator(),
+                :  Center(
+                    child: SizedBox(
+                      height: size.height * 0.6,
+                      child: const Center(child:  CircularProgressIndicator())),
                   ),
           ],
         ),

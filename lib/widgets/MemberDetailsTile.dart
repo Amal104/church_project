@@ -1,4 +1,5 @@
 import 'package:church/Extensions/StringExtension.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -55,8 +56,6 @@ class MemberDetailsTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           height: size.height * 0.03,
@@ -87,395 +86,544 @@ class MemberDetailsTile extends StatelessWidget {
         SizedBox(
           height: size.height * 0.03,
         ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Member ID"),
-                  Text(memberid.toString()),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Email"),
-                  Text(email),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Edavaka RegNo"),
-                  Text(edavakaReg.toString()),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Gender"),
-                  Text(gender),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Membership Status"),
-                  Text(membershipStatus),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("House Name"),
-                  Text(housename),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.09,
-                minWidth: size.width,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Present Address"),
-                  Text(address1),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.09,
-                minWidth: size.width,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Permanent Address"),
-                  Text(address2),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Postoffice"),
-                  Text(postoffice),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Pincode"),
-                  Text(pincode.toString()),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Prayer Group"),
-                  Text(prayerGroup),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Designation"),
-                  Text(designation),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Organisation"),
-                  Text(organization),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Mobile"),
-                  Text(mobile),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Tel Phone"),
-                  Text(phoneOffice),
-                ],
-              ),
-            ),
-          ),
-        ),
-        // Text(birthday),
-        // Text(marriageDate),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("HomeParish HouseName"),
-                  Text(homeParishHouseName),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Home Parish"),
-                  Text(homeParish),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("Native Place"),
-                  Text(nativePlace),
-                ],
-              ),
-            ),
-          ),
-        ),
-        Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-          color: AppColor.lightGreyShade,
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minHeight: size.height * 0.06,
-                minWidth: size.width,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("General Remarks"),
-                  SizedBox(
-                    height: size.height * 0.005,
+        Expanded(
+          child: ListView(
+            padding: const EdgeInsets.symmetric(vertical: 0),
+            children: [
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Member ID",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          memberid.toString(),
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
                   ),
-                  Text(generalRemarks),
-                ],
+                ),
               ),
-            ),
+
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Email",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          email,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Edavaka RegNo",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          edavakaReg.toString(),
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Gender",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          gender,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Membership Status",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          membershipStatus,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "House Name",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          housename,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.09,
+                      minWidth: size.width,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Present Address",
+                          style: GoogleFonts.inter(),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.006,
+                        ),
+                        Text(
+                          address1,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.09,
+                      minWidth: size.width,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Permanent Address",
+                          style: GoogleFonts.inter(),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.006,
+                        ),
+                        Text(
+                          address2,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Postoffice",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          postoffice,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Pincode",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          pincode.toString(),
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Prayer Group",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          prayerGroup,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Designation",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          designation,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Organisation",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          organization,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Mobile",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          mobile,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Tel Phone",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          phoneOffice,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              // Text(birthday),
+              // Text(marriageDate),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "HomeParish HouseName",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          homeParishHouseName,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Home Parish",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          homeParish,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Native Place",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          nativePlace,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.09,
+                      minWidth: size.width,
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "General Remarks",
+                          style: GoogleFonts.inter(),
+                        ),
+                        SizedBox(
+                          height: size.height * 0.006,
+                        ),
+                        Text(
+                          generalRemarks,
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: size.height * 0.03,
+              )
+            ],
           ),
         ),
-        SizedBox(height: size.height * 0.05,)
       ],
     );
   }
