@@ -139,6 +139,8 @@ class _MemberPageState extends State<MemberPage> {
                                     memberName: member.memberName,
                                     photo: member.memberPhoto,
                                     item: member,
+                                    latitude: member.latitude,
+                                    longitude: member.longitude,
                                   ),
                                   // transition: Transition.rightToLeft,
                                 );

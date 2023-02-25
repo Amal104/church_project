@@ -32,7 +32,7 @@ class MemberDetails extends StatelessWidget {
       required this.generalRemarks,
       required this.memberName,
       required this.photo,
-      required this.item});
+      required this.item, required this.latitude, required this.longitude});
 
   final String memberName;
   final int memberid;
@@ -57,6 +57,8 @@ class MemberDetails extends StatelessWidget {
   final String nativePlace;
   final String generalRemarks;
   final String photo;
+  final String latitude;
+  final String longitude;
   final MemberListModel item;
 
   @override
@@ -127,6 +129,8 @@ class MemberDetails extends StatelessWidget {
                   homeParish: homeParish,
                   nativePlace: nativePlace,
                   generalRemarks: generalRemarks,
+                  latitude: latitude,
+                  longitude: longitude,
                 ),
               ),
             ),

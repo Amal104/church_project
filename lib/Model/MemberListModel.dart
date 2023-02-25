@@ -34,6 +34,7 @@ class MemberListModel {
         required this.nativePlace,
         required this.memberPhoto,
         required this.latitude,
+        required this.longitude,
         required this.generalRemarks,
         required this.memberId,
     });
@@ -66,6 +67,7 @@ class MemberListModel {
     String nativePlace;
     String memberPhoto;
     String latitude;
+    String longitude;
     String generalRemarks;
     int memberId;
 
@@ -98,6 +100,7 @@ class MemberListModel {
         nativePlace: json["native_place"],
         memberPhoto: json["member_photo"],
         latitude: json["latitude"],
+        longitude: json["longitude"],
         generalRemarks: json["general_remarks"],
         memberId: json["memberId"],
     );
@@ -131,6 +134,7 @@ class MemberListModel {
         "native_place": nativePlace,
         "member_photo": memberPhoto,
         "latitude": latitude,
+        "longitude": longitude,
         "general_remarks": generalRemarks,
         "memberId": memberId,
     };

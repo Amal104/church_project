@@ -62,7 +62,7 @@ class _DrawerrState extends State<Drawerr> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                 SizedBox(
+                SizedBox(
                   height: height * 0.01,
                 ),
                 FutureBuilder<ProfileModel?>(
@@ -147,106 +147,111 @@ class _DrawerrState extends State<Drawerr> {
               ],
             ),
           ),
-          Container(
-            padding: EdgeInsets.only(left: width*0.05,right: width*0.05,top: height * 0.01),
-            child: Wrap(
-              runSpacing: height * 0.008,
-              children: [
-                ListTile(
-                  leading: const Icon(Icons.home_outlined),
-                  title: Text(
-                    'Home',
-                    style: GoogleFonts.inter(
-                      color: AppColor.grey,
-                    ),
-                  ),
-                  onTap: () {
-                    Get.back();
-                  },
-                ),
-                ListTile(
-                  onTap: () => Get.to(
-                    () => const MemberPage(),
-                    transition: Transition.rightToLeft,
-                  ),
-                  leading: const Icon(Icons.person_outline),
-                  title: Text(
-                    'Members',
-                    style: GoogleFonts.inter(),
-                  ),
-                ),
-                Consumer<LocationProvider>(
-                  builder: (context, provider, child) => ListTile(
-                    onTap: () async {
-
-                      Position position = await provider.getCurrentLocation();
-                      provider.lat = position.latitude.toString();
-                      provider.long = position.longitude.toString();
-
-                      provider.storeLocation(context);
-                    },
-                    leading: const Icon(Icons.location_on_outlined),
+          SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.only(
+                left: width * 0.05,
+                right: width * 0.05,
+                top: height * 0.01,
+              ),
+              child: Wrap(
+                runSpacing: height * 0.008,
+                children: [
+                  ListTile(
+                    leading: const Icon(Icons.home_outlined),
                     title: Text(
-                      'House Location',
+                      'Home',
+                      style: GoogleFonts.inter(
+                        color: AppColor.grey,
+                      ),
+                    ),
+                    onTap: () {
+                      Get.back();
+                    },
+                  ),
+                  ListTile(
+                    onTap: () => Get.to(
+                      () => const MemberPage(),
+                      transition: Transition.rightToLeft,
+                    ),
+                    leading: const Icon(Icons.person_outline),
+                    title: Text(
+                      'Members',
                       style: GoogleFonts.inter(),
                     ),
                   ),
-                ),
-                ListTile(
-                  onTap: () => Get.to(
-                    () => const WorshipTimeScreen(),
-                    transition: Transition.rightToLeft,
+                  Consumer<LocationProvider>(
+                    builder: (context, provider, child) => ListTile(
+                      onTap: () async {
+                        Position position = await provider.getCurrentLocation();
+                        provider.lat = position.latitude.toString();
+                        provider.long = position.longitude.toString();
+                
+                        provider.storeLocation(context);
+                      },
+                      leading: const Icon(Icons.location_on_outlined),
+                      title: Text(
+                        'House Location',
+                        style: GoogleFonts.inter(),
+                      ),
+                    ),
                   ),
-                  leading: const Icon(Icons.alarm),
-                  title: Text(
-                    'Worship Time',
-                    style: GoogleFonts.inter(),
-                  ),
-                ),
-                ListTile(
-                  onTap: () => Get.to(
-                    () => const PrayerMeetingScreen(),
-                    transition: Transition.rightToLeft,
-                  ),
-                  leading: const Icon(Icons.groups_outlined),
-                  title: Text(
-                    'Prayer Meeting',
-                    style: GoogleFonts.inter(),
-                  ),
-                ),
-                const Divider(
-                  thickness: 1,
-                  color: Colors.grey,
-                ),
-                Consumer<ChangePasswordProvider>(
-                  builder: (context, provider, child) => ListTile(
-                    leading: const Icon(Icons.password_outlined),
+                  ListTile(
+                    onTap: () => Get.to(
+                      () => const WorshipTimeScreen(),
+                      transition: Transition.rightToLeft,
+                    ),
+                    leading: const Icon(Icons.alarm),
                     title: Text(
-                      'Change Password',
+                      'Worship Time',
+                      style: GoogleFonts.inter(),
+                    ),
+                  ),
+                  ListTile(
+                    onTap: () => Get.to(
+                      () => const PrayerMeetingScreen(),
+                      transition: Transition.rightToLeft,
+                    ),
+                    leading: const Icon(Icons.groups_outlined),
+                    title: Text(
+                      'Prayer Meeting',
+                      style: GoogleFonts.inter(),
+                    ),
+                  ),
+                  const Divider(
+                    thickness: 1,
+                    color: Colors.grey,
+                  ),
+                  Consumer<ChangePasswordProvider>(
+                    builder: (context, provider, child) => ListTile(
+                      leading: const Icon(Icons.password_outlined),
+                      title: Text(
+                        'Change Password',
+                        style: GoogleFonts.inter(),
+                      ),
+                      onTap: () {
+                        provider.newPasswordController.clear();
+                        provider.oldPasswordController.clear();
+                        Get.to(
+                          () => const ChangePasswordScreen(),
+                          transition: Transition.rightToLeft,
+                        );
+                      },
+                    ),
+                  ),
+                  ListTile(
+                    leading: const Icon(Icons.logout_outlined),
+                    title: Text(
+                      'Logout',
                       style: GoogleFonts.inter(),
                     ),
                     onTap: () {
-                      provider.newPasswordController.clear();
-                      provider.oldPasswordController.clear();
-                      Get.to(
-                        () => const ChangePasswordScreen(),
-                        transition: Transition.rightToLeft,
-                      );
+                      CustomAlertDialog.logOutyescancelDialog(
+                          context, "Logout", "Do you want to Logout?");
                     },
                   ),
-                ),
-                ListTile(
-                  leading: const Icon(Icons.logout_outlined),
-                  title: Text(
-                    'Logout',
-                    style: GoogleFonts.inter(),
-                  ),
-                  onTap: () {
-                    CustomAlertDialog.logOutyescancelDialog(
-                        context, "Logout", "Do you want to Logout?");
-                  },
-                ),
-              ],
+                ],
+              ),
             ),
           )
         ],

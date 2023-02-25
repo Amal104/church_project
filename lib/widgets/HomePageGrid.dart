@@ -90,7 +90,7 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "About\nChurch",
                     style: GoogleFonts.inter(
-                      fontSize: 16.0,
+                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.darkPinkShade,
                     ),
@@ -156,7 +156,7 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "Vicar's\nMessage",
                     style: GoogleFonts.inter(
-                      fontSize: 16.0,
+                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.grey600,
                     ),
@@ -190,7 +190,7 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "Readings\nLectionary",
                     style: GoogleFonts.inter(
-                      fontSize: 16.0,
+                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.darkpurpleShade,
                     ),
@@ -260,7 +260,7 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "Committee\nMembers",
                     style: GoogleFonts.inter(
-                      fontSize: 16.0,
+                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.darkpurpleShade,
                     ),
@@ -330,7 +330,7 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "Obictury",
                     style: GoogleFonts.inter(
-                      fontSize: 16.0,
+                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.grey600,
                     ),
@@ -432,7 +432,7 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "Announce\nments",
                     style: GoogleFonts.inter(
-                      fontSize: 16.0,
+                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.darkPinkShade,
                     ),

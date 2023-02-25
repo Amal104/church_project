@@ -1,7 +1,10 @@
 import 'package:church/Extensions/StringExtension.dart';
+import 'package:church/provider/Location_Provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
 import '../values/values.dart';
 
@@ -29,6 +32,8 @@ class MemberDetailsTile extends StatelessWidget {
     required this.homeParish,
     required this.nativePlace,
     required this.generalRemarks,
+    required this.latitude,
+    required this.longitude,
   });
 
   final Size size;
@@ -52,6 +57,8 @@ class MemberDetailsTile extends StatelessWidget {
   final String homeParish;
   final String nativePlace;
   final String generalRemarks;
+  final String latitude;
+  final String longitude;
 
   @override
   Widget build(BuildContext context) {
@@ -253,33 +260,54 @@ class MemberDetailsTile extends StatelessWidget {
                   ),
                 ),
               ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: AppColor.lightGreyShade,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: size.height * 0.09,
-                      minWidth: size.width,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Present Address",
-                          style: GoogleFonts.inter(),
+              Consumer<LocationProvider>(
+                builder: (context, provider, child) => InkWell(
+                  onTap: () {
+                    provider.openMap(latitude, longitude);
+                  },
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(12)),
+                    color: AppColor.lightGreyShade,
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(
+                          minHeight: size.height * 0.09,
+                          minWidth: size.width,
                         ),
-                        SizedBox(
-                          height: size.height * 0.006,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Present Address",
+                                  style: GoogleFonts.inter(),
+                                ),
+                                SizedBox(
+                                  height: size.height * 0.006,
+                                ),
+                                SizedBox(
+                                  width: size.width * 0.65,
+                                  child: Text(
+                                    address1,
+                                    style: GoogleFonts.inter(
+                                        fontWeight: FontWeight.w600),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Image.asset(
+                              "assets/maplogo.png",
+                              height: size.height * 0.04,
+                            )
+                          ],
                         ),
-                        Text(
-                          address1,
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
-                        ),
-                      ],
+                      ),
                     ),
                   ),
                 ),
@@ -295,21 +323,34 @@ class MemberDetailsTile extends StatelessWidget {
                       minHeight: size.height * 0.09,
                       minWidth: size.width,
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          "Permanent Address",
-                          style: GoogleFonts.inter(),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Permanent Address",
+                              style: GoogleFonts.inter(),
+                            ),
+                            SizedBox(
+                              height: size.height * 0.006,
+                            ),
+                            SizedBox(
+                              width: size.width * 0.65,
+                              child: Text(
+                                address2,
+                                style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          height: size.height * 0.006,
-                        ),
-                        Text(
-                          address2,
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
-                        ),
+                        Image.asset(
+                          "assets/maplogo.png",
+                          height: size.height * 0.04,
+                        )
                       ],
                     ),
                   ),

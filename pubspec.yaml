@@ -50,6 +50,7 @@ dependencies:
   azlistview: ^2.0.0
   marquee: ^2.2.3
   geolocator: ^9.0.2
+  url_launcher: ^6.1.10
 
 dev_dependencies:
   flutter_test:
