@@ -7,32 +7,35 @@ import 'package:get/get.dart';
 import '../widgets/MemberDetailsTile.dart';
 
 class MemberDetails extends StatelessWidget {
-  const MemberDetails(
-      {super.key,
-      required this.memberid,
-      required this.email,
-      required this.edavakaReg,
-      required this.gender,
-      required this.membershipStatus,
-      required this.housename,
-      required this.address1,
-      required this.address2,
-      required this.postoffice,
-      required this.pincode,
-      required this.prayerGroup,
-      required this.designation,
-      required this.organization,
-      required this.mobile,
-      required this.phoneOffice,
-      required this.birthday,
-      required this.marriageDate,
-      required this.homeParishHouseName,
-      required this.homeParish,
-      required this.nativePlace,
-      required this.generalRemarks,
-      required this.memberName,
-      required this.photo,
-      required this.item, required this.latitude, required this.longitude});
+  const MemberDetails({
+    super.key,
+    required this.memberid,
+    required this.email,
+    required this.edavakaReg,
+    required this.gender,
+    required this.membershipStatus,
+    required this.housename,
+    required this.address1,
+    required this.address2,
+    required this.postoffice,
+    required this.pincode,
+    required this.prayerGroup,
+    required this.designation,
+    required this.organization,
+    required this.mobile,
+    required this.phoneOffice,
+    required this.birthday,
+    required this.marriageDate,
+    required this.homeParishHouseName,
+    required this.homeParish,
+    required this.nativePlace,
+    required this.generalRemarks,
+    required this.memberName,
+    required this.photo,
+    required this.item,
+    required this.latitude,
+    required this.longitude,
+  });
 
   final String memberName;
   final int memberid;
@@ -51,7 +54,7 @@ class MemberDetails extends StatelessWidget {
   final String mobile;
   final String phoneOffice;
   final DateTime birthday;
-  final DateTime marriageDate;
+  final DateTime? marriageDate;
   final String homeParishHouseName;
   final String homeParish;
   final String nativePlace;
@@ -131,6 +134,7 @@ class MemberDetails extends StatelessWidget {
                   generalRemarks: generalRemarks,
                   latitude: latitude,
                   longitude: longitude,
+                  marriageDate: marriageDate,
                 ),
               ),
             ),

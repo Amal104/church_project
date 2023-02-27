@@ -83,8 +83,37 @@ class LocationProvider extends ChangeNotifier {
           });
       print("Success");
     } else {
-      // Customsnackbar.showSnackBar(
-      //     context, "Oops!", "Something went wrong", AppColor.purpleShade);
+      showCupertinoDialog(
+          context: context,
+          builder: (context) {
+            Future.delayed(const Duration(seconds: 2), () {
+              Navigator.of(context).pop(true);
+            });
+            return CupertinoAlertDialog(
+              content: Container(
+                padding: const EdgeInsets.all(12),
+                decoration: BoxDecoration(
+                    color: AppColor.purpleShade,
+                    borderRadius: BorderRadius.circular(10)),
+                child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Location",
+                          style: TextStyle(fontWeight: FontWeight.values[3]),
+                        ),
+                        Text(
+                          "updation failed",
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, letterSpacing: 2),
+                        ),
+                      ],
+                    )),
+              ),
+            );
+          });
       print("Failed");
     }
   }

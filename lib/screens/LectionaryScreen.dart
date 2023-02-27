@@ -17,7 +17,12 @@ import '../Services/LectionaryServices.dart';
 import '../values/values.dart';
 
 class LectionaryScreen extends StatefulWidget {
-  const LectionaryScreen({super.key});
+  const LectionaryScreen({super.key, required this.title, required this.date, required this.length, required this.readingTitle});
+
+  final String title;
+  final String date;
+  final int length;
+  final String readingTitle;
 
   @override
   State<LectionaryScreen> createState() => LectionaryScreenState();
@@ -58,11 +63,10 @@ class LectionaryScreenState extends State<LectionaryScreen>
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width / 25,
-                ),
-                child: const AppTitle(title: "Lectionary")
-              ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width / 25,
+                  ),
+                  child: const AppTitle(title: "Lectionary")),
               Padding(
                 padding: EdgeInsets.symmetric(
                   horizontal: size.width * 0.03,
@@ -79,51 +83,39 @@ class LectionaryScreenState extends State<LectionaryScreen>
                             snapshot.data!.lectionary[0].reading.length;
                         String title = snapshot.data!.lectionary[0].title;
                         return Padding(
-                          padding: EdgeInsets.symmetric(horizontal: size.width * 0.03),
+                          padding: EdgeInsets.symmetric(
+                              horizontal: size.width * 0.03),
                           child: Column(
                             children: [
-                              SizedBox(height: size.height * 0.02,),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                                children: [
-                                  // IconButton(
-                                  //   onPressed: () {},
-                                  //   icon: const FaIcon(
-                                  //     FontAwesomeIcons.chevronLeft,
-                                  //   ),
-                                  // ),
-                                  Text(
-                                    title,
-                                    style: GoogleFonts.inter(
-                                      fontSize: 17.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  // IconButton(
-                                  //   onPressed: () {},
-                                  //   icon: const FaIcon(
-                                  //     FontAwesomeIcons.chevronRight,
-                                  //   ),
-                                  // ),
-                                ],
+                              SizedBox(
+                                height: size.height * 0.02,
                               ),
-                              SizedBox(height: size.height * 0.02,),
+                              Text(
+                                widget.title,
+                                style: GoogleFonts.inter(
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              SizedBox(
+                                height: size.height * 0.02,
+                              ),
                               SizedBox(
                                 width: size.width,
                                 height: size.height * 0.07,
                                 child: TabBar(
                                   unselectedLabelColor: AppColor.grey400,
-                                  indicator:
-                                      const DotIndicator(color: AppColor.grey800),
+                                  indicator: const DotIndicator(
+                                      color: AppColor.grey800),
                                   isScrollable: true,
                                   controller: tabcontroller,
                                   tabs: List<Widget>.generate(
-                                    length,
+                                    widget.length,
                                     (index) {
-                                      String input = snapshot.data!.lectionary[0]
-                                          .reading[index].date;
+                                      String input = snapshot.data!
+                                          .lectionary[0].reading[index].date;
                                       return Tab(
-                                        child: Text(input),
+                                        child: Text(widget.date),
                                       );
                                     },
                                   ),
@@ -135,14 +127,13 @@ class LectionaryScreenState extends State<LectionaryScreen>
                                 child: TabBarView(
                                   controller: tabcontroller,
                                   children: List<Widget>.generate(
-                                    length,
+                                    widget.length,
                                     (index) {
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
                                             vertical: size.height * 0.03),
                                         child: Text(
-                                          snapshot.data!.lectionary[0]
-                                              .reading[index].title,
+                                          widget.readingTitle,
                                           textAlign: TextAlign.center,
                                           style: GoogleFonts.inter(
                                             fontSize: 15.0,

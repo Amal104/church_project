@@ -4,6 +4,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import '../values/values.dart';
@@ -34,6 +35,7 @@ class MemberDetailsTile extends StatelessWidget {
     required this.generalRemarks,
     required this.latitude,
     required this.longitude,
+    required this.marriageDate,
   });
 
   final Size size;
@@ -59,6 +61,7 @@ class MemberDetailsTile extends StatelessWidget {
   final String generalRemarks;
   final String latitude;
   final String longitude;
+  final DateTime? marriageDate;
 
   @override
   Widget build(BuildContext context) {
@@ -198,7 +201,35 @@ class MemberDetailsTile extends StatelessWidget {
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          gender,
+                          gender.toCapitalized(),
+                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              if(marriageDate != null)
+              Card(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                color: AppColor.lightGreyShade,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(
+                      minHeight: size.height * 0.06,
+                      minWidth: size.width,
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Marriage Date",
+                          style: GoogleFonts.inter(),
+                        ),
+                        Text(
+                          DateFormat("dd-MM-yyyy").format(marriageDate!),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -225,7 +256,7 @@ class MemberDetailsTile extends StatelessWidget {
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          membershipStatus,
+                          membershipStatus.toCapitalized(),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -252,7 +283,7 @@ class MemberDetailsTile extends StatelessWidget {
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          housename,
+                          housename.toTitleCase(),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -294,7 +325,7 @@ class MemberDetailsTile extends StatelessWidget {
                                 SizedBox(
                                   width: size.width * 0.65,
                                   child: Text(
-                                    address1,
+                                    address1.toTitleCase(),
                                     style: GoogleFonts.inter(
                                         fontWeight: FontWeight.w600),
                                   ),
@@ -340,7 +371,7 @@ class MemberDetailsTile extends StatelessWidget {
                             SizedBox(
                               width: size.width * 0.65,
                               child: Text(
-                                address2,
+                                address2.toTitleCase(),
                                 style: GoogleFonts.inter(
                                     fontWeight: FontWeight.w600),
                               ),
@@ -375,7 +406,7 @@ class MemberDetailsTile extends StatelessWidget {
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          postoffice,
+                          postoffice.toCapitalized(),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -429,7 +460,7 @@ class MemberDetailsTile extends StatelessWidget {
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          prayerGroup,
+                          prayerGroup.toCapitalized(),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -456,7 +487,7 @@ class MemberDetailsTile extends StatelessWidget {
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          designation,
+                          designation.toCapitalized(),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -483,7 +514,7 @@ class MemberDetailsTile extends StatelessWidget {
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          organization,
+                          organization.toTitleCase(),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -518,6 +549,7 @@ class MemberDetailsTile extends StatelessWidget {
                   ),
                 ),
               ),
+              if(phoneOffice != "")
               Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
@@ -566,7 +598,7 @@ class MemberDetailsTile extends StatelessWidget {
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          homeParishHouseName,
+                          homeParishHouseName.toTitleCase(),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -593,7 +625,7 @@ class MemberDetailsTile extends StatelessWidget {
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          homeParish,
+                          homeParish.toTitleCase(),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -620,7 +652,7 @@ class MemberDetailsTile extends StatelessWidget {
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          nativePlace,
+                          nativePlace.toTitleCase(),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -628,37 +660,40 @@ class MemberDetailsTile extends StatelessWidget {
                   ),
                 ),
               ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: AppColor.lightGreyShade,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: size.height * 0.09,
-                      minWidth: size.width,
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "General Remarks",
-                          style: GoogleFonts.inter(),
-                        ),
-                        SizedBox(
-                          height: size.height * 0.006,
-                        ),
-                        Text(
-                          generalRemarks,
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
-                        ),
-                      ],
+              if (generalRemarks != "")
+                Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  color: AppColor.lightGreyShade,
+                  child: Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: size.height * 0.09,
+                        minWidth: size.width,
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "General Remarks",
+                            style: GoogleFonts.inter(),
+                          ),
+                          SizedBox(
+                            height: size.height * 0.006,
+                          ),
+                          Text(
+                            generalRemarks,
+                            style:
+                                GoogleFonts.inter(fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
-              ),
               SizedBox(
                 height: size.height * 0.03,
               )

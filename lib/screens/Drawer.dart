@@ -22,6 +22,7 @@ import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../provider/Profile_Provider.dart';
+import 'Birthdat_Anniversery_calender.dart';
 import 'LoginScreen.dart';
 import '../values/urls.dart';
 
@@ -152,23 +153,11 @@ class _DrawerrState extends State<Drawerr> {
               padding: EdgeInsets.only(
                 left: width * 0.05,
                 right: width * 0.05,
-                top: height * 0.01,
+                top: height * 0.02,
               ),
               child: Wrap(
                 runSpacing: height * 0.008,
                 children: [
-                  ListTile(
-                    leading: const Icon(Icons.home_outlined),
-                    title: Text(
-                      'Home',
-                      style: GoogleFonts.inter(
-                        color: AppColor.grey,
-                      ),
-                    ),
-                    onTap: () {
-                      Get.back();
-                    },
-                  ),
                   ListTile(
                     onTap: () => Get.to(
                       () => const MemberPage(),
@@ -177,6 +166,17 @@ class _DrawerrState extends State<Drawerr> {
                     leading: const Icon(Icons.person_outline),
                     title: Text(
                       'Members',
+                      style: GoogleFonts.inter(),
+                    ),
+                  ),
+                  ListTile(
+                    onTap: () => Get.to(
+                      () => const BirthdayCalender(),
+                      transition: Transition.rightToLeft,
+                    ),
+                    leading: const Icon(Icons.celebration_outlined),
+                    title: Text(
+                      'Birthday',
                       style: GoogleFonts.inter(),
                     ),
                   ),

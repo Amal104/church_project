@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final memberListModel = memberListModelFromJson(jsonString);
+
 import 'dart:convert';
 
 List<MemberListModel> memberListModelFromJson(String str) => List<MemberListModel>.from(json.decode(str).map((x) => MemberListModel.fromJson(x)));
@@ -61,7 +65,7 @@ class MemberListModel {
     String email;
     String bloodGroup;
     DateTime birthday;
-    DateTime marriageDate;
+    DateTime? marriageDate;
     String homeParishHouseName;
     String homeParish;
     String nativePlace;
@@ -94,7 +98,7 @@ class MemberListModel {
         email: json["email"],
         bloodGroup: json["blood_group"],
         birthday: DateTime.parse(json["birthday"]),
-        marriageDate: DateTime.parse(json["marriage_date"]),
+        marriageDate: json['marriage_date'] != null ? DateTime.parse(json['marriage_date']) : null,
         homeParishHouseName: json["home_parish_house_name"],
         homeParish: json["home_parish"],
         nativePlace: json["native_place"],
@@ -128,7 +132,7 @@ class MemberListModel {
         "email": email,
         "blood_group": bloodGroup,
         "birthday": birthday.toIso8601String(),
-        "marriage_date": marriageDate.toIso8601String(),
+        "marriage_date": marriageDate?.toIso8601String(),
         "home_parish_house_name": homeParishHouseName,
         "home_parish": homeParish,
         "native_place": nativePlace,
@@ -144,27 +148,27 @@ class Organisation {
     Organisation({
         required this.id,
         required this.organisationName,
-        required this.v,
         required this.organisationId,
+        required this.v,
     });
 
     String id;
     String organisationName;
-    int v;
     int organisationId;
+    int v;
 
     factory Organisation.fromJson(Map<String, dynamic> json) => Organisation(
         id: json["_id"],
         organisationName: json["organisationName"],
-        v: json["__v"],
         organisationId: json["organisationId"],
+        v: json["__v"],
     );
 
     Map<String, dynamic> toJson() => {
         "_id": id,
         "organisationName": organisationName,
-        "__v": v,
         "organisationId": organisationId,
+        "__v": v,
     };
 }
 

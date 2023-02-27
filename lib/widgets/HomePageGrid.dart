@@ -1,5 +1,6 @@
 import 'package:church/screens/CommitteMembersPage.dart';
 import 'package:church/screens/LectionaryScreen.dart';
+import 'package:church/screens/Lectionary_title.dart';
 import 'package:church/screens/ObicturyPage.dart';
 import 'package:church/screens/VicarsMessage.dart';
 import 'package:church/screens/ChurchHistoryPage.dart';
@@ -171,7 +172,7 @@ class HomePageGrid extends StatelessWidget {
               width * 0.018, height * 0.010, width * 0.025, 0),
           child: GestureDetector(
              onTap: () => Get.to(
-              () => const LectionaryScreen(),
+              () => const LectionaryTItle(),
               transition: Transition.rightToLeft,
             ),
             child: Stack(

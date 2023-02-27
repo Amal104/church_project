@@ -1,15 +1,9 @@
-import 'dart:convert';
-
-import 'package:church/provider/FlashNewsProvider.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:marquee/marquee.dart';
-import 'package:provider/provider.dart';
 import '../Constants.dart';
 import '../Model/FlashNewsModel.dart';
-import '../values/Strings.dart';
 import '../values/values.dart';
 
 class FlashNews extends StatefulWidget {
@@ -68,7 +62,6 @@ class _FlashNewsState extends State<FlashNews> {
               return Marquee(
                 text: "${snapshot.data![0].txt}  | ${snapshot.data![1].txt} |",
                 style: GoogleFonts.inter(
-                  fontSize: 16.0,
                   fontWeight: FontWeight.w400,
                 ),
               );

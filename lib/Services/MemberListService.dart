@@ -30,7 +30,7 @@ class MemberListService {
       final response = await http.get(Uri.parse(url));
       if (response.statusCode == 200) {
         // print(response.body);
-        List<MemberListModel> list = parseAgents(response.body);
+        List<MemberListModel>? list = parseAgents(response.body);
         return list;
       } else {
         throw Exception('Error');
