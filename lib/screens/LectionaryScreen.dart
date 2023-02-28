@@ -17,12 +17,16 @@ import '../Services/LectionaryServices.dart';
 import '../values/values.dart';
 
 class LectionaryScreen extends StatefulWidget {
-  const LectionaryScreen({super.key, required this.title, required this.date, required this.length, required this.readingTitle});
+  const LectionaryScreen(
+      {super.key,
+      required this.title,
+      required this.date,
+      required this.length});
 
   final String title;
-  final String date;
+  final List<LectionaryReading> date;
   final int length;
-  final String readingTitle;
+  // final String readingTitle;
 
   @override
   State<LectionaryScreen> createState() => LectionaryScreenState();
@@ -79,9 +83,9 @@ class LectionaryScreenState extends State<LectionaryScreen>
                         TabController tabcontroller = TabController(
                             length: snapshot.data!.lectionary[0].reading.length,
                             vsync: this);
-                        var length =
-                            snapshot.data!.lectionary[0].reading.length;
-                        String title = snapshot.data!.lectionary[0].title;
+                        // var length =
+                        //     snapshot.data!.lectionary[0].reading.length;
+                        // String title = snapshot.data!.lectionary[0].title;
                         return Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: size.width * 0.03),
@@ -110,12 +114,11 @@ class LectionaryScreenState extends State<LectionaryScreen>
                                   isScrollable: true,
                                   controller: tabcontroller,
                                   tabs: List<Widget>.generate(
-                                    widget.length,
+                                    widget.date.length,
                                     (index) {
-                                      String input = snapshot.data!
-                                          .lectionary[0].reading[index].date;
+                                      String input = widget.date[index].date;
                                       return Tab(
-                                        child: Text(widget.date),
+                                        child: Text(input),
                                       );
                                     },
                                   ),
@@ -127,18 +130,79 @@ class LectionaryScreenState extends State<LectionaryScreen>
                                 child: TabBarView(
                                   controller: tabcontroller,
                                   children: List<Widget>.generate(
-                                    widget.length,
+                                    widget.date.length,
                                     (index) {
                                       return Padding(
                                         padding: EdgeInsets.symmetric(
                                             vertical: size.height * 0.03),
-                                        child: Text(
-                                          widget.readingTitle,
-                                          textAlign: TextAlign.center,
-                                          style: GoogleFonts.inter(
-                                            fontSize: 15.0,
-                                            fontWeight: FontWeight.w500,
-                                          ),
+                                        child: Column(
+                                          children: [
+                                            Text(
+                                              widget.date[index].title,
+                                              textAlign: TextAlign.center,
+                                              style: GoogleFonts.inter(
+                                                fontSize: 15.0,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            ),
+                                            SizedBox(
+                                              height: size.height * 0.05,
+                                            ),
+                                            const Text("Lesson"),
+                                            SizedBox(
+                                              height: size.height * 0.01,
+                                            ),
+                                            ListView.builder(
+                                              shrinkWrap: true,
+                                              itemCount: widget
+                                                  .date[index].lesson.length,
+                                              itemBuilder: (context, index) {
+                                                return Align(
+                                                  alignment: Alignment.center,
+                                                  child: Text(widget.date[index]
+                                                      .lesson[index]),
+                                                );
+                                              },
+                                            ),
+                                            SizedBox(
+                                              height: size.height * 0.01,
+                                            ),
+                                            const Text("Epistle Gospel"),
+                                            SizedBox(
+                                              height: size.height * 0.01,
+                                            ),
+                                            ListView.builder(
+                                              shrinkWrap: true,
+                                              itemCount: widget.date[index]
+                                                  .epistleGospel.length,
+                                              itemBuilder: (context, index) {
+                                                return Align(
+                                                  alignment: Alignment.center,
+                                                  child: Text(widget.date[index]
+                                                      .epistleGospel[index]),
+                                                );
+                                              },
+                                            ),
+                                            SizedBox(
+                                              height: size.height * 0.01,
+                                            ),
+                                            const Text("Evening Reading"),
+                                            SizedBox(
+                                              height: size.height * 0.01,
+                                            ),
+                                            ListView.builder(
+                                              shrinkWrap: true,
+                                              itemCount: widget.date[index]
+                                                  .eveningReading.length,
+                                              itemBuilder: (context, index) {
+                                                return Align(
+                                                  alignment: Alignment.center,
+                                                  child: Text(widget.date[index]
+                                                      .eveningReading[index]),
+                                                );
+                                              },
+                                            ),
+                                          ],
                                         ),
                                       );
                                     },

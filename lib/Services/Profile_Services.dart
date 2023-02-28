@@ -22,8 +22,8 @@ class ProfileService {
       if (response.statusCode == 200) {
         final item = json.decode(response.body);
         result = ProfileModel.fromJson(item);
-      } else {
-        print("error");
+      } else if(response.statusCode == 500) {
+        prefs.remove("logintoken");
       }
     } catch (e) {
       log(e.toString());

@@ -53,103 +53,103 @@ class _DrawerrState extends State<Drawerr> {
     var width = MediaQuery.of(context).size.width;
     return Drawer(
       // backgroundColor: AppColor.grey100,
-      child: Column(
-        children: [
-          Container(
-            color: AppColor.grey,
-            height: height * 0.36,
-            width: double.infinity,
-            padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: height * 0.01,
-                ),
-                FutureBuilder<ProfileModel?>(
-                  future: profile,
-                  builder: (context, snapshot) {
-                    return GestureDetector(
-                      onTap: () {
-                        var data = snapshot.data!;
-                        Get.to(
-                          () => ProfileScreen(
-                            profilePhoto: data.memberPhoto,
-                            address1: data.address1,
-                            address2: data.address2,
-                            birthday: data.birthday,
-                            bloodGroup: data.bloodGroup,
-                            email: data.email,
-                            homeParish: data.homeParish,
-                            houseName: data.houseName,
-                            landline: data.landline,
-                            memberName: data.memberName,
-                            mobilePhone: data.mobilePhone,
-                            pincode: data.pincode,
-                          ),
-                        );
-                      },
-                      child: Column(
-                        children: [
-                          snapshot.data?.memberPhoto != null
-                              ? Hero(
-                                  tag: "profilephoto",
-                                  child: CircleAvatar(
-                                    radius: height * 0.07,
-                                    backgroundImage: CachedNetworkImageProvider(
-                                      snapshot.data?.memberPhoto ?? "",
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              color: AppColor.grey,
+              height: height * 0.35,
+              width: double.infinity,
+              padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: height * 0.01,
+                  ),
+                  FutureBuilder<ProfileModel?>(
+                    future: profile,
+                    builder: (context, snapshot) {
+                      return GestureDetector(
+                        onTap: () {
+                          var data = snapshot.data!;
+                          Get.to(
+                            () => ProfileScreen(
+                              profilePhoto: data.memberPhoto,
+                              address1: data.address1,
+                              address2: data.address2,
+                              birthday: data.birthday,
+                              bloodGroup: data.bloodGroup,
+                              email: data.email,
+                              homeParish: data.homeParish,
+                              houseName: data.houseName,
+                              landline: data.landline,
+                              memberName: data.memberName,
+                              mobilePhone: data.mobilePhone,
+                              pincode: data.pincode,
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: [
+                            snapshot.data?.memberPhoto != null
+                                ? Hero(
+                                    tag: "profilephoto",
+                                    child: CircleAvatar(
+                                      radius: height * 0.07,
+                                      backgroundImage: CachedNetworkImageProvider(
+                                        snapshot.data?.memberPhoto ?? "",
+                                      ),
                                     ),
-                                  ),
-                                )
-                              : CircleAvatar(
-                                  radius: height * 0.08,
-                                  backgroundImage: const AssetImage(
-                                      "assets/default_profile.png")),
-                          SizedBox(
-                            height: height * 0.01,
-                          ),
-                          Text(
-                            snapshot.data?.memberName.toTitleCase() ?? "",
-                            style: const TextStyle(
-                                fontSize: 18.0,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                            textAlign: TextAlign.center,
-                          ),
-                          SizedBox(
-                            height: height * 0.003,
-                          ),
-                          Text(
-                            snapshot.data?.houseName.toTitleCase() ?? "",
-                            style: const TextStyle(
-                                fontSize: 13.0,
-                                fontWeight: FontWeight.w600,
-                                color: AppColor.grey400),
-                            textAlign: TextAlign.center,
-                          ),
-                          // Text(
-                          //   snapshot.data?.homeParish ?? "",
-                          //   style: const TextStyle(
-                          //       fontSize: 13.0,
-                          //       fontWeight: FontWeight.w600,
-                          //       color: AppColor.grey400),
-                          //   textAlign: TextAlign.center,
-                          // ),
-                          LottieBuilder.asset(
-                            "assets/lottie/scroll.json",
-                            fit: BoxFit.cover,
-                            height: height * 0.060,
-                          )
-                        ],
-                      ),
-                    );
-                  },
-                ),
-              ],
+                                  )
+                                : CircleAvatar(
+                                    radius: height * 0.08,
+                                    backgroundImage: const AssetImage(
+                                        "assets/default_profile.png")),
+                            SizedBox(
+                              height: height * 0.01,
+                            ),
+                            Text(
+                              snapshot.data?.memberName.toTitleCase() ?? "",
+                              style: const TextStyle(
+                                  fontSize: 18.0,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.white),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: height * 0.003,
+                            ),
+                            Text(
+                              snapshot.data?.houseName.toTitleCase() ?? "",
+                              style: const TextStyle(
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColor.grey400),
+                              textAlign: TextAlign.center,
+                            ),
+                            // Text(
+                            //   snapshot.data?.homeParish ?? "",
+                            //   style: const TextStyle(
+                            //       fontSize: 13.0,
+                            //       fontWeight: FontWeight.w600,
+                            //       color: AppColor.grey400),
+                            //   textAlign: TextAlign.center,
+                            // ),
+                            LottieBuilder.asset(
+                              "assets/lottie/scroll.json",
+                              fit: BoxFit.cover,
+                              height: height * 0.060,
+                            )
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
-          ),
-          SingleChildScrollView(
-            child: Container(
+            Container(
               padding: EdgeInsets.only(
                 left: width * 0.05,
                 right: width * 0.05,
@@ -252,9 +252,9 @@ class _DrawerrState extends State<Drawerr> {
                   ),
                 ],
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

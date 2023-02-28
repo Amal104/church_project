@@ -74,9 +74,9 @@ class LectionaryTItle extends StatelessWidget {
                                         Get.to(
                                           () => LectionaryScreen(
                                             title: data.title,
-                                            date: data.reading[index].date,
-                                            length: data.reading.length,
-                                            readingTitle: data.reading[index].title,
+                                            date: data.reading,
+                                            length: data.reading[index].date.length,
+                                            // readingTitle: data.reading[index].title,
                                           ),
                                         );
                                       },
