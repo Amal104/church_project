@@ -69,7 +69,7 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
-                          childAspectRatio: 0.7,
+                          childAspectRatio: 0.55,
                         ),
                         physics: const NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
@@ -83,7 +83,7 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                               color: AppColor.lightGreyShade,
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
-                                  horizontal: size.width * 0.05,
+                                  horizontal: size.width * 0.03,
                                 ),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -106,24 +106,24 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                                       committeemember.name.toTitleCase(),
                                       style: GoogleFonts.inter(
                                         fontSize: 18.0,
-                                        fontWeight: FontWeight.w700,
+                                        fontWeight: FontWeight.w800,
                                       ),
                                     ),
                                     SizedBox(height: size.height * 0.02),
                                     Text(
-                                      committeemember.position.positionName,
+                                      committeemember.position.positionName.toCapitalized(),
                                       style: GoogleFonts.inter(
                                         fontSize: 14.0,
-                                        fontWeight: FontWeight.w400,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                     SizedBox(height: size.height * 0.005),
                                     Text(
                                       committeemember
-                                          .organisation.organisationName,
+                                          .organisation.organisationName.toCapitalized(),
                                       style: GoogleFonts.inter(
                                         fontSize: 14.0,
-                                        fontWeight: FontWeight.w400,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                     SizedBox(height: size.height * 0.005),
@@ -131,7 +131,7 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                                       committeemember.email,
                                       style: GoogleFonts.inter(
                                         fontSize: 14.0,
-                                        fontWeight: FontWeight.w400,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                     SizedBox(height: size.height * 0.005),
@@ -139,7 +139,7 @@ class _CommitteeMemberPageState extends State<CommitteeMemberPage> {
                                       committeemember.phoneNo,
                                       style: GoogleFonts.inter(
                                         fontSize: 14.0,
-                                        fontWeight: FontWeight.w400,
+                                        fontWeight: FontWeight.w500,
                                       ),
                                     ),
                                   ],

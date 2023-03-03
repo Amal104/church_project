@@ -62,8 +62,10 @@ class _WorshipTimeScreenState extends State<WorshipTimeScreen> {
                               vertical: size.height * 0.005,
                               horizontal: size.width * 0.040),
                           child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
+                            elevation: 3,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)
+                              ),
                             child: ListTile(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),

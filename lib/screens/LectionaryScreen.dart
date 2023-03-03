@@ -81,11 +81,7 @@ class LectionaryScreenState extends State<LectionaryScreen>
                     builder: (context, snapshot) {
                       if (snapshot.hasData) {
                         TabController tabcontroller = TabController(
-                            length: snapshot.data!.lectionary[0].reading.length,
-                            vsync: this);
-                        // var length =
-                        //     snapshot.data!.lectionary[0].reading.length;
-                        // String title = snapshot.data!.lectionary[0].title;
+                            length: widget.date.length, vsync: this);
                         return Padding(
                           padding: EdgeInsets.symmetric(
                               horizontal: size.width * 0.03),
@@ -129,7 +125,7 @@ class LectionaryScreenState extends State<LectionaryScreen>
                                 height: size.height * 0.5,
                                 child: TabBarView(
                                   controller: tabcontroller,
-                                  children: List<Widget>.generate(
+                                  children: List.generate(
                                     widget.date.length,
                                     (index) {
                                       return Padding(
@@ -137,18 +133,36 @@ class LectionaryScreenState extends State<LectionaryScreen>
                                             vertical: size.height * 0.03),
                                         child: Column(
                                           children: [
-                                            Text(
-                                              widget.date[index].title,
-                                              textAlign: TextAlign.center,
-                                              style: GoogleFonts.inter(
-                                                fontSize: 15.0,
-                                                fontWeight: FontWeight.w500,
+                                            Card(
+                                              color: AppColor.lightGreyShade,
+                                              elevation: 3,
+                                              shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          20)),
+                                              child: Padding(
+                                                padding: EdgeInsets.symmetric(
+                                                    vertical:
+                                                        size.height * 0.02,
+                                                    horizontal:
+                                                        size.width * 0.04),
+                                                child: Text(
+                                                  widget.date[index].title,
+                                                  textAlign: TextAlign.center,
+                                                  style: GoogleFonts.inter(
+                                                    fontSize: 15.0,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                             SizedBox(
                                               height: size.height * 0.05,
                                             ),
-                                            const Text("Lesson"),
+                                            Text("Lesson",style: GoogleFonts.inter(
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.w500,
+                                            ),),
                                             SizedBox(
                                               height: size.height * 0.01,
                                             ),
@@ -156,11 +170,14 @@ class LectionaryScreenState extends State<LectionaryScreen>
                                               shrinkWrap: true,
                                               itemCount: widget
                                                   .date[index].lesson.length,
-                                              itemBuilder: (context, index) {
+                                              itemBuilder:
+                                                  (context, int innerIndex) {
                                                 return Align(
                                                   alignment: Alignment.center,
                                                   child: Text(widget.date[index]
-                                                      .lesson[index]),
+                                                      .lesson[innerIndex],style: GoogleFonts.inter(
+                                                        color: AppColor.darkpurpleShadev2
+                                                      ),),
                                                 );
                                               },
                                             ),
@@ -175,11 +192,13 @@ class LectionaryScreenState extends State<LectionaryScreen>
                                               shrinkWrap: true,
                                               itemCount: widget.date[index]
                                                   .epistleGospel.length,
-                                              itemBuilder: (context, index) {
+                                              itemBuilder:
+                                                  (context, int innerIndex) {
                                                 return Align(
                                                   alignment: Alignment.center,
                                                   child: Text(widget.date[index]
-                                                      .epistleGospel[index]),
+                                                          .epistleGospel[
+                                                      innerIndex]),
                                                 );
                                               },
                                             ),
@@ -194,11 +213,13 @@ class LectionaryScreenState extends State<LectionaryScreen>
                                               shrinkWrap: true,
                                               itemCount: widget.date[index]
                                                   .eveningReading.length,
-                                              itemBuilder: (context, index) {
+                                              itemBuilder:
+                                                  (context, int innerIndex) {
                                                 return Align(
                                                   alignment: Alignment.center,
                                                   child: Text(widget.date[index]
-                                                      .eveningReading[index]),
+                                                          .eveningReading[
+                                                      innerIndex]),
                                                 );
                                               },
                                             ),

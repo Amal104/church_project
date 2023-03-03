@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:church/Extensions/StringExtension.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -56,7 +57,7 @@ class _VicarMessageState extends State<VicarMessage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  postModel.vicar?.vicar.name ?? "",
+                  postModel.vicar?.vicar.name.toCapitalized() ?? "",
                   style: GoogleFonts.inter(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -67,7 +68,7 @@ class _VicarMessageState extends State<VicarMessage> {
                 Text(
                   "Vicar",
                   style: GoogleFonts.inter(
-                    fontSize: 15.0,
+                    fontSize: 12.0,
                     fontWeight: FontWeight.bold,
                     color: AppColor.grey600,
                     letterSpacing: 2.0,
@@ -82,9 +83,11 @@ class _VicarMessageState extends State<VicarMessage> {
         ),
         Text(
           postModel.vicar?.vicar.message ?? "",
-          style: const TextStyle(
-            fontSize: 17.0,
-          ),
+          style: GoogleFonts.inter(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w600,
+                    color: AppColor.grey600,
+                  ),
         ),
       ],
     );

@@ -1,5 +1,6 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:church/Extensions/StringExtension.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -60,7 +61,7 @@ class _AsiVicarMessageState extends State<AsiVicarMessage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  asivicar.vicar?.asstVicar.name ?? "",
+                  asivicar.vicar?.asstVicar.name.toCapitalized() ?? "",
                   style: GoogleFonts.inter(
                     fontSize: 20.0,
                     fontWeight: FontWeight.bold,
@@ -71,7 +72,7 @@ class _AsiVicarMessageState extends State<AsiVicarMessage> {
                 Text(
                   "Assi Vicar",
                   style: GoogleFonts.inter(
-                    fontSize: 15.0,
+                    fontSize: 12.0,
                     fontWeight: FontWeight.bold,
                     color: AppColor.grey600,
                     letterSpacing: 2.0,
@@ -86,9 +87,11 @@ class _AsiVicarMessageState extends State<AsiVicarMessage> {
         ),
          Text(
           asivicar.vicar?.asstVicar.message ?? "",
-          style: const TextStyle(
-            fontSize: 17.0,
-          ),
+          style: GoogleFonts.inter(
+                    fontSize: 15.0,
+                    fontWeight: FontWeight.w600,
+                    color: AppColor.grey600,
+                  ),
         ),
       ],
     );

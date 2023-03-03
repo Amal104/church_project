@@ -1,34 +1,34 @@
-import 'package:flutter/material.dart';
-import '../Model/FlashNewsModel.dart';
-import '../Services/FlashNewsService.dart';
+// import 'package:flutter/material.dart';
+// import '../Model/FlashNewsModel.dart';
+// import '../Services/FlashNewsService.dart';
 
-class FlashNewsProvider extends ChangeNotifier {
+// class FlashNewsProvider extends ChangeNotifier {
 
-  // List<FlashNewsModel>? flashnews = [];
-  // var isLoading = false;
+//   // List<FlashNewsModel>? flashnews = [];
+//   // var isLoading = false;
 
-  // getFlashnews() async {
-  //   isLoading = true;
+//   // getFlashnews() async {
+//   //   isLoading = true;
 
-  //    flashnews = (await FlashNewsService().getFlashNews())!;
+//   //    flashnews = (await FlashNewsService().getFlashNews())!;
 
-  //    isLoading = false;
-  //    notifyListeners();
-  // }
+//   //    isLoading = false;
+//   //    notifyListeners();
+//   // }
 
-FlashNewsModel? vicar;
+// FlashNewsModel? vicar;
 
-bool loading = false;
+// bool loading = false;
 
-  getFlashnews() async {
-    loading = true;
+//   getFlashnews() async {
+//     loading = true;
 
-    vicar = (await FlashNewsService().asiVicarMessage())!;
+//     vicar = (await FlashNewsService().asiVicarMessage())!;
     
-    loading = false;
-    notifyListeners();
-  }
+//     loading = false;
+//     notifyListeners();
+//   }
 
   
 
-}
+// }

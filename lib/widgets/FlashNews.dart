@@ -1,3 +1,5 @@
+import 'package:church/Extensions/StringExtension.dart';
+import 'package:church/Services/FlashNewsService.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -25,18 +27,10 @@ class _FlashNewsState extends State<FlashNews> {
   @override
   void initState() {
     super.initState();
-    users = fetchUsers();
+    users = FlashNewsService().fetchUsers();
   }
 
-  Future<List<FlashNewsModel>?> fetchUsers() async {
-    final response = await Dio().get('${baseUrl}mobile/flash-news/list');
-    var json = response.data;
-    List<FlashNewsModel>? data =
-        List<FlashNewsModel>.from(json.map((x) => FlashNewsModel.fromJson(x)));
-    print(data);
-    return data;
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     // final getFlashNews = Provider.of<FlashNewsProvider>(context);
@@ -60,9 +54,9 @@ class _FlashNewsState extends State<FlashNews> {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               return Marquee(
-                text: "${snapshot.data![0].txt}  | ${snapshot.data![1].txt} |",
+                text: "${snapshot.data![0].txt.toCapitalized()}  |   ${snapshot.data![1].txt.toCapitalized()} | ",
                 style: GoogleFonts.inter(
-                  fontWeight: FontWeight.w400,
+                  fontWeight: FontWeight.w500,
                 ),
               );
             } else if (snapshot.hasError) {

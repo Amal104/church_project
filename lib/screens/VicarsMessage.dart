@@ -44,7 +44,7 @@ class _VicarsMessageState extends State<VicarsMessage> {
                 padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width / 20,
                 ),
-                child: const AppTitle(title: "Church\nHistory")
+                child: const AppTitle(title: "Vicar\nMessage")
               ),
               if (postModel.vicar?.asstVicar != null || postModel.vicar?.vicar != null)
                 Column(

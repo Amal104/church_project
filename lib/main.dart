@@ -2,7 +2,7 @@ import 'package:church/provider/AboutChurchProvider.dart';
 import 'package:church/provider/AnnoucementProvider.dart';
 import 'package:church/provider/ChangePassword.dart';
 import 'package:church/provider/CommitteeMemberProvider.dart';
-import 'package:church/provider/FlashNewsProvider.dart';
+import 'package:church/provider/Download_Provider.dart';
 import 'package:church/provider/HomePage_Provider.dart';
 import 'package:church/provider/LectionaryProvider.dart';
 import 'package:church/provider/Location_Provider.dart';
@@ -54,9 +54,6 @@ class MyApp extends StatelessWidget {
           create: (context) => EventProvider(),
         ),
         ChangeNotifierProvider(
-          create: (context) => FlashNewsProvider(),
-        ),
-        ChangeNotifierProvider(
           create: (context) => CommitteeMemberProvider(),
         ),
         ChangeNotifierProvider(
@@ -79,6 +76,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => LocationProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => DownloadProvider(),
         ),
       ],
       child: GetMaterialApp(

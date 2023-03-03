@@ -52,6 +52,9 @@ dependencies:
   geolocator: ^9.0.2
   url_launcher: ^6.1.10
   table_calendar: ^3.0.9
+  fluttertoast: ^8.2.1
+  path_provider: ^2.0.13
+  open_filex: ^4.3.2
 
 dev_dependencies:
   flutter_test:

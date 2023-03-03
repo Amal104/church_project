@@ -16,6 +16,7 @@ class LectionaryService {
       if (response.statusCode == 200) {
         final item = json.decode(response.body);
         lectionary = Lectionary.fromJson(item);
+        print(item);
       } else {
         print("error");
       }

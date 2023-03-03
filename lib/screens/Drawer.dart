@@ -7,6 +7,7 @@ import 'package:church/components/AltertDialogue.dart';
 import 'package:church/provider/ChangePassword.dart';
 import 'package:church/provider/Location_Provider.dart';
 import 'package:church/screens/ChangePassword_Screen.dart';
+import 'package:church/screens/Download_Screen.dart';
 import 'package:church/screens/HouseLocation_Screen.dart';
 import 'package:church/screens/MemberPage.dart';
 import 'package:church/screens/PrayerMeeting_Screen.dart';
@@ -156,7 +157,7 @@ class _DrawerrState extends State<Drawerr> {
                 top: height * 0.02,
               ),
               child: Wrap(
-                runSpacing: height * 0.008,
+                runSpacing: height * 0.005,
                 children: [
                   ListTile(
                     onTap: () => Get.to(
@@ -215,6 +216,17 @@ class _DrawerrState extends State<Drawerr> {
                     leading: const Icon(Icons.groups_outlined),
                     title: Text(
                       'Prayer Meeting',
+                      style: GoogleFonts.inter(),
+                    ),
+                  ),
+                  ListTile(
+                    onTap: () => Get.to(
+                      () => const DownloadScreen(),
+                      transition: Transition.rightToLeft,
+                    ),
+                    leading: const Icon(Icons.cloud_download_outlined),
+                    title: Text(
+                      'Downloads',
                       style: GoogleFonts.inter(),
                     ),
                   ),

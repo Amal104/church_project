@@ -49,54 +49,63 @@ class LectionaryTItle extends StatelessWidget {
                               var data = snapshot.data!.lectionary[index];
                               return Padding(
                                 padding: EdgeInsets.symmetric(
-                                    vertical: size.height * 0.007,
+                                    vertical: size.height * 0.005,
                                     horizontal: size.width * 0.03),
                                 child: Center(
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: size.height * 0.015,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      border: Border.all(
-                                          color: Colors.white.withOpacity(0.2),
-                                          width: 1.0),
-                                      gradient: const LinearGradient(
-                                        colors: [
-                                          Color.fromARGB(255, 237, 237, 237),
-                                          Color.fromARGB(255, 236, 188, 204),
-                                        ],
-                                        // stops: const [0.0, 1.0],
+                                  child: Card(
+                                    elevation: 3,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(20)),
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(
+                                        vertical: size.height * 0.015,
                                       ),
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    child: ListTile(
-                                      onTap: () {
-                                        Get.to(
-                                          () => LectionaryScreen(
-                                            title: data.title,
-                                            date: data.reading,
-                                            length: data.reading[index].date.length,
-                                            // readingTitle: data.reading[index].title,
-                                          ),
-                                        );
-                                      },
-                                      shape: RoundedRectangleBorder(
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color:
+                                                Colors.white.withOpacity(0.2),
+                                            width: 1.0),
+                                        gradient: const LinearGradient(
+                                          colors: [
+                                            Color.fromARGB(255, 237, 237, 237),
+                                            Color.fromARGB(255, 236, 188, 204),
+                                          ],
+                                          // stops: const [0.0, 1.0],
+                                        ),
                                         borderRadius: BorderRadius.circular(20),
                                       ),
-                                      leading: const FaIcon(
-                                        FontAwesomeIcons.calendarCheck,
-                                        size: 30,
-                                      ),
-                                      title: Text(
-                                        data.title.toTitleCase(),
-                                        style: GoogleFonts.inter(
-                                          fontWeight: FontWeight.w500,
+                                      child: ListTile(
+                                        onTap: () {
+                                          Get.to(
+                                            () => LectionaryScreen(
+                                              title: data.title,
+                                              date: data.reading,
+                                              length: data
+                                                  .reading[index].date.length,
+                                              // readingTitle: data.reading[index].title,
+                                            ),
+                                          );
+                                        },
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(20),
                                         ),
+                                        leading: const FaIcon(
+                                          FontAwesomeIcons.calendarCheck,
+                                          size: 30,
+                                        ),
+                                        title: Text(
+                                          data.title.toTitleCase(),
+                                          style: GoogleFonts.inter(
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        trailing: const FaIcon(
+                                            FontAwesomeIcons.chevronRight),
+                                        contentPadding: EdgeInsets.symmetric(
+                                            horizontal: size.width * 0.04),
                                       ),
-                                      trailing: const FaIcon(
-                                          FontAwesomeIcons.chevronRight),
-                                      contentPadding: EdgeInsets.symmetric(
-                                          horizontal: size.width * 0.04),
                                     ),
                                   ),
                                 ),

@@ -29,6 +29,7 @@ class ObituaryDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: AppColor.solidWhite,
       appBar: CustomAppBar.customAppBarIcon(),
       body: Padding(
         padding: EdgeInsets.fromLTRB(

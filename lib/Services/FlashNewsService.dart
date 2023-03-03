@@ -26,23 +26,15 @@ class FlashNewsService {
   // }
 
 
-  Future<FlashNewsModel?> asiVicarMessage() async {
-    FlashNewsModel? result;
-    try {
-      final response = await http.get(
-        Uri.parse("${baseUrl}mobile/flash-news/list"),
-      );
-      if (response.statusCode == 200) {
-        final item = json.decode(response.body);
-        result = FlashNewsModel.fromJson(item);
-      } else {
-        print("error");
-      }
-    } catch (e) {
-      log(e.toString());
-    }
-    return result;
+  Future<List<FlashNewsModel>?> fetchUsers() async {
+    final response = await Dio().get('${baseUrl}mobile/flash-news/list');
+    var json = response.data;
+    List<FlashNewsModel>? data =
+        List<FlashNewsModel>.from(json.map((x) => FlashNewsModel.fromJson(x)));
+    print(data);
+    return data;
   }
+
 
 
 }

@@ -54,7 +54,7 @@ class HomePageGrid extends StatelessWidget {
                 ),
                 Padding(
                   padding:
-                      EdgeInsets.only(right: width * 0.04, top: height * 0.01),
+                      EdgeInsets.only(right: width * 0.02, top: height * 0.01),
                   child: Align(
                     alignment: Alignment.topCenter,
                     child: Image.asset(
@@ -91,7 +91,6 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "About\nChurch",
                     style: GoogleFonts.inter(
-                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.darkPinkShade,
                     ),
@@ -157,7 +156,6 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "Vicar's\nMessage",
                     style: GoogleFonts.inter(
-                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.grey600,
                     ),
@@ -191,7 +189,6 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "Readings\nLectionary",
                     style: GoogleFonts.inter(
-                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.darkpurpleShade,
                     ),
@@ -261,7 +258,6 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "Committee\nMembers",
                     style: GoogleFonts.inter(
-                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.darkpurpleShade,
                     ),
@@ -331,7 +327,6 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "Obictury",
                     style: GoogleFonts.inter(
-                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.grey600,
                     ),
@@ -433,7 +428,6 @@ class HomePageGrid extends StatelessWidget {
                   child: Text(
                     "Announce\nments",
                     style: GoogleFonts.inter(
-                      fontSize: 15.0,
                       fontWeight: FontWeight.bold,
                       color: AppColor.darkPinkShade,
                     ),
