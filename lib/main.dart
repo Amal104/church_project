@@ -1,5 +1,6 @@
 import 'package:church/provider/AboutChurchProvider.dart';
 import 'package:church/provider/AnnoucementProvider.dart';
+import 'package:church/provider/Birthday_Anniversary_Provider.dart';
 import 'package:church/provider/ChangePassword.dart';
 import 'package:church/provider/CommitteeMemberProvider.dart';
 import 'package:church/provider/Download_Provider.dart';
@@ -79,6 +80,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => DownloadProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => BirthdayAnniversaryProvider(),
         ),
       ],
       child: GetMaterialApp(

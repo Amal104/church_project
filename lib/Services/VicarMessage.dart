@@ -15,6 +15,7 @@ class VicarMessageService {
       if (response.statusCode == 200) {
         final item = json.decode(response.body);
         result = VicarMessageModel.fromJson(item);
+        print(result);
       } else {
         print("error");
       }

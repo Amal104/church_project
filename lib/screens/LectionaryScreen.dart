@@ -61,186 +61,245 @@ class LectionaryScreenState extends State<LectionaryScreen>
         ),
       ),
       body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: MediaQuery.of(context).size.width / 25,
-                  ),
-                  child: const AppTitle(title: "Lectionary")),
-              Padding(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
                 padding: EdgeInsets.symmetric(
-                  horizontal: size.width * 0.03,
-                  vertical: size.height * 0.03,
+                  horizontal: MediaQuery.of(context).size.width / 25,
                 ),
-                child: FutureBuilder<Lectionary?>(
-                    future: LectionaryService().getLectionary(),
-                    builder: (context, snapshot) {
-                      if (snapshot.hasData) {
-                        TabController tabcontroller = TabController(
-                            length: widget.date.length, vsync: this);
-                        return Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: size.width * 0.03),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: size.height * 0.02,
+                child: const AppTitle(title: "Lectionary")),
+            Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: size.width * 0.03,
+                vertical: size.height * 0.03,
+              ),
+              child: FutureBuilder<Lectionary?>(
+                  future: LectionaryService().getLectionary(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasData) {
+                      TabController tabcontroller = TabController(
+                          length: widget.date.length, vsync: this);
+                      return Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: size.width * 0.03),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                            Text(
+                              widget.title,
+                              style: GoogleFonts.inter(
+                                fontSize: 17.0,
+                                fontWeight: FontWeight.w600,
                               ),
-                              Text(
-                                widget.title,
-                                style: GoogleFonts.inter(
-                                  fontSize: 17.0,
-                                  fontWeight: FontWeight.w600,
+                            ),
+                            SizedBox(
+                              height: size.height * 0.02,
+                            ),
+                            SizedBox(
+                              width: size.width,
+                              height: size.height * 0.07,
+                              child: TabBar(
+                                unselectedLabelColor: AppColor.grey400,
+                                indicator:
+                                    const DotIndicator(color: AppColor.grey800),
+                                isScrollable: true,
+                                controller: tabcontroller,
+                                tabs: List<Widget>.generate(
+                                  widget.date.length,
+                                  (index) {
+                                    String input = widget.date[index].date;
+                                    return Tab(
+                                      child: Text(input),
+                                    );
+                                  },
                                 ),
                               ),
-                              SizedBox(
-                                height: size.height * 0.02,
-                              ),
-                              SizedBox(
-                                width: size.width,
-                                height: size.height * 0.07,
-                                child: TabBar(
-                                  unselectedLabelColor: AppColor.grey400,
-                                  indicator: const DotIndicator(
-                                      color: AppColor.grey800),
-                                  isScrollable: true,
-                                  controller: tabcontroller,
-                                  tabs: List<Widget>.generate(
-                                    widget.date.length,
-                                    (index) {
-                                      String input = widget.date[index].date;
-                                      return Tab(
-                                        child: Text(input),
-                                      );
-                                    },
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                width: size.width,
-                                height: size.height * 0.5,
-                                child: TabBarView(
-                                  controller: tabcontroller,
-                                  children: List.generate(
-                                    widget.date.length,
-                                    (index) {
-                                      return Padding(
-                                        padding: EdgeInsets.symmetric(
-                                            vertical: size.height * 0.03),
-                                        child: Column(
-                                          children: [
-                                            Card(
-                                              color: AppColor.lightGreyShade,
-                                              elevation: 3,
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          20)),
-                                              child: Padding(
-                                                padding: EdgeInsets.symmetric(
-                                                    vertical:
-                                                        size.height * 0.02,
-                                                    horizontal:
-                                                        size.width * 0.04),
-                                                child: Text(
-                                                  widget.date[index].title,
-                                                  textAlign: TextAlign.center,
-                                                  style: GoogleFonts.inter(
-                                                    fontSize: 15.0,
-                                                    fontWeight: FontWeight.w600,
-                                                  ),
+                            ),
+                            SizedBox(
+                              width: size.width,
+                              height: size.height * 1,
+                              child: TabBarView(
+                                controller: tabcontroller,
+                                children: List.generate(
+                                  widget.date.length,
+                                  (index) {
+                                    return Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: size.height * 0.03),
+                                      child: Column(
+                                        children: [
+                                          Card(
+                                            color: AppColor.lightGreyShade,
+                                            elevation: 3,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(20)),
+                                            child: Padding(
+                                              padding: EdgeInsets.symmetric(
+                                                  vertical: size.height * 0.02,
+                                                  horizontal:
+                                                      size.width * 0.04),
+                                              child: Text(
+                                                widget.date[index].title,
+                                                textAlign: TextAlign.center,
+                                                style: GoogleFonts.inter(
+                                                  fontSize: 15.0,
+                                                  fontWeight: FontWeight.w600,
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(
-                                              height: size.height * 0.05,
+                                          ),
+                                          SizedBox(
+                                            height: size.height * 0.04,
+                                          ),
+                                          Container(
+                                            padding: EdgeInsets.symmetric(
+                                              horizontal: size.width * 0.03,
+                                              vertical: size.height * 0.03,
                                             ),
-                                            Text("Lesson",style: GoogleFonts.inter(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.w500,
-                                            ),),
-                                            SizedBox(
-                                              height: size.height * 0.01,
+                                            decoration: BoxDecoration(
+                                              color: AppColor.lightGreyShade,
+                                              borderRadius: BorderRadius.circular(20)
                                             ),
-                                            ListView.builder(
-                                              shrinkWrap: true,
-                                              itemCount: widget
-                                                  .date[index].lesson.length,
-                                              itemBuilder:
-                                                  (context, int innerIndex) {
-                                                return Align(
-                                                  alignment: Alignment.center,
-                                                  child: Text(widget.date[index]
-                                                      .lesson[innerIndex],style: GoogleFonts.inter(
-                                                        color: AppColor.darkpurpleShadev2
-                                                      ),),
-                                                );
-                                              },
+                                            child: Column(
+                                              children: [
+                                                Text(
+                                                  "Lesson",
+                                                  style: GoogleFonts.inter(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: size.height * 0.02,
+                                                ),
+                                                ListView.builder(
+                                                  physics:
+                                                      const NeverScrollableScrollPhysics(),
+                                                  shrinkWrap: true,
+                                                  itemCount: widget.date[index]
+                                                      .lesson.length,
+                                                  itemBuilder: (context,
+                                                      int innerIndex) {
+                                                    return Align(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Text(
+                                                        widget.date[index]
+                                                            .lesson[innerIndex],
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                          color: AppColor
+                                                              .darkpurpleShadev2,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                                SizedBox(
+                                                  height: size.height * 0.02,
+                                                ),
+                                                Text(
+                                                  "Epistle Gospel",
+                                                  style: GoogleFonts.inter(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: size.height * 0.02,
+                                                ),
+                                                ListView.builder(
+                                                  physics:
+                                                      const NeverScrollableScrollPhysics(),
+                                                  shrinkWrap: true,
+                                                  itemCount: widget.date[index]
+                                                      .epistleGospel.length,
+                                                  itemBuilder: (context,
+                                                      int innerIndex) {
+                                                    return Align(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Text(
+                                                        widget.date[index]
+                                                                .epistleGospel[
+                                                            innerIndex],
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                          color: AppColor
+                                                              .darkPinkShade,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                                SizedBox(
+                                                  height: size.height * 0.02,
+                                                ),
+                                                Text(
+                                                  "Evening Reading",
+                                                  style: GoogleFonts.inter(
+                                                    fontSize: 15,
+                                                    fontWeight: FontWeight.w600,
+                                                  ),
+                                                ),
+                                                SizedBox(
+                                                  height: size.height * 0.02,
+                                                ),
+                                                ListView.builder(
+                                                  physics:
+                                                      const NeverScrollableScrollPhysics(),
+                                                  shrinkWrap: true,
+                                                  itemCount: widget.date[index]
+                                                      .eveningReading.length,
+                                                  itemBuilder: (context,
+                                                      int innerIndex) {
+                                                    return Align(
+                                                      alignment:
+                                                          Alignment.center,
+                                                      child: Text(
+                                                        widget.date[index]
+                                                                .eveningReading[
+                                                            innerIndex],
+                                                        style:
+                                                            GoogleFonts.inter(
+                                                          color: AppColor
+                                                              .darkmintGreenShade,
+                                                          fontWeight:
+                                                              FontWeight.w500,
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              ],
                                             ),
-                                            SizedBox(
-                                              height: size.height * 0.01,
-                                            ),
-                                            const Text("Epistle Gospel"),
-                                            SizedBox(
-                                              height: size.height * 0.01,
-                                            ),
-                                            ListView.builder(
-                                              shrinkWrap: true,
-                                              itemCount: widget.date[index]
-                                                  .epistleGospel.length,
-                                              itemBuilder:
-                                                  (context, int innerIndex) {
-                                                return Align(
-                                                  alignment: Alignment.center,
-                                                  child: Text(widget.date[index]
-                                                          .epistleGospel[
-                                                      innerIndex]),
-                                                );
-                                              },
-                                            ),
-                                            SizedBox(
-                                              height: size.height * 0.01,
-                                            ),
-                                            const Text("Evening Reading"),
-                                            SizedBox(
-                                              height: size.height * 0.01,
-                                            ),
-                                            ListView.builder(
-                                              shrinkWrap: true,
-                                              itemCount: widget.date[index]
-                                                  .eveningReading.length,
-                                              itemBuilder:
-                                                  (context, int innerIndex) {
-                                                return Align(
-                                                  alignment: Alignment.center,
-                                                  child: Text(widget.date[index]
-                                                          .eveningReading[
-                                                      innerIndex]),
-                                                );
-                                              },
-                                            ),
-                                          ],
-                                        ),
-                                      );
-                                    },
-                                  ),
+                                          ),
+                                        ],
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
-                            ],
-                          ),
-                        );
-                      } else if (snapshot.hasError) {
-                        return Text("${snapshot.error}");
-                      }
-                      return const Center(child: CircularProgressIndicator());
-                    }),
-              ),
-            ],
-          ),
+                            ),
+                          ],
+                        ),
+                      );
+                    } else if (snapshot.hasError) {
+                      return Text("${snapshot.error}");
+                    }
+                    return const Center(child: CircularProgressIndicator());
+                  }),
+            ),
+          ],
         ),
       ),
     );

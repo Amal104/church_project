@@ -81,7 +81,7 @@ class _HomePageAppbarState extends State<HomePageAppbar> {
           ),
         ),
         title: Text(
-          AppStrings.churchName,
+          getchurch.aboutChurch?.parishName ?? "",
           style: GoogleFonts.inter(
             fontSize: 14.0,
             fontWeight: FontWeight.w700,

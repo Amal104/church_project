@@ -177,7 +177,7 @@ class _DrawerrState extends State<Drawerr> {
                     ),
                     leading: const Icon(Icons.celebration_outlined),
                     title: Text(
-                      'Birthday',
+                      'Birthday/Anniversary',
                       style: GoogleFonts.inter(),
                     ),
                   ),

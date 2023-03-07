@@ -67,7 +67,7 @@ class _DownloadScreenState extends State<DownloadScreen> {
                                   },
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(15)),
-                                  tileColor: AppColor.lightGreyShade,
+                                  tileColor: AppColor.lightblueWithOpec,
                                   leading:
                                       const FaIcon(FontAwesomeIcons.filePdf),
                                   title: Text(provider.Download![index].title),
