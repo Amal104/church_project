@@ -1,3 +1,7 @@
+// To parse this JSON data, do
+//
+//     final birthdayAnniversaryModel = birthdayAnniversaryModelFromJson(jsonString);
+
 import 'dart:convert';
 
 BirthdayAnniversaryModel birthdayAnniversaryModelFromJson(String str) => BirthdayAnniversaryModel.fromJson(json.decode(str));
@@ -33,7 +37,6 @@ class Anniversary {
         required this.memberName,
         required this.petName,
         required this.photoSlno,
-        required this.password,
         required this.gender,
         required this.dateOfJoining,
         required this.membershipStatus,
@@ -43,16 +46,14 @@ class Anniversary {
         required this.postoffice,
         required this.pincode,
         required this.votingRight,
-        required this.prayerGroup,
         required this.designation,
-        required this.organisation,
         required this.landline,
         required this.mobilePhone,
         required this.phoneOffice,
         required this.email,
         required this.bloodGroup,
         required this.birthday,
-        this.marriageDate,
+        required this.marriageDate,
         required this.homeParishHouseName,
         required this.homeParish,
         required this.nativePlace,
@@ -60,9 +61,7 @@ class Anniversary {
         required this.latitude,
         required this.longitude,
         required this.generalRemarks,
-        required this.token,
         required this.memberId,
-        required this.v,
     });
 
     String id;
@@ -72,7 +71,6 @@ class Anniversary {
     String memberName;
     String petName;
     int photoSlno;
-    String password;
     String gender;
     DateTime dateOfJoining;
     String membershipStatus;
@@ -82,9 +80,7 @@ class Anniversary {
     String postoffice;
     int pincode;
     bool votingRight;
-    String prayerGroup;
     String designation;
-    String organisation;
     String landline;
     String mobilePhone;
     String phoneOffice;
@@ -99,9 +95,7 @@ class Anniversary {
     String latitude;
     String longitude;
     String generalRemarks;
-    String token;
     int memberId;
-    int v;
 
     factory Anniversary.fromJson(Map<String, dynamic> json) => Anniversary(
         id: json["_id"],
@@ -111,7 +105,6 @@ class Anniversary {
         memberName: json["member_name"],
         petName: json["pet_name"],
         photoSlno: json["photo_slno"],
-        password: json["password"],
         gender: json["gender"],
         dateOfJoining: DateTime.parse(json["Date_of_joining"]),
         membershipStatus: json["membership_status"],
@@ -121,9 +114,7 @@ class Anniversary {
         postoffice: json["postoffice"],
         pincode: json["pincode"],
         votingRight: json["voting_right"],
-        prayerGroup: json["prayer_group"],
         designation: json["designation"],
-        organisation: json["organisation"],
         landline: json["landline"],
         mobilePhone: json["mobile_phone"],
         phoneOffice: json["phone_office"],
@@ -138,9 +129,7 @@ class Anniversary {
         latitude: json["latitude"],
         longitude: json["longitude"],
         generalRemarks: json["general_remarks"],
-        token: json["token"],
         memberId: json["memberId"],
-        v: json["__v"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -151,7 +140,6 @@ class Anniversary {
         "member_name": memberName,
         "pet_name": petName,
         "photo_slno": photoSlno,
-        "password": password,
         "gender": gender,
         "Date_of_joining": dateOfJoining.toIso8601String(),
         "membership_status": membershipStatus,
@@ -161,9 +149,7 @@ class Anniversary {
         "postoffice": postoffice,
         "pincode": pincode,
         "voting_right": votingRight,
-        "prayer_group": prayerGroup,
         "designation": designation,
-        "organisation": organisation,
         "landline": landline,
         "mobile_phone": mobilePhone,
         "phone_office": phoneOffice,
@@ -178,8 +164,6 @@ class Anniversary {
         "latitude": latitude,
         "longitude": longitude,
         "general_remarks": generalRemarks,
-        "token": token,
         "memberId": memberId,
-        "__v": v,
     };
 }

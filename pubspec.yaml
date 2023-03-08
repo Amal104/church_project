@@ -55,6 +55,7 @@ dependencies:
   fluttertoast: ^8.2.1
   path_provider: ^2.0.13
   open_filex: ^4.3.2
+  confetti: ^0.7.0
 
 dev_dependencies:
   flutter_test:

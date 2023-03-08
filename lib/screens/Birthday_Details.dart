@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:church/Model/Birthday_Anniversary_Model.dart';
 import 'package:church/Model/MemberListModel.dart';
 import 'package:church/values/values.dart';
 import 'package:flutter/material.dart';
@@ -6,11 +7,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:lottie/lottie.dart';
+import '../widgets/BirthdayMemberDetailsTile.dart';
 import '../widgets/MemberDetailsTile.dart';
 import 'package:confetti/confetti.dart';
 
-class MemberDetails extends StatefulWidget {
-  const MemberDetails({
+class BirthdayDetails extends StatefulWidget {
+  const BirthdayDetails({
     super.key,
     required this.memberid,
     required this.email,
@@ -22,9 +24,9 @@ class MemberDetails extends StatefulWidget {
     required this.address2,
     required this.postoffice,
     required this.pincode,
-    required this.prayerGroup,
+    // required this.prayerGroup,
     required this.designation,
-    required this.organization,
+    // required this.organization,
     required this.mobile,
     required this.phoneOffice,
     required this.birthday,
@@ -51,9 +53,9 @@ class MemberDetails extends StatefulWidget {
   final String address2;
   final String postoffice;
   final int pincode;
-  final String prayerGroup;
+  // final String prayerGroup;
   final String designation;
-  final String organization;
+  // final String organization;
   final String mobile;
   final String phoneOffice;
   final DateTime birthday;
@@ -65,36 +67,29 @@ class MemberDetails extends StatefulWidget {
   final String photo;
   final String latitude;
   final String longitude;
-  final MemberListModel item;
+  final Anniversary item;
 
   @override
-  State<MemberDetails> createState() => _MemberDetailsState();
+  State<BirthdayDetails> createState() => _BirthdayDetailsState();
 }
 
-class _MemberDetailsState extends State<MemberDetails> {
+class _BirthdayDetailsState extends State<BirthdayDetails> {
   ConfettiController controller =
       ConfettiController(duration: const Duration(seconds: 3));
   @override
   void initState() {
     super.initState();
-    var a = DateFormat("dd-MM").format(widget.birthday);
-    var b = DateFormat("dd-MM").format(DateTime.now());
-    if (a == b) {
-      controller.play();
-    }
+    controller.play();
   }
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     controller.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    var a = DateFormat("dd-MM").format(widget.birthday);
-    var b = DateFormat("dd-MM").format(DateTime.now());
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SizedBox(
@@ -139,7 +134,7 @@ class _MemberDetailsState extends State<MemberDetails> {
                     topRight: Radius.circular(30),
                   ),
                 ),
-                child: MemberDetailsTile(
+                child: BirthdayMemberDetailsTile(
                   size: size,
                   memberName: widget.memberName,
                   memberid: widget.memberid,
@@ -152,9 +147,9 @@ class _MemberDetailsState extends State<MemberDetails> {
                   address2: widget.address2,
                   postoffice: widget.postoffice,
                   pincode: widget.pincode,
-                  prayerGroup: widget.prayerGroup,
+                  // prayerGroup: widget.prayerGroup,
                   designation: widget.designation,
-                  organization: widget.organization,
+                  // organization: widget.organization,
                   mobile: widget.mobile,
                   phoneOffice: widget.phoneOffice,
                   homeParishHouseName: widget.homeParishHouseName,
@@ -176,17 +171,15 @@ class _MemberDetailsState extends State<MemberDetails> {
                 numberOfParticles: 30,
               ),
             ),
-            a == b
-                ? Positioned(
-                    top: size.height * 0.315,
-                    left: size.width * 0.32,
-                    child: LottieBuilder.asset(
-                      "assets/lottie/birthday.json",
-                      repeat: false,
-                      height: size.height * 0.12,
-                    ),
-                  )
-                : SizedBox.shrink(),
+            Positioned(
+              top: size.height * 0.315,
+              left: size.width * 0.32,
+              child: LottieBuilder.asset(
+                "assets/lottie/birthday.json",
+                repeat: false,
+                height: size.height * 0.12,
+              ),
+            )
           ],
         ),
       ),

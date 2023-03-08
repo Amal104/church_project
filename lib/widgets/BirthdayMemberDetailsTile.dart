@@ -9,8 +9,8 @@ import 'package:provider/provider.dart';
 
 import '../values/values.dart';
 
-class MemberDetailsTile extends StatelessWidget {
-  const MemberDetailsTile({
+class BirthdayMemberDetailsTile extends StatelessWidget {
+  const BirthdayMemberDetailsTile({
     super.key,
     required this.size,
     required this.memberName,
@@ -24,9 +24,9 @@ class MemberDetailsTile extends StatelessWidget {
     required this.address2,
     required this.postoffice,
     required this.pincode,
-    required this.prayerGroup,
+    // required this.prayerGroup,
     required this.designation,
-    required this.organization,
+    // required this.organization,
     required this.mobile,
     required this.phoneOffice,
     required this.homeParishHouseName,
@@ -51,9 +51,9 @@ class MemberDetailsTile extends StatelessWidget {
   final String address2;
   final String postoffice;
   final int pincode;
-  final String prayerGroup;
+  // final String prayerGroup;
   final String designation;
-  final String organization;
+  // final String organization;
   final String mobile;
   final String phoneOffice;
   final String homeParishHouseName;
@@ -469,33 +469,33 @@ class MemberDetailsTile extends StatelessWidget {
                   ),
                 ),
               ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: AppColor.lightGreyShade,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: size.height * 0.06,
-                      minWidth: size.width,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Prayer Group",
-                          style: GoogleFonts.inter(),
-                        ),
-                        Text(
-                          prayerGroup.toCapitalized(),
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              // Card(
+              //   shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(12)),
+              //   color: AppColor.lightGreyShade,
+              //   child: Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+              //     child: ConstrainedBox(
+              //       constraints: BoxConstraints(
+              //         minHeight: size.height * 0.06,
+              //         minWidth: size.width,
+              //       ),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //         children: [
+              //           Text(
+              //             "Prayer Group",
+              //             style: GoogleFonts.inter(),
+              //           ),
+              //           Text(
+              //             prayerGroup.toCapitalized(),
+              //             style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
               Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
@@ -523,33 +523,33 @@ class MemberDetailsTile extends StatelessWidget {
                   ),
                 ),
               ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: AppColor.lightGreyShade,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: size.height * 0.06,
-                      minWidth: size.width,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Organisation",
-                          style: GoogleFonts.inter(),
-                        ),
-                        Text(
-                          organization.toTitleCase(),
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
+              // Card(
+              //   shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(12)),
+              //   color: AppColor.lightGreyShade,
+              //   child: Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+              //     child: ConstrainedBox(
+              //       constraints: BoxConstraints(
+              //         minHeight: size.height * 0.06,
+              //         minWidth: size.width,
+              //       ),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //         children: [
+              //           Text(
+              //             "Organisation",
+              //             style: GoogleFonts.inter(),
+              //           ),
+              //           Text(
+              //             organization.toTitleCase(),
+              //             style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
               Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
