@@ -2,11 +2,15 @@ import 'package:church/Extensions/StringExtension.dart';
 import 'package:church/provider/Location_Provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
+import '../values/SnackBar.dart';
 import '../values/values.dart';
 
 class BirthdayMemberDetailsTile extends StatelessWidget {
@@ -72,28 +76,34 @@ class BirthdayMemberDetailsTile extends StatelessWidget {
         SizedBox(
           height: size.height * 0.03,
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "Member Name",
-              style: GoogleFonts.inter(
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
-                color: AppColor.grey600,
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+          child: Row(
+            // mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Text(
+                "Member Name",
+                style: GoogleFonts.inter(
+                  fontSize: 18.0,
+                  fontWeight: FontWeight.bold,
+                  color: AppColor.grey600,
+                ),
               ),
-            ),
-            SizedBox(
-              width: size.width * 0.2,
-            ),
-            Text(
-              memberName.toTitleCase(),
-              style: GoogleFonts.inter(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
+              SizedBox(
+                width: size.width * 0.1,
               ),
-            ),
-          ],
+              SizedBox(
+                width: size.width * 0.45,
+                child: Text(
+                  memberName.toTitleCase(),textAlign: TextAlign.right,
+                  style: GoogleFonts.inter(
+                    fontSize: 20.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
         SizedBox(
           height: size.height * 0.03,
@@ -102,7 +112,34 @@ class BirthdayMemberDetailsTile extends StatelessWidget {
           child: ListView(
             padding: const EdgeInsets.symmetric(vertical: 0),
             children: [
-              Card(
+              // Card(
+              //   shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(12)),
+              //   color: AppColor.lightGreyShade,
+              //   child: Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+              //     child: ConstrainedBox(
+              //       constraints: BoxConstraints(
+              //         minHeight: size.height * 0.06,
+              //         minWidth: size.width,
+              //       ),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //         children: [
+              //           Text(
+              //             "Member ID",
+              //             style: GoogleFonts.inter(),
+              //           ),
+              //           Text(
+              //             memberid.toString(),
+              //             style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
+               Card(
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12)),
                 color: AppColor.lightGreyShade,
@@ -117,11 +154,11 @@ class BirthdayMemberDetailsTile extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Member ID",
+                          "Gender",
                           style: GoogleFonts.inter(),
                         ),
                         Text(
-                          memberid.toString(),
+                          gender.toCapitalized(),
                           style: GoogleFonts.inter(fontWeight: FontWeight.w600),
                         ),
                       ],
@@ -156,87 +193,123 @@ class BirthdayMemberDetailsTile extends StatelessWidget {
                   ),
                 ),
               ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: AppColor.lightGreyShade,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: size.height * 0.06,
-                      minWidth: size.width,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Email",
-                          style: GoogleFonts.inter(),
-                        ),
-                        Text(
-                          email,
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: AppColor.lightGreyShade,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: size.height * 0.06,
-                      minWidth: size.width,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Edavaka RegNo",
-                          style: GoogleFonts.inter(),
-                        ),
-                        Text(
-                          edavakaReg.toString(),
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
-                        ),
-                      ],
+              GestureDetector(
+                onTap: () {
+                  launchUrlString("tel:$mobile");
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  color: AppColor.lightGreyShade,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: size.height * 0.06,
+                        minWidth: size.width,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Mobile",
+                            style: GoogleFonts.inter(),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                mobile,
+                                style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              SizedBox(
+                                width: size.width * 0.01,
+                              ),
+                              Icon(
+                                Icons.phone,
+                                size: size.height * 0.025,
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: AppColor.lightGreyShade,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: size.height * 0.06,
-                      minWidth: size.width,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Gender",
-                          style: GoogleFonts.inter(),
-                        ),
-                        Text(
-                          gender.toCapitalized(),
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
-                        ),
-                      ],
+              GestureDetector(
+                onTap: () {
+                  Clipboard.setData(ClipboardData(text: email));
+                  Customsnackbar.showSnackBar(context, "Email",
+                      "Copied successfully", AppColor.purpleShade);
+                },
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
+                  color: AppColor.lightGreyShade,
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: size.height * 0.06,
+                        minWidth: size.width,
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Email",
+                            style: GoogleFonts.inter(),
+                          ),
+                          Row(
+                            children: [
+                              Text(
+                                email,
+                                style: GoogleFonts.inter(
+                                    fontWeight: FontWeight.w600),
+                              ),
+                              SizedBox(
+                                width: size.width * 0.01,
+                              ),
+                              Icon(
+                                Icons.mail_outline,
+                                size: size.height * 0.025,
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
               ),
+              // Card(
+              //   shape: RoundedRectangleBorder(
+              //       borderRadius: BorderRadius.circular(12)),
+              //   color: AppColor.lightGreyShade,
+              //   child: Padding(
+              //     padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+              //     child: ConstrainedBox(
+              //       constraints: BoxConstraints(
+              //         minHeight: size.height * 0.06,
+              //         minWidth: size.width,
+              //       ),
+              //       child: Row(
+              //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //         children: [
+              //           Text(
+              //             "Edavaka RegNo",
+              //             style: GoogleFonts.inter(),
+              //           ),
+              //           Text(
+              //             edavakaReg.toString(),
+              //             style: GoogleFonts.inter(fontWeight: FontWeight.w600),
+              //           ),
+              //         ],
+              //       ),
+              //     ),
+              //   ),
+              // ),
               if(marriageDate != null)
               Card(
                 shape: RoundedRectangleBorder(
@@ -382,34 +455,25 @@ class BirthdayMemberDetailsTile extends StatelessWidget {
                       minHeight: size.height * 0.09,
                       minWidth: size.width,
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Permanent Address",
-                              style: GoogleFonts.inter(),
-                            ),
-                            SizedBox(
-                              height: size.height * 0.006,
-                            ),
-                            SizedBox(
-                              width: size.width * 0.65,
-                              child: Text(
-                                address2.toTitleCase(),
-                                style: GoogleFonts.inter(
-                                    fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ],
+                        Text(
+                          "Permanent Address",
+                          style: GoogleFonts.inter(),
                         ),
-                        Image.asset(
-                          "assets/maplogo.png",
-                          height: size.height * 0.04,
-                        )
+                        SizedBox(
+                          height: size.height * 0.006,
+                        ),
+                        SizedBox(
+                          width: size.width * 0.65,
+                          child: Text(
+                            address2.toTitleCase(),
+                            style: GoogleFonts.inter(
+                                fontWeight: FontWeight.w600),
+                          ),
+                        ),
                       ],
                     ),
                   ),
@@ -550,33 +614,6 @@ class BirthdayMemberDetailsTile extends StatelessWidget {
               //     ),
               //   ),
               // ),
-              Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)),
-                color: AppColor.lightGreyShade,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minHeight: size.height * 0.06,
-                      minWidth: size.width,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Mobile",
-                          style: GoogleFonts.inter(),
-                        ),
-                        Text(
-                          mobile,
-                          style: GoogleFonts.inter(fontWeight: FontWeight.w600),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
               if(phoneOffice != "")
               Card(
                 shape: RoundedRectangleBorder(

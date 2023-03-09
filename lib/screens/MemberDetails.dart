@@ -173,7 +173,7 @@ class _MemberDetailsState extends State<MemberDetails> {
               child: ConfettiWidget(
                 confettiController: controller,
                 blastDirectionality: BlastDirectionality.explosive,
-                numberOfParticles: 30,
+                numberOfParticles: 40,
               ),
             ),
             a == b
@@ -186,7 +186,7 @@ class _MemberDetailsState extends State<MemberDetails> {
                       height: size.height * 0.12,
                     ),
                   )
-                : SizedBox.shrink(),
+                : const SizedBox.shrink(),
           ],
         ),
       ),

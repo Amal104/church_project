@@ -11,8 +11,8 @@ import '../widgets/BirthdayMemberDetailsTile.dart';
 import '../widgets/MemberDetailsTile.dart';
 import 'package:confetti/confetti.dart';
 
-class BirthdayDetails extends StatefulWidget {
-  const BirthdayDetails({
+class AnniversaryDetails extends StatefulWidget {
+  const AnniversaryDetails({
     super.key,
     required this.memberid,
     required this.email,
@@ -70,32 +70,13 @@ class BirthdayDetails extends StatefulWidget {
   final Anniversary item;
 
   @override
-  State<BirthdayDetails> createState() => _BirthdayDetailsState();
+  State<AnniversaryDetails> createState() => _AnniversaryDetailsState();
 }
 
-class _BirthdayDetailsState extends State<BirthdayDetails> {
-  ConfettiController controller =
-      ConfettiController(duration: const Duration(seconds: 3));
-  @override
-  void initState() {
-    super.initState();
-    var birthDay = DateFormat("dd-MM").format(widget.birthday);
-    var today = DateFormat("dd-MM").format(DateTime.now());
-    if (birthDay == today) {
-      controller.play();
-    }
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    controller.dispose();
-  }
+class _AnniversaryDetailsState extends State<AnniversaryDetails> {
 
   @override
   Widget build(BuildContext context) {
-    var birthDay = DateFormat("dd-MM").format(widget.birthday);
-    var today = DateFormat("dd-MM").format(DateTime.now());
     var size = MediaQuery.of(context).size;
     return Scaffold(
       body: SizedBox(
@@ -169,25 +150,6 @@ class _BirthdayDetailsState extends State<BirthdayDetails> {
                 ),
               ),
             ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: ConfettiWidget(
-                confettiController: controller,
-                blastDirectionality: BlastDirectionality.explosive,
-                numberOfParticles: 40,
-              ),
-            ),
-            birthDay == today
-                ? Positioned(
-                    top: size.height * 0.315,
-                    left: size.width * 0.32,
-                    child: LottieBuilder.asset(
-                      "assets/lottie/birthday.json",
-                      repeat: false,
-                      height: size.height * 0.12,
-                    ),
-                  )
-                : const SizedBox.shrink(),
           ],
         ),
       ),
