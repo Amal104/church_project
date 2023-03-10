@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../screens/AnnoucementPage.dart';
+import '../screens/MemberPage.dart';
 import '../values/values.dart';
 
 class HomePageGrid extends StatelessWidget {
@@ -30,7 +31,7 @@ class HomePageGrid extends StatelessWidget {
       children: <Widget>[
         Padding(
           padding: EdgeInsets.fromLTRB(
-            width * 0.025,
+            width * 0.018,
             height / 100,
             width * 0.018,
             0,
@@ -63,28 +64,6 @@ class HomePageGrid extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Positioned(
-                //   bottom: 15,
-                //   right: 15,
-                //   child: GestureDetector(
-                //     onTap: () => Get.to(
-                //       () => const ChurchHistory(),
-                //       transition: Transition.rightToLeft,
-                //     ),
-                //     child: Container(
-                //       height: height * 0.05,
-                //       width: width * 0.10,
-                //       decoration: BoxDecoration(
-                //           color: AppColor.grey,
-                //           borderRadius: BorderRadius.circular(12)),
-                //       child: const Icon(
-                //         Icons.chevron_right,
-                //         size: 40,
-                //         color: AppColor.lightGreyShade,
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 Positioned(
                   bottom: size.height * 0.018,
                   left: size.width * 0.04,
@@ -102,7 +81,7 @@ class HomePageGrid extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(
-              width * 0.018, height / 100, width * 0.025, 0),
+              width * 0.018, height / 100, width * 0.018, 0),
           child: GestureDetector(
              onTap: () => Get.to(
               () => const VicarsMessage(),
@@ -118,28 +97,6 @@ class HomePageGrid extends StatelessWidget {
                     color: AppColor.lightGreyShade,
                   ),
                 ),
-                // Positioned(
-                //   bottom: 15,
-                //   right: 15,
-                //   child: GestureDetector(
-                //     onTap: () => Get.to(
-                //       () => const VicarsMessage(),
-                //       transition: Transition.rightToLeft,
-                //     ),
-                //     child: Container(
-                //       height: height * 0.05,
-                //       width: width * 0.10,
-                //       decoration: BoxDecoration(
-                //           color: AppColor.grey,
-                //           borderRadius: BorderRadius.circular(12)),
-                //       child: const Icon(
-                //         Icons.chevron_right,
-                //         size: 40,
-                //         color: AppColor.lightGreyShade,
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 Padding(
                   padding: EdgeInsets.only(top: height * 0.010),
                   child: Align(
@@ -167,7 +124,54 @@ class HomePageGrid extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.fromLTRB(
-              width * 0.018, height * 0.010, width * 0.025, 0),
+            width * 0.018,
+            height * 0.010,
+            width * 0.018,
+            0,
+          ),
+          child: GestureDetector(
+             onTap: () => Get.to(
+              () => const MemberPage(),
+              transition: Transition.rightToLeft,
+            ),
+            child: Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: AppColor.purpleShadeWithOpec,
+                  ),
+                  height: height / 1.5,
+                  width: width / 1.5,
+                ),
+                Positioned(
+                  bottom: size.height * 0.018,
+                  left: size.width * 0.04,
+                  child: Text(
+                    "Members\nDetails",
+                    style: GoogleFonts.inter(
+                      fontWeight: FontWeight.bold,
+                      color: AppColor.darkpurpleShade,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(top: height * 0.01),
+                  child: Align(
+                    alignment: Alignment.topCenter,
+                    child: Image.asset(
+                      "assets/committeemember.png",
+                      height: size.height * 0.072,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(
+              width * 0.018, height * 0.010, width * 0.018, 0),
           child: GestureDetector(
              onTap: () => Get.to(
               () => const LectionaryTItle(),
@@ -204,97 +208,6 @@ class HomePageGrid extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Positioned(
-                //   bottom: 15,
-                //   right: 15,
-                //   child: GestureDetector(
-                //     onTap: () => Get.to(
-                //       () => const LectionaryPage(),
-                //       transition: Transition.rightToLeft,
-                //     ),
-                //     child: Container(
-                //       height: height * 0.05,
-                //       width: width * 0.10,
-                //       decoration: BoxDecoration(
-                //           color: AppColor.grey,
-                //           borderRadius: BorderRadius.circular(12)),
-                //       child: const Icon(
-                //         Icons.chevron_right,
-                //         size: 40,
-                //         color: AppColor.lightGreyShade,
-                //       ),
-                //     ),
-                //   ),
-                // ),
-              ],
-            ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(
-            width * 0.025,
-            height * 0.010,
-            width * 0.018,
-            0,
-          ),
-          child: GestureDetector(
-             onTap: () => Get.to(
-              () => const CommitteeMemberPage(),
-              transition: Transition.rightToLeft,
-            ),
-            child: Stack(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: AppColor.purpleShadeWithOpec,
-                  ),
-                  height: height / 1.5,
-                  width: width / 1.5,
-                ),
-                Positioned(
-                  bottom: size.height * 0.018,
-                  left: size.width * 0.04,
-                  child: Text(
-                    "Committee\nMembers",
-                    style: GoogleFonts.inter(
-                      fontWeight: FontWeight.bold,
-                      color: AppColor.darkpurpleShade,
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.only(top: height * 0.01),
-                  child: Align(
-                    alignment: Alignment.topCenter,
-                    child: Image.asset(
-                      "assets/committeemember.png",
-                      height: size.height * 0.072,
-                    ),
-                  ),
-                ),
-                // Positioned(
-                //   bottom: 15,
-                //   right: 15,
-                //   child: GestureDetector(
-                //     onTap: () => Get.to(
-                //       () => const CommitteeMemberPage(),
-                //       transition: Transition.rightToLeft,
-                //     ),
-                //     child: Container(
-                //      height: height * 0.05,
-                //       width: width * 0.10,
-                //       decoration: BoxDecoration(
-                //           color: AppColor.grey,
-                //           borderRadius: BorderRadius.circular(12)),
-                //       child: const Icon(
-                //         Icons.chevron_right,
-                //         size: 40,
-                //         color: AppColor.lightGreyShade,
-                //       ),
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -345,28 +258,6 @@ class HomePageGrid extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Positioned(
-                //   bottom: 15,
-                //   right: 15,
-                //   child: GestureDetector(
-                //     onTap: () => Get.to(
-                //       () => const ObicturyPage(),
-                //       transition: Transition.rightToLeft,
-                //     ),
-                //     child: Container(
-                //       height: height * 0.05,
-                //       width: width * 0.10,
-                //       decoration: BoxDecoration(
-                //           color: AppColor.grey,
-                //           borderRadius: BorderRadius.circular(12)),
-                //       child: const Icon(
-                //         Icons.chevron_right,
-                //         size: 40,
-                //         color: AppColor.lightGreyShade,
-                //       ),
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -375,7 +266,7 @@ class HomePageGrid extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(
             width * 0.018,
             height * 0.010,
-            width * 0.025,
+            width * 0.018,
             0,
           ),
           child: GestureDetector(
@@ -400,28 +291,6 @@ class HomePageGrid extends StatelessWidget {
                     height: size.height * 0.078,
                   ),
                 ),
-                // Positioned(
-                //   bottom: 15,
-                //   right: 15,
-                //   child: GestureDetector(
-                //     onTap: () => Get.to(
-                //       () => const AnnouncementPage(),
-                //       transition: Transition.rightToLeft,
-                //     ),
-                //     child: Container(
-                //       height: height * 0.05,
-                //       width: width * 0.10,
-                //       decoration: BoxDecoration(
-                //           color: AppColor.grey,
-                //           borderRadius: BorderRadius.circular(12)),
-                //       child: const Icon(
-                //         Icons.chevron_right,
-                //         size: 40,
-                //         color: AppColor.lightGreyShade,
-                //       ),
-                //     ),
-                //   ),
-                // ),
                 Positioned(
                   bottom: size.height * 0.018,
                   left: size.width * 0.04,
@@ -437,54 +306,6 @@ class HomePageGrid extends StatelessWidget {
             ),
           ),
         ),
-        // Padding(
-        //   padding: EdgeInsets.fromLTRB(
-        //       width * 0.025, height / 100, width * 0.018, 0),
-        //   child: Stack(
-        //     children: [
-        //       Container(
-        //         decoration: BoxDecoration(
-        //           borderRadius: BorderRadius.circular(30),
-        //           color: AppColor.mintGreenShadewithOpec,
-        //         ),
-        //         height: height / 1.5,
-        //         width: width / 1.5,
-        //       ),
-        //       Positioned(
-        //         bottom: 25.0,
-        //         left: 15.0,
-        //         child: Text(
-        //           "Obictury",
-        //           style: GoogleFonts.blinker(
-        //             fontSize: 20.0,
-        //             fontWeight: FontWeight.bold,
-        //             color: AppColor.darkmintGreenShade,
-        //           ),
-        //         ),
-        //       ),
-        //       // Align(
-        //       //   alignment: Alignment.topCenter,
-        //       //   child: Image.asset("assets/committee.png",height: 118,),
-        //       // ),
-        //       Positioned(
-        //         bottom: 15,
-        //         right: 15,
-        //         child: Container(
-        //           height: 40,
-        //           width: 40,
-        //           decoration: BoxDecoration(
-        //               color: AppColor.grey,
-        //               borderRadius: BorderRadius.circular(12)),
-        //           child: const Icon(
-        //             Icons.chevron_right,
-        //             size: 40,
-        //             color: AppColor.lightGreyShade,
-        //           ),
-        //         ),
-        //       ),
-        //     ],
-        //   ),
-        // ),
       ],
     );
   }

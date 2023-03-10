@@ -59,9 +59,9 @@ class MemberListModel {
     PrayerGroup prayerGroup;
     String designation;
     Organisation organisation;
-    String landline;
+    String? landline;
     String mobilePhone;
-    String phoneOffice;
+    String? phoneOffice;
     String email;
     String bloodGroup;
     DateTime birthday;
@@ -98,7 +98,7 @@ class MemberListModel {
         email: json["email"],
         bloodGroup: json["blood_group"],
         birthday: DateTime.parse(json["birthday"]),
-        marriageDate: json['marriage_date'] != null ? DateTime.parse(json['marriage_date']) : null,
+        marriageDate: json["marriage_date"] == null ? null : DateTime.parse(json["marriage_date"]),
         homeParishHouseName: json["home_parish_house_name"],
         homeParish: json["home_parish"],
         nativePlace: json["native_place"],
@@ -149,18 +149,21 @@ class Organisation {
         required this.id,
         required this.organisationName,
         required this.organisationId,
+        required this.hide,
         required this.v,
     });
 
     String id;
     String organisationName;
     int organisationId;
+    bool hide;
     int v;
 
     factory Organisation.fromJson(Map<String, dynamic> json) => Organisation(
         id: json["_id"],
         organisationName: json["organisationName"],
         organisationId: json["organisationId"],
+        hide: json["hide"],
         v: json["__v"],
     );
 
@@ -168,6 +171,7 @@ class Organisation {
         "_id": id,
         "organisationName": organisationName,
         "organisationId": organisationId,
+        "hide": hide,
         "__v": v,
     };
 }
@@ -176,26 +180,30 @@ class PrayerGroup {
     PrayerGroup({
         required this.id,
         required this.prayerGroupName,
-        required this.v,
+        required this.hide,
         required this.prayerGroupId,
+        required this.v,
     });
 
     String id;
     String prayerGroupName;
-    int v;
+    bool hide;
     int prayerGroupId;
+    int v;
 
     factory PrayerGroup.fromJson(Map<String, dynamic> json) => PrayerGroup(
         id: json["_id"],
         prayerGroupName: json["prayerGroupName"],
-        v: json["__v"],
+        hide: json["hide"],
         prayerGroupId: json["prayerGroupId"],
+        v: json["__v"],
     );
 
     Map<String, dynamic> toJson() => {
         "_id": id,
         "prayerGroupName": prayerGroupName,
-        "__v": v,
+        "hide": hide,
         "prayerGroupId": prayerGroupId,
+        "__v": v,
     };
 }

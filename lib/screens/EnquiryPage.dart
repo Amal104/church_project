@@ -110,7 +110,7 @@ class EnquiryPage extends StatelessWidget {
                   height: size.height * 0.06,
                 ),
                 Container(
-                  height: size.height * 0.3,
+                  height: size.height * 0.3025,
                   width: size.width,
                   decoration: const BoxDecoration(
                       color: Color(0x47E1E6E9)),

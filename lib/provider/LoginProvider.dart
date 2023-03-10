@@ -93,36 +93,42 @@ class LoginProvider extends ChangeNotifier {
 
   Future<void> login(BuildContext context) async {
     // final storage = FlutterSecureStorage();
-
-    if (mobileConroller.text.isNotEmpty && passwordConroller.text.isNotEmpty) {
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      final token = prefs.getString("logintoken");
-      Map<String, String> headers = {
-        'Authorization': 'Bearer $token',
-      };
-      var response = await http.post(Uri.parse("${baseUrl}mobile/user/login"),
-          headers: headers,
-          body: ({
-            "phone": mobileConroller.text,
-            "password": passwordConroller.text
-          }));
-      if (response.statusCode == 200) {
-        final data = jsonDecode(response.body);
-        final token = data["token"];
-        final memberid = data["memberId"];
-
+    try {
+      if (mobileConroller.text.isNotEmpty &&
+          passwordConroller.text.isNotEmpty) {
         SharedPreferences prefs = await SharedPreferences.getInstance();
-        prefs.setString("logintoken", token);
-        prefs.setInt("memberid", memberid);
-        Customsnackbar.showSnackBar(
-            context, "Yaay!", "Login Successful",AppColor.purpleShade);
-        Get.off(() => const HomePage());
+        final token = prefs.getString("logintoken");
+        Map<String, String> headers = {
+          'Authorization': 'Bearer $token',
+        };
+        var response = await http.post(Uri.parse("${baseUrl}mobile/user/login"),
+            headers: headers,
+            body: ({
+              "phone": mobileConroller.text,
+              "password": passwordConroller.text
+            }));
+        if (response.statusCode == 200) {
+          final data = jsonDecode(response.body);
+          final token = data["token"];
+          final memberid = data["memberId"];
+
+          SharedPreferences prefs = await SharedPreferences.getInstance();
+          prefs.setString("logintoken", token);
+          prefs.setInt("memberid", memberid);
+          Customsnackbar.showSnackBar(
+              context, "Yaay!", "Login Successful", AppColor.purpleShade);
+          Get.off(() => const HomePage());
+        } else {
+          var status = response.body;
+          Customsnackbar.showSnackBar(
+              context, "Oops!", "$status", AppColor.purpleShade);
+        }
       } else {
-        var status = response.body;
-        Customsnackbar.showSnackBar(context, "Oops!", "$status",AppColor.purpleShade);
+        Customsnackbar.showSnackBar(
+            context, "Oops!", "Enter valid data", AppColor.purpleShade);
       }
-    } else {
-      Customsnackbar.showSnackBar(context, "Oops!", "Enter valid data",AppColor.purpleShade);
+    } catch (e) {
+      print(e);
     }
   }
 

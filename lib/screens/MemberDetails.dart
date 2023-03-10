@@ -55,7 +55,7 @@ class MemberDetails extends StatefulWidget {
   final String designation;
   final String organization;
   final String mobile;
-  final String phoneOffice;
+  final String? phoneOffice;
   final DateTime birthday;
   final DateTime? marriageDate;
   final String homeParishHouseName;

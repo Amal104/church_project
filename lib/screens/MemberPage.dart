@@ -155,7 +155,7 @@ class _MemberPageState extends State<MemberPage> {
                                 ),
                               ),
                               title: Text(member.memberName.toTitleCase()),
-                              subtitle: Text(member.homeParish),
+                              subtitle: Text(member.houseName),
                               trailing:
                                   const FaIcon(FontAwesomeIcons.chevronRight),
                             ),

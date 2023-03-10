@@ -59,7 +59,7 @@ class MemberDetailsTile extends StatelessWidget {
   final String designation;
   final String organization;
   final String mobile;
-  final String phoneOffice;
+  final String? phoneOffice;
   final String homeParishHouseName;
   final String homeParish;
   final String nativePlace;
@@ -607,7 +607,7 @@ class MemberDetailsTile extends StatelessWidget {
                   ),
                 ),
               ),
-              if (phoneOffice != "")
+              if (phoneOffice != null)
                 Card(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
@@ -628,7 +628,7 @@ class MemberDetailsTile extends StatelessWidget {
                             style: GoogleFonts.inter(),
                           ),
                           Text(
-                            phoneOffice,
+                            phoneOffice!,
                             style:
                                 GoogleFonts.inter(fontWeight: FontWeight.w600),
                           ),

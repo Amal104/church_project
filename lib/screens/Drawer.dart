@@ -24,6 +24,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../provider/Profile_Provider.dart';
 import 'Birthdat_Anniversery_calender.dart';
+import 'CommitteMembersPage.dart';
 import 'LoginScreen.dart';
 import '../values/urls.dart';
 
@@ -161,12 +162,12 @@ class _DrawerrState extends State<Drawerr> {
                 children: [
                   ListTile(
                     onTap: () => Get.to(
-                      () => const MemberPage(),
+                      () => const CommitteeMemberPage(),
                       transition: Transition.rightToLeft,
                     ),
-                    leading: const Icon(Icons.person_outline),
+                    leading: const Icon(Icons.people_outline_outlined),
                     title: Text(
-                      'Members',
+                      'Committee Members',
                       style: GoogleFonts.inter(),
                     ),
                   ),
